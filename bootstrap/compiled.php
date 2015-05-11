@@ -476,7 +476,7 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
     }
     public static function getBootstrapFile()
     {
-        return '/vagrant/tulipmania.dev/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
+        return '/vagrant/sites/tulipmania.dev/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
     }
     public function startExceptionHandling()
     {
