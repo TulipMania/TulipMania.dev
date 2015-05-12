@@ -37,6 +37,13 @@
 		    </div>
 		</div>
 
+      <div class="form">
+        <input type="text" class="zocial-dribbble" placeholder="Enter your email" />
+        <input type="text" placeholder="Password" />
+         <input type="submit" value="Login" />
+        <a href="">Lost your password?</a>
+      </div> 
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

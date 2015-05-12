@@ -34,5 +34,29 @@ class HomeController extends BaseController {
 	{
 		return View::make('adventure_template_two');
 	}
+	
+	public function checkLogin()
+	{
 
+
+		$validator = Validator::make(Input::all(),User::$rules);
+
+		if ($validator->fails())
+	    {
+			 return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			$email = Input::get('email');
+			$password = Input::get('password');
+
+		if (Auth::attempt(array('email' => $email,'password' => $password )))
+		{
+			return Redirect::intended('/');
+
+		} else {
+			Session::flash('errorMessage','Incorrect email or password');
+			return Redirect::back();
+		}
+			
+		}
+	}
 }
