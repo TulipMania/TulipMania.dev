@@ -68,7 +68,7 @@
 			<br>
 			<br>
 			<br>
-			<a href="" class="fieldButton">Logout</a>
+			<a href="/" class="fieldButton">Logout</a>
 		</div>
 		
 	</div>
