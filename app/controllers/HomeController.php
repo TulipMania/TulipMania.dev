@@ -24,6 +24,7 @@ class HomeController extends BaseController {
 	public function showLanding()
 	{
 		return View::make('index');
+	}
 
 	public function showAdventureTemplate()
 	{
