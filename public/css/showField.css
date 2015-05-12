@@ -1,0 +1,41 @@
+/*#container *{
+	float: left;
+}*/
+
+#userModel{
+	float: left;
+}
+
+.modelPart{
+	height: 100px;
+	width: 75px;
+	border: solid black 1px;
+	margin: 0px;
+	/*float: none;*/
+}
+
+#fields{
+	height: 500px;
+	width: 800px;
+	float: left;
+	/*border: solid black 1px;*/
+}
+
+#fields * {
+	float: left;
+}
+.fieldRow{
+	width: 800px;
+	height: 200px;
+	/*border: solid black 1px;*/
+}
+
+.mound{
+	width: 264px;
+	height: 200px;
+	border: solid black 1px;
+}
+
+#buttons{
+	float: left;
+}
