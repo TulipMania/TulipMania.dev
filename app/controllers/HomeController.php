@@ -35,6 +35,11 @@ class HomeController extends BaseController {
 		return View::make('adventure_template_two');
 	}
 
+	public function showStore()
+	{
+		return View::make('store');
+	}
+
 	public function showField(){
 		return View::make('showField');
 	}
