@@ -60,9 +60,15 @@
 			</div>
 		</div>
 		<div id="buttons">
-			<button>Store</button>
-			<a href="">Adventure Time!</a>
-			<a href="">Logout</a>
+			<button class="fieldButton">Store</button>
+			<br>
+			<br>
+			<br>
+			<a href="" class="fieldButton">Adventure Time!</a>
+			<br>
+			<br>
+			<br>
+			<a href="" class="fieldButton">Logout</a>
 		</div>
 		
 	</div>
