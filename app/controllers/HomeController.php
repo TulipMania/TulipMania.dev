@@ -20,9 +20,19 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+
 	public function showLanding()
 	{
 		return View::make('index');
+
+	public function showAdventureTemplate()
+	{
+		return View::make('adventure_template');
+	}
+
+	public function showAdventureTemplateTwo()
+	{
+		return View::make('adventure_template_two');
 	}
 
 }

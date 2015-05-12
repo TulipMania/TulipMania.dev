@@ -15,3 +15,7 @@ Route::get('/', function()
 {
 	return View::make('index');
 });
+
+Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
+
+Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
