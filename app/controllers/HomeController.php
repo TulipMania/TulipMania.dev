@@ -24,7 +24,7 @@ class HomeController extends BaseController {
 	public function showLanding()
 	{
 		return View::make('index');
-
+	}
 	public function showAdventureTemplate()
 	{
 		return View::make('adventure_template');
@@ -38,7 +38,6 @@ class HomeController extends BaseController {
 	public function checkLogin()
 	{
 
-
 		$validator = Validator::make(Input::all(),User::$rules);
 
 
@@ -51,7 +50,7 @@ class HomeController extends BaseController {
 
 		if (Auth::attempt(array('email' => $email,'password' => $password )))
 		{
-			return Redirect::intended('/');
+			return Redirect::intended('field');
 
 		} else {
 			Session::flash('errorMessage','Incorrect email or password');
@@ -60,7 +59,13 @@ class HomeController extends BaseController {
 			
 		}
 	}
-	
+
+	public function logout()
+	{
+		Auth::logout();
+		Redirect::to('index');
+	}
+
 	public function showField(){
 		return View::make('showField');
 	}

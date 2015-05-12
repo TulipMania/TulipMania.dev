@@ -21,3 +21,7 @@ Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
 Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
 
 Route::get('/field', "HomeController@showField");
+
+Route::post('login','HomeController@checkLogin');
+
+Route::get('logout','HomeController@logout');
