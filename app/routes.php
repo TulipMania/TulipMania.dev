@@ -20,4 +20,10 @@ Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
 
 Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
 
+Route::get('/store', 'HomeController@showStore');
+
 Route::get('/field', "HomeController@showField");
+
+Route::post('login','HomeController@checkLogin');
+
+Route::get('logout','HomeController@logout');

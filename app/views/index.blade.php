@@ -37,6 +37,19 @@
 		    </div>
 		</div>
 
+      {{ Form::open(array('action' => 'HomeController@checkLogin')) }}
+          <br>
+          {{ Form::text('email',Input::old('email'), array('class' => 'zocial-dribbble', 'id' =>"email", 'name' => "email", 'placeholder' => "email")) }}
+          {{ Form::password('password', array('class' => 'zocial-dribbble', 'id' =>"password", 'name' => "password", 'placeholder' => "Password")) }}
+            <input type="submit" value="Login"/>
+      {{ Form::close() }}
+    
+    <div class="canvasContainer">
+        <canvas class="contextCanvas" id='canvas' height="300" width="500"></canvas>
+    </div>
+
+<script src="https://cdn.rawgit.com/brehaut/color-js/master/color.js"></script>
+  <script src="js/index.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
