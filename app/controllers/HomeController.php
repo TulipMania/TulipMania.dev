@@ -41,6 +41,7 @@ class HomeController extends BaseController {
 
 		$validator = Validator::make(Input::all(),User::$rules);
 
+
 		if ($validator->fails())
 	    {
 			 return Redirect::back()->withInput()->withErrors($validator);
@@ -59,4 +60,9 @@ class HomeController extends BaseController {
 			
 		}
 	}
+	
+	public function showField(){
+		return View::make('showField');
+	}
+
 }
