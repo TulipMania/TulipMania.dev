@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddFieldsForeigns' => $baseDir . '/app/database/migrations/2015_05_12_150542_add_fields_foreigns.php',
+    'AddMarketForeigns' => $baseDir . '/app/database/migrations/2015_05_12_150519_add_market_foreigns.php',
+    'AddUserForeigns' => $baseDir . '/app/database/migrations/2015_05_12_150454_add_user_foreigns.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseModel' => $baseDir . '/app/models/BaseModel.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
@@ -29,7 +32,10 @@ return array(
     'ClassPreloader\\Parser\\DirVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/DirVisitor.php',
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
-    'CreateStoreTable' => $baseDir . '/app/database/migrations/2015_05_12_012849_create_store_table.php',
+    'CreateFieldsDb' => $baseDir . '/app/database/migrations/2015_05_12_143447_create_fields_db.php',
+    'CreateItemTable' => $baseDir . '/app/database/migrations/2015_05_12_012849_create_item_table.php',
+    'CreateMarketDb' => $baseDir . '/app/database/migrations/2015_05_12_143423_create_market_db.php',
+    'CreateScenariosDb' => $baseDir . '/app/database/migrations/2015_05_12_143254_create_scenarios_db.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2015_05_11_201708_create_users_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
@@ -419,6 +425,8 @@ return array(
     'Illuminate\\Workbench\\PackageCreator' => $vendorDir . '/laravel/framework/src/Illuminate/Workbench/PackageCreator.php',
     'Illuminate\\Workbench\\Starter' => $vendorDir . '/laravel/framework/src/Illuminate/Workbench/Starter.php',
     'Illuminate\\Workbench\\WorkbenchServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Workbench/WorkbenchServiceProvider.php',
+    'Item' => $baseDir . '/app/models/Item.php',
+    'ItemTableSeeder' => $baseDir . '/app/database/seeds/ItemTableSeeder.php',
     'Jeremeamia\\SuperClosure\\ClosureLocation' => $vendorDir . '/jeremeamia/SuperClosure/src/Jeremeamia/SuperClosure/ClosureLocation.php',
     'Jeremeamia\\SuperClosure\\ClosureParser' => $vendorDir . '/jeremeamia/SuperClosure/src/Jeremeamia/SuperClosure/ClosureParser.php',
     'Jeremeamia\\SuperClosure\\SerializableClosure' => $vendorDir . '/jeremeamia/SuperClosure/src/Jeremeamia/SuperClosure/SerializableClosure.php',
