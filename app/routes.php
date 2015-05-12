@@ -19,3 +19,5 @@ Route::get('/', function()
 Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
 
 Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
+
+Route::get('/field', "HomeController@showField");
