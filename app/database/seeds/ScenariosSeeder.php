@@ -5,8 +5,8 @@ class ScenarioSeeder extends Seeder {
 	public function run()
 	{
 			$scenario1                = new Scenario();
-			$scenario1->body          = "Valkenswaard, Low Countries
-                                        January 9, 1629
+			$scenario1->body          = "Valkenswaard, Low Countries\n
+                                        January 9, 1629\n
 									    Groundskeeper Hennie says: \"Good news, characterName! Your mean great uncle, Rinus, died of bloody flux and left his tulip field to you! 
 									    \"As you know, tulips are of great value in this land. Grow good tulips and we --ahem, I mean, you-- could become a very rich man.
 									    \"I am at your service. Shall we go shopping?\"";
@@ -15,7 +15,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario1->save();
 
 			$scenario2                = new Scenario();
-			$scenario2->body          = "Arjen, the town drunk, bets you ƒ3.00 that he can beat you swimming across the river. 
+			$scenario2->body          = "Arjen, the town drunk, bets you ƒ3.00 that he can beat you swimming across the river.\n 
 										Hennie says: \"Be careful, master. Arjen, though a lush, is a magnificent swimmer. Also, 
 										the water is very cold. On the other hand, those three guilders could buy some much needed 
 										itemBelowThreeGuilders.\"";
@@ -26,7 +26,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario3                = new Scenario();
 			$scenario3->body          = "You run into your old friend Bert van Praag from your days at the University 
 										of Groningen. He and his wife are on their way to a party at Count 
-										Kiesel's. Would you like to join them?
+										Kiesel's. Would you like to join them?\n
 										Hennie says: \"Make sure to give the driver a ƒ1.50 gratuity. You don't want to 
 										get a reputation for being a miser.\"";
 			$scenario3->locations     = "grounds";
@@ -36,7 +36,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario4                = new Scenario();
 			$scenario4->body          = "You run into your old friend Bert van Praag from your days at the University 
 										of Groningen. He and his wife are on their way to a party at Count 
-										Kiesel's. Would you like to join them?
+										Kiesel's. Would you like to join them?\n
 										Hennie says: \"Make sure to give the driver a ƒ1.50 gratuity. You don't want to 
 										get a reputation for being a miser.\"";
 			$scenario4->locations     = "grounds";
@@ -68,7 +68,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario8                = new Scenario();
 			$scenario8->body          = "The countess has taken a liking to you. She asks if you 		
 										would like to pair up with her for a short minuet. From across 		
-										the room the count gives you a look. He is not happy.  
+										the room the count gives you a look. He is not happy.\n  
 										Would you like to dance with her?";
 			$scenario8->locations     = "grounds";							
 			$scenario8->leads_to      = "10,11";
