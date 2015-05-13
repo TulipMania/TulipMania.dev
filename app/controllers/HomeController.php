@@ -73,7 +73,9 @@ class HomeController extends BaseController {
 	}
 
 	public function showField(){
-		return View::make('showField');
+		$items = explode(',', User::find(Auth::id())->items);
+		$storeItems = DB::table('items')->where('id', '<', 11)->get();
+		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
 	}
 
 }
