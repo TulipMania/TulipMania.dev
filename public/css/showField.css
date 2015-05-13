@@ -1,6 +1,6 @@
-/*#container *{
-	float: left;
-}*/
+#container{
+	position: relative;
+}
 
 #userModel{
 	float: left;
@@ -33,6 +33,7 @@
 	width: 800px;
 	height: 200px;
 	margin-bottom: 2%;
+	background-image: url('../images/backgrounds/field_row.png');
 	/*border: solid black 1px;*/
 }
 
@@ -60,3 +61,55 @@
 .fieldButton:visited{
 	color: black;
 }
+
+table {
+	overflow: scroll;
+	border: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #6D929B;
+}
+
+.modal{
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
+#store{
+	
+	/*float:center;*/
+	position: relative;
+	z-index: 1;
+
+}
+
+#store{
+	}

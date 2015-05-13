@@ -5,7 +5,34 @@
 	<link rel="stylesheet" type="text/css" href="/css/showField.css">
 </head>
 <body>
-	<div id="container">
+	<div id="storeModal" class="modal">
+		<div id="store">
+			<h1>Welcome to the store, young chap!</h1>
+			<h2>What would you like?</h2>
+			<div id="store_table">
+				<button>X</button>	
+				<table>
+						<tr>
+						<th>Item</th>
+						<th>Description</th>
+						<th>Price</th>
+						<th></th>
+						</tr>
+						@foreach($storeItems as $item)
+
+						<tr>
+							<td>{{{$item->name}}}</td>
+							<td>{{{$item->description}}}</td>
+							<td>ƒ {{{$item->price}}}</td>
+						</tr>
+
+						@endforeach
+				</table>			
+			</div>
+		</div>	
+	</div>
+
+	{{-- <div id="container"> --}}
 		<div id="userModel">
 			<div id="userModelHead" class="modelPart">
 				hat
@@ -60,7 +87,7 @@
 			</div>
 		</div>
 		<div id="buttons">
-			<button class="fieldButton">Store</button>
+			<a href="#storeModal" class="fieldButton">Store</a>
 			<br>
 			<br>
 			<br>
@@ -69,8 +96,9 @@
 			<br>
 			<br>
 			<a href="/" class="fieldButton">Logout</a>
-		</div>
-		
-	</div>
+		</div>	
+	{{-- </div> --}}
+
+	
 </body>
 </html>
