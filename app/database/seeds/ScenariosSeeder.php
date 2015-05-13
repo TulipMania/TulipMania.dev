@@ -10,15 +10,14 @@ class ScenarioSeeder extends Seeder {
 									    Groundskeeper Hennie says: \"Good news, characterName! Your mean great uncle, Rinus, died of bloody flux and left his tulip field to you! 
 									    \"As you know, tulips are of great value in this land. Grow good tulips and we --ahem, I mean, you-- could become a very rich man.
 									    \"I am at your service. Shall we go shopping?\"";
+			$scenario1->header        = "Welcome!";
 			$scenario1->locations     = "intro";
 			$scenario1->leads_to      = "0";
 			$scenario1->save();
 
 			$scenario2                = new Scenario();
-			$scenario2->body          = "Arjen, the town drunk, bets you ƒ3.00 that he can beat you swimming across the river.\n 
-										Hennie says: \"Be careful, master. Arjen, though a lush, is a magnificent swimmer. Also, 
-										the water is very cold. On the other hand, those three guilders could buy some much needed 
-										itemBelowThreeGuilders.\"";
+			$scenario2->body          = "What would would you like to do today?";
+			$scenario2->header     	  = "";
 			$scenario2->locations     = "grounds";
 			$scenario2->leads_to      = "3,4";
 			$scenario2->save();
@@ -29,6 +28,7 @@ class ScenarioSeeder extends Seeder {
 										Kiesel's. Would you like to join them?\n
 										Hennie says: \"Make sure to give the driver a ƒ1.50 gratuity. You don't want to 
 										get a reputation for being a miser.\"";
+			$scenario3->header        = "Bert.";
 			$scenario3->locations     = "grounds";
 			$scenario3->leads_to      = "8,9";
 			$scenario3->save();
@@ -39,6 +39,7 @@ class ScenarioSeeder extends Seeder {
 										Kiesel's. Would you like to join them?\n
 										Hennie says: \"Make sure to give the driver a ƒ1.50 gratuity. You don't want to 
 										get a reputation for being a miser.\"";
+			$scenario4->header        = "Bert.";
 			$scenario4->locations     = "grounds";
 			$scenario4->leads_to      = "8,9";
 			$scenario4->save();
@@ -46,6 +47,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario5                = new Scenario();
 			$scenario5->body          = "You lose!
 										Arjen says: \"Thank you, you fool. Time for some eau de vie!\"";
+			$scenario5->header        = "";
 			$scenario5->locations     = "grounds";
 			$scenario5->leads_to      = "0";
 			$scenario5->save();
@@ -54,6 +56,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario6->body          = "You win!
 										Hennie says: \"Congratulations, master. I'll make sure Mr. Arjen 
 										leaves the grounds and pays what he owes you.\"";
+			$scenario5->header        = "";
 			$scenario6->locations     = "grounds";
 			$scenario6->leads_to      = "0";
 			$scenario6->save();
@@ -61,6 +64,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario7                = new Scenario();
 			$scenario7->body          = "Arjen drowned! You lose a day fishing his body out of the river. 
 										(But you get his ƒ3.00!)";
+			$scenario7->header        = "";
 			$scenario7->locations     = "grounds";							
 			$scenario7->leads_to      = "0";
 			$scenario7->save();
@@ -70,6 +74,7 @@ class ScenarioSeeder extends Seeder {
 										would like to pair up with her for a short minuet. From across 		
 										the room the count gives you a look. He is not happy.\n  
 										Would you like to dance with her?";
+			$scenario8->header        = "Countess Intro";
 			$scenario8->locations     = "grounds";							
 			$scenario8->leads_to      = "10,11";
 			$scenario8->save();
@@ -77,6 +82,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario9                = new Scenario();
 			$scenario9->body          = "A man at the party by the name of Djavan says he's a childhood 
 										friend of yours from Den Burg. You don't recognize him, but he seems nice.";
+			$scenario9->header        = "Djavan Intro";
 			$scenario9->locations     = "grounds";							
 			$scenario9->leads_to      = "12,13,14,15";
 			$scenario9->save();
@@ -85,6 +91,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario10->body          = "Oh no! Count Kiesel has challenged you to a duel! If you accept you can get 
 										  seriously hurt... or even DIE! But if you decline, your reputation will suffer 
 										  and you will lose upwards of ƒ9.00 in sales. (No one wants to buy tulips from a coward!)";
+			$scenario9->header        =  "Duel Intro";
 			$scenario10->locations     = "grounds";							
 			$scenario10->leads_to      = "16,17,18";
 			$scenario10->save();
@@ -92,13 +99,15 @@ class ScenarioSeeder extends Seeder {
 			$scenario11                = new Scenario();
 			$scenario11->body          = "The Count winks at you! He respects a man who will dance with the Countess. You gain a 
 										  reputation for being a courageous man. People want to do business with you. You have an 
-										  extra ƒ5.90.";							
+										  extra ƒ5.90.";
+			$scenario9->header        =  "Count Wink";							
 			$scenario11->leads_to      = "0";
 			$scenario11->save();
 
 			$scenario12                = new Scenario();
 			$scenario12->body          = "In a great opium dream you stumble into the drawing room and win ƒ12.00 at the poker 
 										  table while speaking in tongues.";
+			$scenario9->header        =  "Speaking in Tongues";
 			$scenario12->locations     = "grounds";							
 			$scenario12->leads_to      = "0";
 			$scenario12->save();

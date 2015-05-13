@@ -33,7 +33,7 @@ public function __construct()
 
 	public function showAdventureTemplate($id)
 	{	
-		$choices       = implode(',',$id->leads_to);
+		$choices       = explode(',',$id->leads_to);
 		$choiceHeaders = [];
 		foreach($choices as $choice){
 			array_push($choiceHeaders,DB::table('scenarios')->select('header')->WHERE('id','=',$choice)->get());
@@ -54,9 +54,9 @@ public function __construct()
 	public function checkLogin()
 	{
 
-		$validator = Validator::make(Input::all(),User::$rules);
+		$validator  = Validator::make(Input::all(),User::$rules);
 		$user_input = Input::get('user_input');
-		$password = Input::get('password');
+		$password   = Input::get('password');
 
 		if (Auth::attempt(array('username' => $user_input, 'password' => $password))) {
 			return Redirect::action('HomeController@showField');
@@ -107,8 +107,8 @@ public function __construct()
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } 
 	    else {
-			$user = new User;
-			$user->email = Input::get('newEmail');
+			$user           = new User;
+			$user->email    = Input::get('newEmail');
 			$user->username = Input::get('newUser');
 			$user->password = Input::get('newPass');
 			$user->save();
