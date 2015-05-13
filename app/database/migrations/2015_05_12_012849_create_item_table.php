@@ -12,11 +12,12 @@ class CreateItemTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('items', function($table)
+		Schema::create('items', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('img', 200);
             $table->string('name', 200);
+            $table->string('description', 255);
             $table->integer('price');
             $table->timestamps();
         });
