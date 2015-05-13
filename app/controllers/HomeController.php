@@ -31,9 +31,15 @@ public function __construct()
 		return View::make('index');
 	}
 
-	public function showAdventureTemplate()
-	{
 
+	public function showAdventureTemplate($id)
+	{	
+		$choices       = implode(',',$id->leads_to);
+		$choiceHeaders = [];
+		foreach($choices as $choice){
+			array_push($choiceHeaders,DB::table('scenarios')->select('header')->WHERE('id','=',$choice)->get());
+		}
+		$body = $id->body;
 		return View::make('adventure_template');
 	}
 

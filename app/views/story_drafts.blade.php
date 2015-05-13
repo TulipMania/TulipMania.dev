@@ -1,12 +1,11 @@
-
 Valkenswaard, Low Countries
 January 9, 1629
 
-Groundskeeper Hennie says: \"Good news, $characterName! Your mean great uncle, Rinus, died of bloody flux and left his tulip field to you! 
+Groundskeeper Hennie says: "Good news, $characterName! Your mean great uncle, Rinus, died of bloody flux and left his tulip field to you! 
 
-\"As you know, tulips are of great value in this land. Grow good tulips and we --ahem, I mean, you-- could become a very rich man.
+"As you know, tulips are of great value in this land. Grow good tulips and we --ahem, I mean, you-- could become a very rich man.
 
-\"I am at your service. Shall we go shopping?\"
+"I am at your service. Shall we go shopping?"
 
 if(yes){
 	go to store
@@ -16,11 +15,11 @@ if(yes){
 
 2. TAKE A STROLL AROUND THE GROUNDS.
 	A. Arjen, the town drunk, bets you ƒ3.00 that he can beat you swimming across the river. 
-	Hennie says: \n"Be careful, master. Arjen, though a lush, is a magnificent swimmer. Also, the water is very cold. On the other hand, those three guilders could buy some much needed $itemBelowThreeGuilders.\n"  
+	Hennie says: "Be careful, master. Arjen, though a lush, is a magnificent swimmer. Also, the water is very cold. On the other hand, those three guilders could buy some much needed $itemBelowThreeGuilders."  
 		AA. You lose!
-			Arjen says: \"Thank you, you fool. Time for some eau de vie!\n"
+			Arjen says: "Thank you, you fool. Time for some eau de vie!"
 		AB. You win!
-			Hennie says: \"Congratulations, master. I'll make sure Mr. Arjen leaves the grounds and pays what he owes you.\"
+			Hennie says: "Congratulations, master. I'll make sure Mr. Arjen leaves the grounds and pays what he owes you."
 		AC. Arjen drowned! You lose a day fishing his body out of the river. 	(But you get his ƒ3.00!) 
 	B. You run into your old friend Bert van Praag from your days at the University of Groningen. He and his wife are on their way to a party at Count Kiesel's. Would you like to join them?
 	Hennie says: "Make sure to give the driver a ƒ1.50 gratuity. You don't want to get a reputation for being a miser."
@@ -39,8 +38,10 @@ if(yes){
 			BBB. Oh no! You had a very interesting opium dream in which you vomited birds of all sorts...but you also lost your wallet with ƒ5.00 inside. 
 			BBC. Djavan was actually a con artist! While you're in the middle of an opium dream about flying giant beetles, he steals ƒ8.00 from your pocket. 
 			BBD. During an opium dream about Rinus you finally remember who Djavan is! You two hit it off and you even manage to sell him ƒ8.00 worth of tulips.  
+@section('story_setup')
 	C. You come across a cave that looks oh so much like one in which you used to play as a child. You decide to go in. A bear!\n Do you want to fight it or try to tame it? \n
 	Hennie says: "I will meet you back at the house, master."
+@stop
 		CA. (IF TAME) You fool! This bear cannot be tamed. You lose two fingers and ƒ11.00 in medical fees. 
 		CB. (IF FIGHT) Those morning push-ups have paid off! You kill the bear and sell its skin for ƒ14.00.
 		CC. (IF TAME) You sing the bear a lullaby and it goes to sleep. You walk out silently. 

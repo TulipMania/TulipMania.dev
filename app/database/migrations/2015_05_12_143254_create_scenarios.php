@@ -14,6 +14,7 @@ class CreateScenariosDb extends Migration {
 	{
 		Schema::create('scenarios', function($table){
 			$table->increments('id');
+			$table->string('header', 50);
 			$table->text('body');
 			$table->string('locations', 50);
 			$table->string('leads_to', 50);
