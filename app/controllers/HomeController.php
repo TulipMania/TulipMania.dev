@@ -33,20 +33,13 @@ public function __construct()
 
 	public function showAdventureTemplate()
 	{
-		if(Auth::check()){
+
 		return View::make('adventure_template');
-		}else{
-			return View::make('index');		
-		}
 	}
 
 	public function showAdventureTemplateTwo()
 	{
-		if(Auth::check()){
 			return View::make('adventure_template_two');
-		}else{
-			return View::make('index');		
-		}
 	}
 	
 	public function checkLogin()
@@ -57,10 +50,10 @@ public function __construct()
 		$password = Input::get('password');
 
 		if (Auth::attempt(array('username' => $user_input, 'password' => $password))) {
-			return Redirect::action('HomeController@showField');
+			return Redirect::intended('/');
 		}
 		else if (Auth::attempt(array('email' => $user_input, 'password' => $password))) {
-			return Redirect::action('HomeController@showField');	
+			return Redirect::intended('/');	
 		}else{
 			Session::flash('errorMessage','Incorrect email or password');
 			return Redirect::back()->withInput();
@@ -81,11 +74,7 @@ public function __construct()
 
 	public function showField(){
 
-		if(Auth::check()){
 			return View::make('showField');
-		}else{
-			return View::make('index');		
-		}
 	}
 	
 	/**

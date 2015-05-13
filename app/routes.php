@@ -11,28 +11,8 @@
 |
 */
 
+
 Route::get('/', 'HomeController@showLanding');
-
-if (Auth::check()) {
-	Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
-} else {
-    Route::get('/', 'HomeController@showLanding');
-}
-
-if (Auth::check()) {
-	Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
-} else {
-    Route::get('/', 'HomeController@showLanding');
-}
-
-
-if (Auth::check()) {
-	Route::get('/field', "HomeController@showField");
-} else {
-	Route::get('/', 'HomeController@showLanding');	
-}
-
-Route::get('/store', 'HomeController@showStore');
 
 Route::post('/login','HomeController@checkLogin');
 
@@ -41,3 +21,16 @@ Route::get('/logout','HomeController@logout');
 Route::post('/signup','HomeController@signUp');
 
 Route::get('hello', 'HomeController@showWelcome');
+
+Route::group(array('before' => 'auth'), function()
+{
+Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
+
+Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
+
+Route::get('/field', "HomeController@showField");
+
+Route::get('/store', 'HomeController@showStore');
+
+
+});
