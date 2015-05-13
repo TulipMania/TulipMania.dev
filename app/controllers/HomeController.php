@@ -84,7 +84,9 @@ public function __construct()
 	public function showField(){
 
 		if(Auth::check()){
-			return View::make('showField');
+			$userItems = explode(',', Auth::user()->items);
+			$storeItems = DB::table('items')->where('id', '<', 11)->get();
+			return View::make('showField', ['storeItems' => $storeItems]);
 		}else{
 			return View::make('index');		
 		}

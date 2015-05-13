@@ -7,10 +7,10 @@
 <body>
 	<div id="storeModal" class="modal">
 		<div id="store">
+			<a href="#close" title="Close" class="close">X</a>
 			<h1>Welcome to the store, young chap!</h1>
 			<h2>What would you like?</h2>
-			<div id="store_table">
-				<button>X</button>	
+			<div id="store_table">	
 				<table>
 						<tr>
 						<th>Item</th>
