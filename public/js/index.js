@@ -1,4 +1,4 @@
-
+// Animated Grass
 function strToHex(str){
   str=str.replace("#","0x");
   return(str);
@@ -61,3 +61,41 @@ update=function(){
 }
 setInterval( draw, 1000/60);
 setInterval( update, 1000/60);
+
+layer2 = document.getElementById("layer2");
+ctx2 = layer2.getContext("2d");
+
+function draw2() {
+var tulip = new Image();
+tulip.src = "../images/new-tulip.png";
+ctx2.clearRect(0, 0, 400, 300);
+ctx2.drawImage(tulip, 0, 0);
+}
+
+draw2();
+// Login & Signup Form
+$(document).ready(function()
+{
+  
+$(".tab").click(function()
+{
+var X=$(this).attr('id');
+ 
+if(X=='signup')
+{
+$("#login").removeClass('select');
+$("#signup").addClass('select');
+$("#loginbox").slideUp();
+$("#signupbox").slideDown();
+}
+else
+{
+$("#signup").removeClass('select');
+$("#login").addClass('select');
+$("#signupbox").slideUp();
+$("#loginbox").slideDown();
+}
+ 
+});
+
+});

@@ -2,6 +2,11 @@
 
 class HomeController extends BaseController {
 
+public function __construct()
+{
+	$this->beforeFilter('auth', array('only' => array('index')));
+}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -28,37 +33,39 @@ class HomeController extends BaseController {
 
 	public function showAdventureTemplate()
 	{
+		if(Auth::check()){
 		return View::make('adventure_template');
+		}else{
+			return View::make('index');		
+		}
 	}
 
 	public function showAdventureTemplateTwo()
 	{
-		return View::make('adventure_template_two');
+		if(Auth::check()){
+			return View::make('adventure_template_two');
+		}else{
+			return View::make('index');		
+		}
 	}
 	
 	public function checkLogin()
 	{
 
 		$validator = Validator::make(Input::all(),User::$rules);
+		$user_input = Input::get('user_input');
+		$password = Input::get('password');
 
-
-		if ($validator->fails())
-	    {
-			 return Redirect::back()->withInput()->withErrors($validator);
-		} else {
-			$email = Input::get('email');
-			$password = Input::get('password');
-
-		if (Auth::attempt(array('email' => $email,'password' => $password )))
-		{
-			return Redirect::intended('field');
-
-		} else {
+		if (Auth::attempt(array('username' => $user_input, 'password' => $password))) {
+			return Redirect::action('HomeController@showField');
+		}
+		else if (Auth::attempt(array('email' => $user_input, 'password' => $password))) {
+			return Redirect::action('HomeController@showField');	
+		}else{
 			Session::flash('errorMessage','Incorrect email or password');
-			return Redirect::back();
+			return Redirect::back()->withInput();
 		}
-			
-		}
+
 	}
 
 	public function logout()
@@ -73,9 +80,43 @@ class HomeController extends BaseController {
 	}
 
 	public function showField(){
+
+		if(Auth::check()){
+			return View::make('showField');
+		}else{
+			return View::make('index');		
+		}
+	}
+	
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function signUp()
+	{
+
+		// create the validator
+	    $validator = Validator::make(Input::all(), User::$signUpRules);
+
+	    // attempt validation
+	    if ($validator->fails())
+	    {
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } 
+	    else {
+			$user = new User;
+			$user->email = Input::get('newEmail');
+			$user->username = Input::get('newUser');
+			$user->password = Input::get('newPass');
+			$user->save();
+			return Redirect::action('HomeController@showLanding');
+	    }
+
 		$items = explode(',', User::find(Auth::id())->items);
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
 		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
+
 	}
 
 }
