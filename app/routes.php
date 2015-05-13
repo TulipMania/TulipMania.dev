@@ -25,17 +25,14 @@ if (Auth::check()) {
     Route::get('/', 'HomeController@showLanding');
 }
 
+
 if (Auth::check()) {
 	Route::get('/field', "HomeController@showField");
 } else {
 	Route::get('/', 'HomeController@showLanding');	
 }
 
-
-
-
-
-
+Route::get('/store', 'HomeController@showStore');
 
 Route::post('/login','HomeController@checkLogin');
 

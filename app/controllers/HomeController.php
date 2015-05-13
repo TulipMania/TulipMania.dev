@@ -30,6 +30,7 @@ public function __construct()
 	{
 		return View::make('index');
 	}
+
 	public function showAdventureTemplate()
 	{
 		if(Auth::check()){
@@ -73,7 +74,13 @@ public function __construct()
 		Redirect::to('index');
 	}
 
+	public function showStore()
+	{
+		return View::make('store');
+	}
+
 	public function showField(){
+
 		if(Auth::check()){
 			return View::make('showField');
 		}else{
@@ -105,6 +112,11 @@ public function __construct()
 			$user->save();
 			return Redirect::action('HomeController@showLanding');
 	    }
+
+		$items = explode(',', User::find(Auth::id())->items);
+		$storeItems = DB::table('items')->where('id', '<', 11)->get();
+		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
+
 	}
 
 }
