@@ -11,17 +11,36 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('index');
-});
+Route::get('/', 'HomeController@showLanding');
 
-Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
+if (Auth::check()) {
+	Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
+} else {
+    Route::get('/', 'HomeController@showLanding');
+}
 
-Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
+if (Auth::check()) {
+	Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
+} else {
+    Route::get('/', 'HomeController@showLanding');
+}
 
-Route::get('/field', "HomeController@showField");
+if (Auth::check()) {
+	Route::get('/field', "HomeController@showField");
+} else {
+	Route::get('/', 'HomeController@showLanding');	
+}
 
-Route::post('login','HomeController@checkLogin');
 
-Route::get('logout','HomeController@logout');
+
+
+
+
+
+Route::post('/login','HomeController@checkLogin');
+
+Route::get('/logout','HomeController@logout');
+
+Route::post('/signup','HomeController@signUp');
+
+Route::get('hello', 'HomeController@showWelcome');
