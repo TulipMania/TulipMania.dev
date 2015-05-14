@@ -18,6 +18,7 @@ class CreateScenariosDb extends Migration {
 			$table->text('body');
 			$table->string('locations', 50);
 			$table->string('leads_to', 50);
+			$table->string('story_id', 10);
 			$table->timestamps();
 		});
 	}
