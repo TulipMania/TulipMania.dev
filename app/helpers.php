@@ -1,5 +1,5 @@
 <?php 
-	public static function plant($seed, $mound, user_id){
+	function plant($seed, $mound, $user_id){
 		$toPlant = new Field();
 		$toPlant->mound = $mound;
 		$toPlant->mid_date = now();
