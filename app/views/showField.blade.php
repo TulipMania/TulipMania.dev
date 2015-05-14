@@ -91,7 +91,7 @@
 			<br>
 			<br>
 			<br>
-			<a href="" class="fieldButton">Adventure Time!</a>
+			<a href="/adventure_template" class="fieldButton">Adventure Time!</a>
 			<br>
 			<br>
 			<br>

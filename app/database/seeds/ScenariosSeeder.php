@@ -70,7 +70,7 @@ class ScenarioSeeder extends Seeder {
 										(But you get his ƒ3.00!)";
 			$scenario7->header        = "Swim.";
 			$scenario7->locations     = "grounds";	
-			$scenario6->scene_id      = "s_arjen_dies";						
+			$scenario7->scene_id      = "s_arjen_dies";						
 			$scenario7->leads_to      = "e";
 			$scenario7->save();
 
@@ -90,7 +90,7 @@ class ScenarioSeeder extends Seeder {
 										friend of yours from Den Burg. You don't recognize him, but he seems nice.";
 			$scenario9->header        = "Djavan Intro";
 			$scenario9->locations     = "grounds";							
-			$scenario6->scene_id      = "s_djavan_intro";
+			$scenario9->scene_id      = "s_djavan_intro";
 			$scenario9->leads_to      = "a_12,a_13,a_14,a_15";
 			$scenario9->save();
 
@@ -143,7 +143,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario15                = new Scenario();
 			$scenario15->body          = "During an opium dream about Rinus you finally remember who Djavan is! You two hit it off 
 										  and you even manage to sell him ƒ8.00 worth of tulips.";
-			$scenario3->header         = "Continue.";
+			$scenario15->header         = "Continue.";
 			$scenario15->locations     = "grounds";
 			$scenario15->scene_id      = "s_opium_tulips";
 			$scenario15->leads_to      = "e";
@@ -152,7 +152,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario16                = new Scenario();
 			$scenario16->body          = "The Count has shot you in the knee! You lose 
 										  three days of rest and ƒ12.30 in medical fees.";
-			$scenario3->header         = "Continue.";
+			$scenario16->header         = "Continue.";
 			$scenario16->locations     = "grounds";
 			$scenario16->scene_id      = "s_count_shot_knee";
 			$scenario16->leads_to      = "e";
@@ -161,7 +161,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario17                = new Scenario();
 			$scenario17->body          = "The Count shot you in the face! The countess 
 										  gives you mouth to mouth but, alas, you are dead.";
-			$scenario3->header        = "Continue.";
+			$scenario17->header        = "Continue.";
 			$scenario17->locations     = "grounds";
 			$scenario17->scene_id      = "s_player_dead";
 			$scenario17->leads_to      = "e";
@@ -169,7 +169,7 @@ class ScenarioSeeder extends Seeder {
 
 			$scenario18                = new Scenario();
 			$scenario18->body          = "Congratulations! You have killed the count!";
-			$scenario3->header         = "Continue.";
+			$scenario18->header         = "Continue.";
 			$scenario18->locations     = "grounds";
 			$scenario18->scene_id      = "s_count_dead";
 			$scenario18->leads_to      = "e";
