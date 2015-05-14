@@ -13,24 +13,9 @@
 
 Route::get('/', 'HomeController@showLanding');
 
-if (Auth::check()) {
-	Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
-} else {
-    Route::get('/', 'HomeController@showLanding');
-}
+Route::get('/adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
 
-if (Auth::check()) {
-	Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
-} else {
-    Route::get('/', 'HomeController@showLanding');
-}
-
-
-if (Auth::check()) {
-	Route::get('/field', "HomeController@showField");
-} else {
-	Route::get('/', 'HomeController@showLanding');	
-}
+Route::get('/field', "HomeController@showField");
 
 Route::get('/store', 'HomeController@showStore');
 
