@@ -14,9 +14,11 @@ class CreateFields extends Migration {
 	{
 		Schema::create('fields', function($table){
 			$table->increments('id');
+			$table->integer('mound');
 			$table->date('mid_date');
 			$table->date('compl_date');
 			$table->date('death_date');
+
 			$table->timestamps();
 		});
 	}

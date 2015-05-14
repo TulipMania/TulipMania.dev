@@ -75,14 +75,14 @@ public function __construct()
 	}
 
 	public function showField(){
-
-		if(Auth::check()){
-			$userItems = explode(',', Auth::user()->items);
-			$storeItems = DB::table('items')->where('id', '<', 11)->get();
-			return View::make('showField', ['storeItems' => $storeItems]);
-		}else{
-			return View::make('index');		
+		$userItems = [];
+		foreach (explode(',', Auth::user()->items) as $itemNum) {
+			$item = Item::find($itemNum);
+			array_push($userItems, $item);
 		}
+		$storeItems = DB::table('items')->where('id', '<', 11)->get();
+		// dd($userItems);
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems]);
 	}
 	
 	/**

@@ -13,6 +13,7 @@
 			$seed1->name              = 'seed1';
 			$seed1->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$seed1->price             = 0;
+			$seed1->is_seed           = true;
 			$seed1->save();
 
 			$seed2                    = new Item();
@@ -20,6 +21,7 @@
 			$seed2->name              = 'seed2';
 			$seed2->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$seed2->price             = 5;
+			$seed2->is_seed           = true;
 			$seed2->save();
 
 			$seed3                    = new Item();
@@ -27,6 +29,7 @@
 			$seed3->name              = 'seed3';
 			$seed3->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$seed3->price             = 50;
+			$seed3->is_seed          = true;
 			$seed3->save();
 
 			$fertilizerA              = new Item();
@@ -34,6 +37,7 @@
 			$fertilizerA->name        = 'fertilizerA';
 			$fertilizerA->description = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$fertilizerA->price       = 10;
+			$fertilizerA->is_seed     = false;
 			$fertilizerA->save();
 
 			$fertilizerB              = new Item();
@@ -41,6 +45,7 @@
 			$fertilizerB->name        = 'fertilizerB';
 			$fertilizerB->description = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$fertilizerB->price       = 30;
+			$fertilizerB->is_seed     = false;
 			$fertilizerB->save();
 
 			$insecticide              = new Item();
@@ -48,6 +53,7 @@
 			$insecticide->name        = 'insecticide';
 			$insecticide->description = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$insecticide->price       = 20;
+			$insecticide->is_seed     = false;
 			$insecticide->save();
 
 			$hat1                     = new Item();
@@ -55,6 +61,7 @@
 			$hat1->name               = 'hat1';
 			$hat1->description        = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$hat1->price              = 100;
+			$hat1->is_seed            = false;
 			$hat1->save();
 
 			$hat2                     = new Item();
@@ -62,6 +69,7 @@
 			$hat2->name               = 'hat2';
 			$hat2->description        = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$hat2->price              = 500;
+			$hat2->is_seed            = false;
 			$hat2->save();
 
 			$shirt                    = new Item();
@@ -69,6 +77,7 @@
 			$shirt->name              = 'shirt';
 			$shirt->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$shirt->price             = 500;
+			$shirt->is_seed           = false;
 			$shirt->save();
 
 			$shoes                    = new Item();
@@ -76,6 +85,7 @@
 			$shoes->name              = 'shoes';
 			$shoes->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
 			$shoes->price             = 500;
+			$shoes->is_seed           = false;
 			$shoes->save();
 		}
 	}
