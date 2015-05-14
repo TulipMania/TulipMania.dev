@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarketDb extends Migration {
+class CreateMarket extends Migration {
 
 	/**
 	 * Run the migrations.
