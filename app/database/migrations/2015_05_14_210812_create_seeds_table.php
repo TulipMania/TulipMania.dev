@@ -15,7 +15,7 @@ class CreateSeedsTable extends Migration {
 		Schema::create('seeds', function($table){
 			$table->increments('id');
 			$table->string('mid_grow_rate', 50);
-			$table->integer('death_time');
+			$table->string('death_time', 50);
 			$table->timestamps();
 		});
 	}

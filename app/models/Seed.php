@@ -1,4 +1,6 @@
 <?php 
+	use Carbon\Carbon;
+	
 	class Seed extends BaseModel
 	{
 	    protected $table = 'seeds';
@@ -8,7 +10,7 @@
 	    }
 
 	    public static function getMidDate($seedID){
-	    	$seed = DB::table($table)->find($seedID);
+	    	$seed = DB::table('seeds')->find($seedID);
 
 	    	$midGrowRate = $seed->mid_grow_rate;
 
@@ -21,7 +23,7 @@
 	    }
 
 		public static function getComplDate($seedID){
-			$seed = DB::table($table)->find($seedID);
+			$seed = DB::table('seeds')->find($seedID);
 
 	    	$midGrowRate = $seed->mid_grow_rate;
 
@@ -34,7 +36,7 @@
 		}
 
 		public static function getDeathDate($seedID){
-			$seed = DB::table($table)->find($seedID);
+			$seed = DB::table('seeds')->find($seedID);
 
 	    	$deathTime = $seed->death_time;
 

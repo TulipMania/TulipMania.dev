@@ -94,6 +94,17 @@ public function __construct()
 		// dd($userItems);
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems]);
 	}
+
+	public function plant(){
+		// dd(Input::all());
+		$seedID = Input::get('seedID');
+		$mound = Input::get('mound');
+		$userID = Input::get('userID');
+
+		plant($seedID, $mound, $userID);
+
+		return Redirect::action("HomeController@showField");
+	}
 	
 	/**
 	 * Store a newly created resource in storage.

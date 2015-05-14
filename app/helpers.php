@@ -7,5 +7,8 @@
 		$toPlant->death_date = Seed::getDeathDate($seedID);
 		$toPlant->user_id = $userID;
 		$toPlant->item_id = $seedID;
+		$toPlant->save();
+
+		dd($toPlant->id);
 	}
  ?>
