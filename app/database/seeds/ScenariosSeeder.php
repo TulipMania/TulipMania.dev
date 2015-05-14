@@ -1,6 +1,6 @@
 <?php 
 
-class ScenarioSeeder extends Seeder {
+class ScenariosSeeder extends Seeder {
 
 	public function run()
 	{
@@ -13,7 +13,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario1->header        = "Welcome!";
 			$scenario1->locations     = "intro";
 			$scenario1->leads_to      = "e";
-			$scenario1->scene_id      = "s_intro";
+			$scenario1->story_id      = "s_intro";
 			$scenario1->save();
 
 			$scenario2                = new Scenario();
@@ -21,7 +21,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario2->header     	  = "";
 			$scenario2->locations     = "grounds";
 			$scenario2->leads_to      = "a_3,a_4";
-			$scenario2->scene_id      = "s_grounds";
+			$scenario2->story_id      = "s_grounds";
 			$scenario2->save();
 
 			$scenario3                = new Scenario();
@@ -31,7 +31,7 @@ class ScenarioSeeder extends Seeder {
 			$scenario3->header        = "Continue.";
 			$scenario3->locations     = "grounds";
 			$scenario3->leads_to      = "a_5,a_6,a_7";
-			$scenario3->scene_id      = "s_arjen_intro";
+			$scenario3->story_id      = "s_arjen_intro";
 			$scenario3->save();
 
 			$scenario4                = new Scenario();
@@ -42,7 +42,7 @@ class ScenarioSeeder extends Seeder {
 										get a reputation for being a miser.\"";
 			$scenario4->header        = "Continue.";
 			$scenario4->locations     = "grounds";
-			$scenario4->scene_id      = "s_bert_intro";
+			$scenario4->story_id      = "s_bert_intro";
 			$scenario4->leads_to      = "a_8,a_9";
 			$scenario4->save();
 
@@ -51,7 +51,7 @@ class ScenarioSeeder extends Seeder {
 										Arjen says: \"Thank you, you fool. Time for some eau de vie!\"";
 			$scenario5->header        = "Continue.";
 			$scenario5->locations     = "grounds";
-			$scenario5->scene_id      = "s_arjen_wins";
+			$scenario5->story_id      = "s_arjen_wins";
 			$scenario5->leads_to      = "e";
 			$scenario5->save();
 
@@ -61,7 +61,7 @@ class ScenarioSeeder extends Seeder {
 										leaves the grounds and pays what he owes you.\"";
 			$scenario6->header        = "Swim.";
 			$scenario6->locations     = "grounds";
-			$scenario6->scene_id      = "s_arjen_you_win";
+			$scenario6->story_id      = "s_arjen_you_win";
 			$scenario6->leads_to      = "e";
 			$scenario6->save();
 
@@ -70,7 +70,7 @@ class ScenarioSeeder extends Seeder {
 										(But you get his ƒ3.00!)";
 			$scenario7->header        = "Swim.";
 			$scenario7->locations     = "grounds";	
-			$scenario6->scene_id      = "s_arjen_dies";						
+			$scenario7->story_id      = "s_arjen_dies";						
 			$scenario7->leads_to      = "e";
 			$scenario7->save();
 
@@ -81,7 +81,7 @@ class ScenarioSeeder extends Seeder {
 										Would you like to dance with her?";
 			$scenario8->header        = "Continue.";
 			$scenario8->locations     = "grounds";							
-			$scenario6->scene_id      = "s_countess_intro";
+			$scenario8->story_id      = "s_countess_intro";
 			$scenario8->leads_to      = "a_10,a_11";
 			$scenario8->save();
 
@@ -90,7 +90,7 @@ class ScenarioSeeder extends Seeder {
 										friend of yours from Den Burg. You don't recognize him, but he seems nice.";
 			$scenario9->header        = "Djavan Intro";
 			$scenario9->locations     = "grounds";							
-			$scenario6->scene_id      = "s_djavan_intro";
+			$scenario9->story_id      = "s_djavan_intro";
 			$scenario9->leads_to      = "a_12,a_13,a_14,a_15";
 			$scenario9->save();
 
@@ -100,7 +100,7 @@ class ScenarioSeeder extends Seeder {
 										  and you will lose upwards of ƒ9.00 in sales. (No one wants to buy tulips from a coward!)";
 			$scenario10->header        =  "Continue.";
 			$scenario10->locations     = "grounds";							
-			$scenario10->scene_id      = "s_kiessel_duel";
+			$scenario10->story_id      = "s_kiessel_duel";
 			$scenario10->leads_to      = "a_16,a_17,a_18";
 			$scenario10->save();
 
@@ -108,8 +108,9 @@ class ScenarioSeeder extends Seeder {
 			$scenario11->body          = "The Count winks at you! He respects a man who will dance with the Countess. You gain a 
 										  reputation for being a courageous man. People want to do business with you. You have an 
 										  extra ƒ5.90.";
-			$scenario11->header        =  "Continue.";						
-			$scenario11->scene_id      = "s_count_wink";
+			$scenario11->header        =  "Continue.";
+			$scenario11->locations     = 'grounds';						
+			$scenario11->story_id      = "s_count_wink";
 			$scenario11->leads_to      = "e";
 			$scenario11->save();
 
@@ -118,60 +119,60 @@ class ScenarioSeeder extends Seeder {
 										  table while speaking in tongues.";
 			$scenario12->header        = "Continue.";
 			$scenario12->locations     = "grounds";							
-			$scenario12->scene_id      = "s_opium_poker";
+			$scenario12->story_id      = "s_opium_poker";
 			$scenario12->leads_to      = "e";
 			$scenario12->save();
 
 			$scenario13                = new Scenario();
 			$scenario13->body          = "Oh no! You had a very interesting opium dream in which you vomited birds of all sorts...
 										  but you also lost your wallet with ƒ5.00 inside.";							
-			$scenario3->header         = "Continue.";
+			$scenario13->header         = "Continue.";
 			$scenario13->locations     = "grounds";
-			$scenario13->scene_id      = "s_opium_wallet";
+			$scenario13->story_id      = "s_opium_wallet";
 			$scenario13->leads_to      = "e";
 			$scenario13->save();
 
 			$scenario14                = new Scenario();
 			$scenario14->body          = "Djavan was actually a con artist! While you're in the middle of an opium dream about 
 										  flying giant beetles, he steals ƒ8.00 from your pocket.";							
-			$scenario3->header         = "Continue.";
+			$scenario14->header         = "Continue.";
 			$scenario14->locations     = "grounds";
-			$scenario14->scene_id      = "s_djavan_con";
+			$scenario14->story_id      = "s_djavan_con";
 			$scenario14->leads_to      = "e";
 			$scenario14->save();
 
 			$scenario15                = new Scenario();
 			$scenario15->body          = "During an opium dream about Rinus you finally remember who Djavan is! You two hit it off 
 										  and you even manage to sell him ƒ8.00 worth of tulips.";
-			$scenario3->header         = "Continue.";
+			$scenario15->header         = "Continue.";
 			$scenario15->locations     = "grounds";
-			$scenario15->scene_id      = "s_opium_tulips";
+			$scenario15->story_id      = "s_opium_tulips";
 			$scenario15->leads_to      = "e";
 			$scenario15->save();
 
 			$scenario16                = new Scenario();
 			$scenario16->body          = "The Count has shot you in the knee! You lose 
 										  three days of rest and ƒ12.30 in medical fees.";
-			$scenario3->header         = "Continue.";
+			$scenario16->header         = "Continue.";
 			$scenario16->locations     = "grounds";
-			$scenario16->scene_id      = "s_count_shot_knee";
+			$scenario16->story_id      = "s_count_shot_knee";
 			$scenario16->leads_to      = "e";
 			$scenario16->save();
 
 			$scenario17                = new Scenario();
 			$scenario17->body          = "The Count shot you in the face! The countess 
 										  gives you mouth to mouth but, alas, you are dead.";
-			$scenario3->header        = "Continue.";
+			$scenario17->header        = "Continue.";
 			$scenario17->locations     = "grounds";
-			$scenario17->scene_id      = "s_player_dead";
+			$scenario17->story_id      = "s_player_dead";
 			$scenario17->leads_to      = "e";
 			$scenario17->save();
 
 			$scenario18                = new Scenario();
 			$scenario18->body          = "Congratulations! You have killed the count!";
-			$scenario3->header         = "Continue.";
+			$scenario18->header         = "Continue.";
 			$scenario18->locations     = "grounds";
-			$scenario18->scene_id      = "s_count_dead";
+			$scenario18->story_id      = "s_count_dead";
 			$scenario18->leads_to      = "e";
 			$scenario18->save();
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScenariosDb extends Migration {
+class CreateScenarios extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -18,7 +18,7 @@ class CreateScenariosDb extends Migration {
 			$table->text('body');
 			$table->string('locations', 50);
 			$table->string('leads_to', 50);
-			$table->string('story_id', 10);
+			$table->string('story_id', 50);
 			$table->timestamps();
 		});
 	}
