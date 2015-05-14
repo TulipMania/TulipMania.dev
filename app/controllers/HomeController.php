@@ -35,9 +35,19 @@ public function __construct()
 		$scene = Scenario::getFromSID($id);
 		$leads_to = explode(',', $scene->leads_to);
 		$next_headers = [];
+		if($scene->story_id[0]==='s'){
+			$total = count($leads_to) -1;
+			 $nextScenario = $leads_to[rand(0,$total)];
+			return Redirect::action('HomeController@showAdventureTemplate', $nextScenario);
+			//redirect action adventure make random leads_to
+		}	
+		// check first leads_to if it's continue pick random leads_to and only write that
+		// one to next headers 
+		// }else{
 		foreach ($leads_to as $newScene => $next) {
 			$next_headers[$next] = Scenario::getFromSID($next)->header;
 		}
+		// }
 		$body = $scene->body;
 
 		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
