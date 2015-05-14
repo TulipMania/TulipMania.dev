@@ -1,11 +1,11 @@
 <?php 
-	function plant($seed, $mound, $user_id){
+	function plant($seedID, $mound, $userID){
 		$toPlant = new Field();
 		$toPlant->mound = $mound;
-		$toPlant->mid_date = now();
-		$toPlant->compl_date = now();
-		$toPlant->death_date = now();
-		$toPlant->user_id = $user_id;
-		$toPlant->item_id = $seed;
+		$toPlant->mid_date = Seed::getMidDate($seedID);
+		$toPlant->compl_date = Seed::getComplDate($seedID);
+		$toPlant->death_date = Seed::getDeathDate($seedID);
+		$toPlant->user_id = $userID;
+		$toPlant->item_id = $seedID;
 	}
  ?>

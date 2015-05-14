@@ -1,5 +1,5 @@
 <?php 
-	class field extends BaseModel
+	class Field extends BaseModel
 	{
 	    protected $table = 'fields';
 	}
