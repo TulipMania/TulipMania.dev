@@ -91,7 +91,7 @@
 			<br>
 			<br>
 			<br>
-			<a href="/adventure_template" class="fieldButton">Adventure Time!</a>
+			<a href="{{{ action('HomeController@showAdventureTemplate', ['s_grounds']) }}}" class="fieldButton">Adventure Time!</a>
 			<br>
 			<br>
 			<br>

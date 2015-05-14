@@ -30,31 +30,18 @@ public function __construct()
 		return View::make('index');
 	}
 
-	public function showAdventureTemplate()
+	public function showAdventureTemplate($id)
 	{	
-		// $id = 4;
-		// $scene = DB::table('scenarios')->WHERE('id','=',$id)->get();
-		// $choices       = explode(',',$id->leads_to);
-		// $choiceHeaders = [];
-		// foreach($choices as $choice){
-		// 	array_push($choiceHeaders,DB::table('scenarios')->select('header')->WHERE('id','=',$choice)->get());
-		// }
-		// $body = $id->body;
-		// $data = array('choices'=>$choices,'choiceHeaders'=>$choiceHeaders,'body'=>$body);
-		// dd($data);
-		$scene = Scenario::getFromSID('a_3');
+		$scene = Scenario::getFromSID($id);
 		$leads_to = explode(',', $scene->leads_to);
-		// dd($leads_to);
 		$next_headers = [];
-		foreach ($leads_to as $scene => $next) {
-			// $next_headers[$next] = Scenario::getFromSID($next)->header;
-			array_push($next_headers, $next);
+		foreach ($leads_to as $newScene => $next) {
+			$next_headers[$next] = Scenario::getFromSID($next)->header;
 		}
-		// $body = $scene->body;
+		$body = $scene->body;
 
-		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers];
-		dd($data);
-		return View::make('adventure_template');
+		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
+		return View::make('adventure_template', $data);
 	}
 	
 	public function checkLogin()
