@@ -19,6 +19,8 @@ class CreateItemTable extends Migration {
             $table->string('name', 200);
             $table->string('description', 255);
             $table->integer('price');
+            $table->boolean('is_seed');
+
             $table->timestamps();
         });
 	}

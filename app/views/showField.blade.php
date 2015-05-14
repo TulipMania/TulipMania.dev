@@ -32,72 +32,105 @@
 		</div>	
 	</div>
 
-	{{-- <div id="container"> --}}
-		<div id="userModel">
-			<div id="userModelHead" class="modelPart">
-				hat
+	<div id="moundModal" class="modal">
+		<div id="store">
+			<a href="#close" title="Close" class="close">X</a>
+			<h1>MOUNDS OF MOUNDS!</h1>
+			<div id="store_table">	
+				<table>
+						<tr>
+						<th>Seed</th>
+						</tr>
+						@foreach($userItems as $item)
+							@if($item->is_seed)
+								<tr>
+									<td>
+										{{{$item->name}}}
+									</td>	
+									<td>
+										<button>Plant</button>
+									</td>
+								</tr>
+							@endif
+						@endforeach
+				</table>			
 			</div>
-			<br>
-			<div id="userModelTorso" class="modelPart">
-				shirt
-			</div>
-			<br>
-			<div id="userModelLegs" class="modelPart">
-				pants
-			</div>
-		</div>
-
-		<div id="fields">
-			<div id="fieldRow1" class="fieldRow">
-				<div class="mound leftMound">
-					mound
-				</div>
-				<div class="mound middleMound">
-					mound
-				</div>
-				<div class="mound rightMound">
-					mound
-				</div>
-			</div>
-			<br>
-
-			<div id="fieldRow2" class="fieldRow">
-				<div class="mound leftMound">
-					mound
-				</div>
-				<div class="mound middleMound">
-					mound
-				</div>
-				<div class="mound rightMound">
-					mound
-				</div>
-			</div>
-			<br>
-
-			<div id="fieldRow3" class="fieldRow">
-				<div class="mound leftMound">
-					mound
-				</div>
-				<div class="mound middleMound">
-					mound
-				</div>
-				<div class="mound rightMound">
-					mound
-				</div>
-			</div>
-		</div>
-		<div id="buttons">
-			<a href="#storeModal" class="fieldButton">Store</a>
-			<br>
-			<br>
-			<br>
-			<a href="{{{ action('HomeController@showAdventureTemplate', ['s_grounds']) }}}" class="fieldButton">Adventure Time!</a>
-			<br>
-			<br>
-			<br>
-			<a href="/" class="fieldButton">Logout</a>
 		</div>	
-	{{-- </div> --}}
+	</div>
+
+	<div id="inventory">
+		Inventory
+	</div>
+
+	<div id="money"> 
+		GILDER: {{{ Auth::user()->money }}}
+	</div>
+
+	<div id="userModel">
+		<div id="userModelHead" class="modelPart">
+			hat
+		</div>
+		<br>
+		<div id="userModelTorso" class="modelPart">
+			shirt
+		</div>
+		<br>
+		<div id="userModelLegs" class="modelPart">
+			pants
+		</div>
+	</div>
+
+	<div id="fields">
+		<div id="fieldRow1" class="fieldRow">
+			<a href="#moundModal" id="mound1" class="mound">
+				{{{ "" }}}
+			</a>
+			<a href="#moundModal" id="mound2" class="mound">
+				{{{ "" }}}
+			</a>
+			<a href="#moundModal" id="mound3" class="mound">
+				{{{ "" }}}
+			</a>
+		</div>
+		<br>
+
+		<div id="fieldRow2" class="fieldRow">
+			<a href="#moundModal" id="mound4" class="mound">
+				{{{ "" }}}
+			</a>
+			<a href="#moundModal" id="mound5" class="mound">
+				{{{ "" }}}
+			</a>
+			<a href="#moundModal" id="mound6" class="mound">
+				{{{ "" }}}
+			</a>
+		</div>
+		<br>
+
+		<div id="fieldRow3" class="fieldRow">
+			<a href="#moundModal" id="mound7" class="mound">
+				{{{ "" }}}
+			</a>
+			<a href="#moundModal" id="mound8" class="mound">
+				{{{ "" }}}
+			</a>
+			<a href="#moundModal" id="mound9" class="mound">
+				{{{ "" }}}
+			</a>
+		</div>
+	</div>
+
+	<div id="buttons">
+		<a href="#storeModal" class="fieldButton">Store</a>
+		<br>
+		<br>
+		<br>
+		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_grounds']) }}}" class="fieldButton">Adventure Time!</a>
+		<br>
+		<br>
+		<br>
+		<a href="/" class="fieldButton">Logout</a>
+	</div>	
 
 	
 </body>
