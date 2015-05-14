@@ -25,7 +25,6 @@ public function __construct()
 		return View::make('hello');
 	}
 
-
 	public function showLanding()
 	{
 		return View::make('index');
@@ -33,22 +32,17 @@ public function __construct()
 
 	public function showAdventureTemplate($id)
 	{	
+		$id = 4;
+		$scene = DB::table('scenarios')->WHERE('id','=',$id)->get();
 		$choices       = explode(',',$id->leads_to);
 		$choiceHeaders = [];
 		foreach($choices as $choice){
 			array_push($choiceHeaders,DB::table('scenarios')->select('header')->WHERE('id','=',$choice)->get());
 		}
 		$body = $id->body;
+		$data = array('choices'=>$choices,'choiceHeaders'=>$choiceHeaders,'body'=>$body);
+		dd($data);
 		return View::make('adventure_template');
-	}
-
-	public function showAdventureTemplateTwo()
-	{
-		if(Auth::check()){
-			return View::make('adventure_template_two');
-		}else{
-			return View::make('index');		
-		}
 	}
 	
 	public function checkLogin()
