@@ -63,7 +63,7 @@
 	</div>
 
 	<div id="money"> 
-		GILDER: {{{ Auth::user()->money }}}
+		Bank: ƒ{{{ Auth::user()->money }}}
 	</div>
 
 	<div id="userModel">
