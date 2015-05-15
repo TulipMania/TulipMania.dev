@@ -25,5 +25,7 @@ Route::post('login','HomeController@checkLogin');
 
 Route::get('logout','HomeController@logout');
 
+Route::post('insertItem','HomeController@insertItem');
+
 Route::post('signup','HomeController@signUp');
 

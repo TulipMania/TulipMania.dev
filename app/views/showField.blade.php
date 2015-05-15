@@ -18,12 +18,17 @@
 						<th>Price</th>
 						<th></th>
 						</tr>
+
 						@foreach($storeItems as $item)
 
 						<tr>
-							<td>{{{$item->name}}}</td>
+						{{ Form::open(array('action' => 'HomeController@insertItem', Auth::user()->id)) }}	
+							<td><input type ="submit" id="item" name="item" value ="{{{$item->name}}}"/></td>
+						
 							<td>{{{$item->description}}}</td>
 							<td>ƒ {{{$item->price}}}</td>
+							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
+						{{Form::close()}}
 						</tr>
 
 						@endforeach
@@ -31,7 +36,12 @@
 			</div>
 		</div>	
 	</div>
-
+	        @if (Session::has('errorMessage'))
+                <script type="text/javascript">
+                alert("{{{ Session::get('errorMessage') }}}");
+                </script>
+            @endif
+            
 	<div id="moundModal" class="modal">
 		<div id="store">
 			<a href="#close" title="Close" class="close">X</a>
@@ -55,7 +65,7 @@
 	</div>
 
 	<div id="inventory">
-		Inventory
+		<p>your Inventory: {{Auth::user()->items;}}</p>
 	</div>
 
 	<div id="money"> 

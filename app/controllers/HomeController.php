@@ -50,14 +50,10 @@ public function __construct()
 		}
 		// }
 		$body = $scene->body;
-
-
-	public function showAdventureTemplateTwo()
-	{
 		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
 		return View::make('adventure_template', $data);
-
 	}
+
 	
 	public function checkLogin()
 	{
@@ -110,6 +106,23 @@ public function __construct()
 		plant($seedID, $mound, $userID);
 
 		return Redirect::action("HomeController@showField");
+	}
+
+	public function insertItem()
+	{	if (Auth::user()->money < 0)
+	 	{
+			Session::flash('errorMessage', "Your broke kid.");
+			return Redirect::back();
+		}elseif (Auth::user()->money  - intval(Input::get('cost')) < 0) {
+			Session::flash('errorMessage', "You dont have enough money.");
+			return Redirect::back();
+		}
+		else{
+		DB::table('users')->where('id', Auth::user()->id)->update(['items' => Auth::user()->items."\n".Input::get('item')]);
+		DB::table('users')->where('id', Auth::user()->id)->decrement('money', intval(Input::get('cost')));
+		return Redirect::back();
+		}
+
 	}
 	
 	/**
