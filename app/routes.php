@@ -13,16 +13,14 @@
 
 Route::get('/', 'HomeController@showLanding');
 
-Route::get('/adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
+Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
 
-Route::get('/field', "HomeController@showField");
+Route::get('field', "HomeController@showField");
+Route::post('field', "HomeController@plant");
 
-Route::get('/store', 'HomeController@showStore');
+Route::post('login','HomeController@checkLogin');
 
-Route::post('/login','HomeController@checkLogin');
+Route::get('logout','HomeController@logout');
 
-Route::get('/logout','HomeController@logout');
+Route::post('signup','HomeController@signUp');
 
-Route::post('/signup','HomeController@signUp');
-
-Route::get('hello', 'HomeController@showWelcome');

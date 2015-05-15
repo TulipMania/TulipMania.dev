@@ -37,23 +37,19 @@
 			<a href="#close" title="Close" class="close">X</a>
 			<h1>MOUNDS OF MOUNDS!</h1>
 			<div id="store_table">	
-				<table>
-						<tr>
-						<th>Seed</th>
-						</tr>
-						@foreach($userItems as $item)
-							@if($item->is_seed)
-								<tr>
-									<td>
-										{{{$item->name}}}
-									</td>	
-									<td>
-										<button>Plant</button>
-									</td>
-								</tr>
-							@endif
-						@endforeach
-				</table>			
+				{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
+				@foreach($userItems as $item)
+					@if($item->is_seed)
+						{{{$item->name}}} 
+						{{ Form::radio('seedID', $item->id) }}
+						<br>
+					@endif
+				@endforeach
+					{{ Form::hidden('mound', 1) }}
+					{{ Form::hidden('userID', Auth::user()->id) }}
+
+					{{ Form::submit('Plant') }}
+				{{ Form::close() }}		
 			</div>
 		</div>	
 	</div>
@@ -63,7 +59,7 @@
 	</div>
 
 	<div id="money"> 
-		GILDER: {{{ Auth::user()->money }}}
+		Bank: ƒ{{{ Auth::user()->money }}}
 	</div>
 
 	<div id="userModel">
