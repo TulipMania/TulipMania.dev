@@ -30,6 +30,7 @@ public function __construct()
 		return View::make('index');
 	}
 
+
 	public function showAdventureTemplate($id)
 	{	
 		$scene = Scenario::getFromSID($id);
@@ -50,8 +51,12 @@ public function __construct()
 		// }
 		$body = $scene->body;
 
+
+	public function showAdventureTemplateTwo()
+	{
 		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
 		return View::make('adventure_template', $data);
+
 	}
 	
 	public function checkLogin()
@@ -62,10 +67,10 @@ public function __construct()
 		$password   = Input::get('password');
 
 		if (Auth::attempt(array('username' => $user_input, 'password' => $password))) {
-			return Redirect::action('HomeController@showField');
+			return Redirect::intended('/');
 		}
 		else if (Auth::attempt(array('email' => $user_input, 'password' => $password))) {
-			return Redirect::action('HomeController@showField');	
+			return Redirect::intended('/');	
 		}else{
 			Session::flash('errorMessage','Incorrect email or password');
 			return Redirect::back()->withInput();
@@ -85,6 +90,7 @@ public function __construct()
 	}
 
 	public function showField(){
+
 		$userItems = [];
 		foreach (explode(',', Auth::user()->items) as $itemNum) {
 			$item = Item::find($itemNum);

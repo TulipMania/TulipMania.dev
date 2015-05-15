@@ -15,7 +15,7 @@
 					<tr>
 						<td>{{{$item['name']}}}</td>
 						<td>{{{$item['description']}}}</td>
-						<td>ƒ {{{$item['price']}}}</td>
+						<td>{{{$item['price']}}}</td>
 					</tr>
 			</table>
 			<button>X</button>				
