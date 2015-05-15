@@ -5,6 +5,12 @@
 	<link rel="stylesheet" type="text/css" href="/css/showField.css">
 </head>
 <body>
+	@if (Session::has('errorMessage'))
+        <script type="text/javascript">
+        alert("{{{ Session::get('errorMessage') }}}");
+        </script>
+    @endif
+
 	<div id="storeModal" class="modal">
 		<div id="store">
 			<a href="#close" title="Close" class="close">X</a>
@@ -36,7 +42,6 @@
 			</div>
 		</div>	
 	</div>
-<<<<<<< HEAD
 
 	<div id="inventoryModal" class="modal">
 		<div id="inventory">
@@ -62,51 +67,37 @@
 		</div>	
 	</div>
 
-	@for($i = 1; $i < 10; $i++)
-=======
-	        @if (Session::has('errorMessage'))
-                <script type="text/javascript">
-                alert("{{{ Session::get('errorMessage') }}}");
-                </script>
-            @endif
-            
->>>>>>> 721b72ff1dd103dcbac48058accc64d1402bcae4
-	<div id="moundModal" class="modal">
-		<div id="seeds">
-			<a href="#close" title="Close" class="close">X</a>
-			<h1>MOUNDS OF MOUNDS!</h1>
-			<div id="seed_table">	
-					@if(empty($userItems))
-						{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
-						@foreach($userItems as $item)
-							@if($item->is_seed)
-								{{{$item->name}}} 
-								{{ Form::radio('seedID', $item->id) }}
-								<br>
-							@endif
-						@endforeach
-							{{ Form::hidden('mound', $i) }}
-							{{ Form::hidden('userID', Auth::user()->id) }}
+	@for($i = 1; $i < 10; $i++)       
+		<div id="moundModal" class="modal">
+			<div id="seeds">
+				<a href="#close" title="Close" class="close">X</a>
+				<h1>MOUNDS OF MOUNDS!</h1>
+				<div id="seed_table">	
+						@if(empty($userItems))
+							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
+							@foreach($userItems as $item)
+								@if($item->is_seed)
+									{{{$item->name}}} 
+									{{ Form::radio('seedID', $item->id) }}
+									<br>
+								@endif
+							@endforeach
+								{{ Form::hidden('mound', $i) }}
+								{{ Form::hidden('userID', Auth::user()->id) }}
 
-							{{ Form::submit('Plant') }}
-						{{ Form::close() }}		
-					@else
-						You have no seeds to plant!
-					@endif
-			</div>
-		</div>	
-	</div>
+								{{ Form::submit('Plant') }}
+							{{ Form::close() }}		
+						@else
+							You have no seeds to plant!
+						@endif
+				</div>
+			</div>	
+		</div>
 	@endfor
 
-<<<<<<< HEAD
 	<a href="#inventoryModal" id="inventory">
 		Inventory
 	</a>
-=======
-	<div id="inventory">
-		<p>your Inventory: {{Auth::user()->items;}}</p>
-	</div>
->>>>>>> 721b72ff1dd103dcbac48058accc64d1402bcae4
 
 	<div id="money"> 
 		Bank: ƒ{{{ Auth::user()->money }}}
