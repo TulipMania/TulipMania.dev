@@ -63,10 +63,10 @@ public function __construct()
 		$password   = Input::get('password');
 
 		if (Auth::attempt(array('username' => $user_input, 'password' => $password))) {
-			return Redirect::intended('/');
+			return Redirect::intended('HomeController@showField');
 		}
 		else if (Auth::attempt(array('email' => $user_input, 'password' => $password))) {
-			return Redirect::intended('/');	
+			return Redirect::intended('HomeController@showField');	
 		}else{
 			Session::flash('errorMessage','Incorrect email or password');
 			return Redirect::back()->withInput();
