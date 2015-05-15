@@ -1,10 +1,12 @@
-@extends('story_drafts')
-
 <html>
     <body>
         <div class="container">
-            @yield('story_setup')
-            @yield('story_options')
+           	<p>{{{$body}}}</p>
+           	<br>
+           	@foreach($leads_to as $nextScene => $next)
+           		<a href="{{{ action('HomeController@showAdventureTemplate', [$next]) }}}">{{{ $next_headers[$next] }}}</a>
+           		<br>
+           	@endforeach
         </div>
     </body>
 </html>

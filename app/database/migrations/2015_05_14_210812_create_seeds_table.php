@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScenarios extends Migration {
+class CreateSeedsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,10 @@ class CreateScenarios extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('scenarios', function($table){
+		Schema::create('seeds', function($table){
 			$table->increments('id');
-			$table->string('header', 50);
-			$table->text('body');
-			$table->string('locations', 50);
-			$table->string('leads_to', 50);
-			$table->string('story_id', 50);
+			$table->string('mid_grow_rate', 50);
+			$table->string('death_time', 50);
 			$table->timestamps();
 		});
 	}
@@ -30,7 +27,7 @@ class CreateScenarios extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('scenarios');
+		Schema::drop('seeds');
 	}
 
 }

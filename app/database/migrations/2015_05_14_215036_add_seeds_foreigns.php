@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldsForeigns extends Migration {
+class AddSeedsForeigns extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,7 @@ class AddFieldsForeigns extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('fields', function($table){
-			$table->integer('user_id')->unsigned();
-			$table->foreign('user_id')->references('id')->on('users');
+		Schema::table('seeds', function($table){
 
 			$table->integer('item_id')->unsigned();
 			$table->foreign('item_id')->references('id')->on('items');
@@ -28,11 +26,8 @@ class AddFieldsForeigns extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('fields', function($table){
-			$table->dropForeign('fields_user_id_foreign');
-			$table->dropColumn('user_id');
-
-			$table->dropForeign('fields_item_id_foreign');
+		Schema::table('seeds', function($table){
+			$table->dropForeign('seeds_item_id_foreign');
 			$table->dropColumn('item_id');
 		});
 	}

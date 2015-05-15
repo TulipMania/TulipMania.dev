@@ -25,7 +25,6 @@ public function __construct()
 		return View::make('hello');
 	}
 
-
 	public function showLanding()
 	{
 		return View::make('index');
@@ -34,26 +33,38 @@ public function __construct()
 
 	public function showAdventureTemplate($id)
 	{	
-		$choices       = implode(',',$id->leads_to);
-		$choiceHeaders = [];
-		foreach($choices as $choice){
-			array_push($choiceHeaders,DB::table('scenarios')->select('header')->WHERE('id','=',$choice)->get());
+		$scene = Scenario::getFromSID($id);
+		$leads_to = explode(',', $scene->leads_to);
+		$next_headers = [];
+		if($scene->story_id[0]==='s'){
+			$total = count($leads_to) -1;
+			 $nextScenario = $leads_to[rand(0,$total)];
+			return Redirect::action('HomeController@showAdventureTemplate', $nextScenario);
+			//redirect action adventure make random leads_to
+		}	
+		// check first leads_to if it's continue pick random leads_to and only write that
+		// one to next headers 
+		// }else{
+		foreach ($leads_to as $newScene => $next) {
+			$next_headers[$next] = Scenario::getFromSID($next)->header;
 		}
-		$body = $id->body;
-		return View::make('adventure_template');
-	}
+		// }
+		$body = $scene->body;
+
 
 	public function showAdventureTemplateTwo()
 	{
-			return View::make('adventure_template_two');
+		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
+		return View::make('adventure_template', $data);
+
 	}
 	
 	public function checkLogin()
 	{
 
-		$validator = Validator::make(Input::all(),User::$rules);
+		$validator  = Validator::make(Input::all(),User::$rules);
 		$user_input = Input::get('user_input');
-		$password = Input::get('password');
+		$password   = Input::get('password');
 
 		if (Auth::attempt(array('username' => $user_input, 'password' => $password))) {
 			return Redirect::intended('/');
@@ -80,7 +91,25 @@ public function __construct()
 
 	public function showField(){
 
-			return View::make('showField');
+		$userItems = [];
+		foreach (explode(',', Auth::user()->items) as $itemNum) {
+			$item = Item::find($itemNum);
+			array_push($userItems, $item);
+		}
+		$storeItems = DB::table('items')->where('id', '<', 11)->get();
+		// dd($userItems);
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems]);
+	}
+
+	public function plant(){
+		// dd(Input::all());
+		$seedID = Input::get('seedID');
+		$mound = Input::get('mound');
+		$userID = Input::get('userID');
+
+		plant($seedID, $mound, $userID);
+
+		return Redirect::action("HomeController@showField");
 	}
 	
 	/**
@@ -100,8 +129,8 @@ public function __construct()
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } 
 	    else {
-			$user = new User;
-			$user->email = Input::get('newEmail');
+			$user           = new User;
+			$user->email    = Input::get('newEmail');
 			$user->username = Input::get('newUser');
 			$user->password = Input::get('newPass');
 			$user->save();

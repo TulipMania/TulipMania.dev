@@ -14,23 +14,16 @@
 
 Route::get('/', 'HomeController@showLanding');
 
-Route::post('/login','HomeController@checkLogin');
 
-Route::get('/logout','HomeController@logout');
+Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
 
-Route::post('/signup','HomeController@signUp');
+Route::get('field', "HomeController@showField");
 
-Route::get('hello', 'HomeController@showWelcome');
+Route::post('field', "HomeController@plant");
 
-Route::group(array('before' => 'auth'), function()
-{
-Route::get('/adventure_template', 'HomeController@showAdventureTemplate');
+Route::post('login','HomeController@checkLogin');
 
-Route::get('/adventure_template_two', 'HomeController@showAdventureTemplateTwo');
+Route::get('logout','HomeController@logout');
 
-Route::get('/field', "HomeController@showField");
+Route::post('signup','HomeController@signUp');
 
-Route::get('/store', 'HomeController@showStore');
-
-
-});
