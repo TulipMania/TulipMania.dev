@@ -18,12 +18,17 @@
 						<th>Price</th>
 						<th></th>
 						</tr>
+
 						@foreach($storeItems as $item)
 
 						<tr>
-							<td>{{{$item->name}}}</td>
+						{{ Form::open(array('action' => 'HomeController@insertItem', Auth::user()->id)) }}	
+							<td><input type ="submit" id="item" name="item" value ="{{{$item->name}}}"/></td>
+						
 							<td>{{{$item->description}}}</td>
 							<td>ƒ {{{$item->price}}}</td>
+							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
+						{{Form::close()}}
 						</tr>
 
 						@endforeach
@@ -31,6 +36,7 @@
 			</div>
 		</div>	
 	</div>
+<<<<<<< HEAD
 
 	<div id="inventoryModal" class="modal">
 		<div id="inventory">
@@ -57,6 +63,14 @@
 	</div>
 
 	@for($i = 1; $i < 10; $i++)
+=======
+	        @if (Session::has('errorMessage'))
+                <script type="text/javascript">
+                alert("{{{ Session::get('errorMessage') }}}");
+                </script>
+            @endif
+            
+>>>>>>> 721b72ff1dd103dcbac48058accc64d1402bcae4
 	<div id="moundModal" class="modal">
 		<div id="seeds">
 			<a href="#close" title="Close" class="close">X</a>
@@ -84,9 +98,15 @@
 	</div>
 	@endfor
 
+<<<<<<< HEAD
 	<a href="#inventoryModal" id="inventory">
 		Inventory
 	</a>
+=======
+	<div id="inventory">
+		<p>your Inventory: {{Auth::user()->items;}}</p>
+	</div>
+>>>>>>> 721b72ff1dd103dcbac48058accc64d1402bcae4
 
 	<div id="money"> 
 		Bank: ƒ{{{ Auth::user()->money }}}
