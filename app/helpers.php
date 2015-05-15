@@ -8,5 +8,13 @@
 		$toPlant->user_id = $userID;
 		$toPlant->item_id = $seedID;
 		$toPlant->save();
+
+		$user = User::find($userID);
+		$userInven = $user->items;
+		$seed = $seedID . ',';
+		$count = 1;
+		$userInven = str_replace($seed, '', $userInven, $count);
+		$user->items = $userInven;
+		$user->save();
 	}
  ?>

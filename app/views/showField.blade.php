@@ -5,6 +5,12 @@
 	<link rel="stylesheet" type="text/css" href="/css/showField.css">
 </head>
 <body>
+	@if (Session::has('errorMessage'))
+        <script type="text/javascript">
+        alert("{{{ Session::get('errorMessage') }}}");
+        </script>
+    @endif
+
 	<div id="storeModal" class="modal">
 		<div id="store">
 			<a href="#close" title="Close" class="close">X</a>
@@ -18,12 +24,17 @@
 						<th>Price</th>
 						<th></th>
 						</tr>
+
 						@foreach($storeItems as $item)
 
 						<tr>
-							<td>{{{$item->name}}}</td>
+						{{ Form::open(array('action' => 'HomeController@insertItem', Auth::user()->id)) }}	
+							<td><input type ="submit" id="item" name="item" value ="{{{$item->name}}}"/></td>
+						
 							<td>{{{$item->description}}}</td>
 							<td>ƒ {{{$item->price}}}</td>
+							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
+						{{Form::close()}}
 						</tr>
 
 						@endforeach
@@ -32,31 +43,61 @@
 		</div>	
 	</div>
 
-	<div id="moundModal" class="modal">
-		<div id="store">
+	<div id="inventoryModal" class="modal">
+		<div id="inventory">
 			<a href="#close" title="Close" class="close">X</a>
-			<h1>MOUNDS OF MOUNDS!</h1>
-			<div id="store_table">	
-				{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
-				@foreach($userItems as $item)
-					@if($item->is_seed)
-						{{{$item->name}}} 
-						{{ Form::radio('seedID', $item->id) }}
-						<br>
-					@endif
-				@endforeach
-					{{ Form::hidden('mound', 1) }}
-					{{ Form::hidden('userID', Auth::user()->id) }}
+			<h1>Welcome to YOUR INVENTORY!</h1>
+			<div id="inventory_table">	
+				<table>
+						<tr>
+						<th>Item</th>
+						<th>Description</th>
+						<th></th>
+						</tr>
+						@foreach($userItems as $item)
 
-					{{ Form::submit('Plant') }}
-				{{ Form::close() }}		
+						<tr>
+							<td>{{{$item->name}}}</td>
+							<td>{{{$item->description}}}</td>
+						</tr>
+
+						@endforeach
+				</table>			
 			</div>
 		</div>	
 	</div>
 
-	<div id="inventory">
+	@for($i = 1; $i < 10; $i++)       
+		<div id="moundModal" class="modal">
+			<div id="seeds">
+				<a href="#close" title="Close" class="close">X</a>
+				<h1>MOUNDS OF MOUNDS!</h1>
+				<div id="seed_table">	
+						@if(empty($userItems))
+							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
+							@foreach($userItems as $item)
+								@if($item->is_seed)
+									{{{$item->name}}} 
+									{{ Form::radio('seedID', $item->id) }}
+									<br>
+								@endif
+							@endforeach
+								{{ Form::hidden('mound', $i) }}
+								{{ Form::hidden('userID', Auth::user()->id) }}
+
+								{{ Form::submit('Plant') }}
+							{{ Form::close() }}		
+						@else
+							You have no seeds to plant!
+						@endif
+				</div>
+			</div>	
+		</div>
+	@endfor
+
+	<a href="#inventoryModal" id="inventory">
 		Inventory
-	</div>
+	</a>
 
 	<div id="money"> 
 		Bank: ƒ{{{ Auth::user()->money }}}
@@ -79,39 +120,39 @@
 	<div id="fields">
 		<div id="fieldRow1" class="fieldRow">
 			<a href="#moundModal" id="mound1" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 			<a href="#moundModal" id="mound2" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 			<a href="#moundModal" id="mound3" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 		</div>
 		<br>
 
 		<div id="fieldRow2" class="fieldRow">
 			<a href="#moundModal" id="mound4" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 			<a href="#moundModal" id="mound5" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 			<a href="#moundModal" id="mound6" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 		</div>
 		<br>
 
 		<div id="fieldRow3" class="fieldRow">
 			<a href="#moundModal" id="mound7" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 			<a href="#moundModal" id="mound8" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 			<a href="#moundModal" id="mound9" class="mound">
-				{{{ "" }}}
+				{{{ null }}}
 			</a>
 		</div>
 	</div>

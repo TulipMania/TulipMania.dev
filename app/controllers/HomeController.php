@@ -30,6 +30,7 @@ public function __construct()
 		return View::make('index');
 	}
 
+
 	public function showAdventureTemplate($id)
 	{	
 		$scene = Scenario::getFromSID($id);
@@ -48,10 +49,10 @@ public function __construct()
 		}
 		// }
 		$body = $scene->body;
-
 		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
 		return View::make('adventure_template', $data);
 	}
+
 	
 	public function checkLogin()
 	{
@@ -84,14 +85,15 @@ public function __construct()
 	}
 
 	public function showField(){
+
 		$userItems = [];
 		foreach (explode(',', Auth::user()->items) as $itemNum) {
 			$item = Item::find($itemNum);
 			array_push($userItems, $item);
 		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
-		// dd($userItems);
-		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems]);
+		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
 
 	public function plant(){
@@ -103,6 +105,23 @@ public function __construct()
 		plant($seedID, $mound, $userID);
 
 		return Redirect::action("HomeController@showField");
+	}
+
+	public function insertItem()
+	{	if (Auth::user()->money < 0)
+	 	{
+			Session::flash('errorMessage', "Your broke kid.");
+			return Redirect::back();
+		}elseif (Auth::user()->money  - intval(Input::get('cost')) < 0) {
+			Session::flash('errorMessage', "You dont have enough money.");
+			return Redirect::back();
+		}
+		else{
+		DB::table('users')->where('id', Auth::user()->id)->update(['items' => Auth::user()->items."\n".Input::get('item')]);
+		DB::table('users')->where('id', Auth::user()->id)->decrement('money', intval(Input::get('cost')));
+		return Redirect::back();
+		}
+
 	}
 	
 	/**
