@@ -93,8 +93,8 @@ public function __construct()
 			array_push($userItems, $item);
 		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
-		// dd($userItems);
-		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems]);
+		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
 
 	public function plant(){
