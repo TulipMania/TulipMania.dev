@@ -94,11 +94,11 @@ public function __construct()
 		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
 		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		dd($userItems);
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
 
 	public function plant(){
-		// dd(Input::all());
 		$seedID = Input::get('seedID');
 		$mound = Input::get('mound');
 		$userID = Input::get('userID');
