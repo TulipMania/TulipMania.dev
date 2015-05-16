@@ -31,25 +31,30 @@ public function __construct()
 	}
 
 
+
 	public function showAdventureTemplate($id)
 	{	
 		$scene = Scenario::getFromSID($id);
-		$leads_to = explode(',', $scene->leads_to);
-		$next_headers = [];
-		if($scene->story_id[0]==='s'){
+		$leads_to = explode(",",$scene['leads_to']);
+		$body = $scene['body'];
+		if(substr($scene['story_id'], 0,1)=='s'){
 			$total = count($leads_to) -1;
 			 $nextScenario = $leads_to[rand(0,$total)];
 			return Redirect::action('HomeController@showAdventureTemplate', $nextScenario);
-		}	
+			//redirect action adventure make random leads_to
+		}
+			// else if (substr($scene['story_id'], 0,2)=='sa') {
+		// 	 $nextScenario = $leads_to[rand(0,$total)];
+		// }
 		// check first leads_to if it's continue pick random leads_to and only write that
 		// one to next headers 
 		// }else{
 		foreach ($leads_to as $newScene => $next) {
-			$next_headers[$next] = Scenario::getFromSID($next)->header;
+			$scenario = Scenario::getFromSID($next);
+			$nextScenario = $scenario['story_id'];
 		}
 		// }
-		$body = $scene->body;
-		$data = ['leads_to' => $leads_to, 'next_headers' => $next_headers, 'body' => $body];
+		$data = ['leads_to' => $leads_to, 'next_headers' => $scene['header'],'body' => $scene['body'],'nextScenario' => $nextScenario];
 		return View::make('adventure_template', $data);
 	}
 
@@ -79,6 +84,7 @@ public function __construct()
 		Redirect::to('index');
 	}
 
+
 	public function showStore()
 	{
 		return View::make('store');
@@ -97,6 +103,7 @@ public function __construct()
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
 
+
 	public function plant(){
 		$seedID = Input::get('seedID');
 		$mound = Input::get('mound');
@@ -106,6 +113,7 @@ public function __construct()
 
 		return Redirect::action("HomeController@showField");
 	}
+
 
 	public function insertItem()
 	{	if (Auth::user()->money < 0)
@@ -154,5 +162,4 @@ public function __construct()
 		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
 
 	}
-
 }

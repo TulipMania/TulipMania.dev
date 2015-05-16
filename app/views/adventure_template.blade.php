@@ -2,11 +2,9 @@
     <body>
         <div class="container">
            	<p>{{{$body}}}</p>
+
+              <a href="{{{ action('HomeController@showAdventureTemplate', [$nextScenario]) }}}">{{{ $next_headers }}}</a>
            	<br>
-           	@foreach($leads_to as $nextScene => $next)
-           		<a href="{{{ action('HomeController@showAdventureTemplate', [$next]) }}}">{{{ $next_headers[$next] }}}</a>
-           		<br>
-           	@endforeach
         </div>
     </body>
 </html>
