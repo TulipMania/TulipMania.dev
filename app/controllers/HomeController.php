@@ -93,7 +93,7 @@ public function __construct()
 		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
 		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
-		dd($userItems);
+		// dd($userItems);
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
 
@@ -110,10 +110,10 @@ public function __construct()
 	public function insertItem()
 	{	if (Auth::user()->money < 0)
 	 	{
-			Session::flash('errorMessage', "Your broke kid.");
+			Session::flash('errorMessage', "You're broke.");
 			return Redirect::back();
 		}elseif (Auth::user()->money  - intval(Input::get('cost')) < 0) {
-			Session::flash('errorMessage', "You dont have enough money.");
+			Session::flash('errorMessage', "You don't have enough money.");
 			return Redirect::back();
 		}
 		else{
