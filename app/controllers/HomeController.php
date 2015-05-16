@@ -40,7 +40,6 @@ public function __construct()
 			$total = count($leads_to) -1;
 			 $nextScenario = $leads_to[rand(0,$total)];
 			return Redirect::action('HomeController@showAdventureTemplate', $nextScenario);
-			//redirect action adventure make random leads_to
 		}	
 		// check first leads_to if it's continue pick random leads_to and only write that
 		// one to next headers 
