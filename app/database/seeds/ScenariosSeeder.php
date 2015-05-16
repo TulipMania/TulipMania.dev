@@ -176,6 +176,53 @@ class ScenariosSeeder extends Seeder {
 			$scenario18->leads_to      = "e";
 			$scenario18->save();
 
+			$scenario19                = new Scenario();
+			$scenario19->body          = "You come across a cave that looks oh so much like one in which you used to play as a child. You decide to go in. A bear!\n 
+										  Do you want to fight it or try to tame it? \n
+									      Hennie says: \"I will meet you back at the house, master.\"";
+			$scenario19->header        = "Continue.";
+			$scenario19->locations     = "grounds";
+			$scenario19->story_id      = "a_19";
+			$scenario19->leads_to      = "a_20,a_21,a_22,a_23";
+			$scenario19->save();			
+
+			$scenario20                = new Scenario();
+			$scenario20->body          = "You fool! This bear cannot be tamed. \n
+										  You lose two fingers and ƒ11.00 in medical fees.";
+			$scenario20->header        = "Continue.";
+			$scenario20->locations     = "grounds";
+			$scenario20->story_id      = "a_20";
+			$scenario20->leads_to      = "e";
+			$scenario20->save();
+
+			$scenario21                = new Scenario();
+			$scenario21->body          = "Those morning push-ups have paid off! \n
+										  You kill the bear and sell its skin for ƒ14.00.";
+			$scenario21->header        = "Continue.";
+			$scenario21->locations     = "grounds";
+			$scenario21->story_id      = "a_21";
+			$scenario21->leads_to      = "e";
+			$scenario21->save();
+
+			$scenario22                = new Scenario();
+			$scenario22->body          = "You sing the bear a lullaby and it goes to sleep. \n 
+										  You walk out silently.";
+			$scenario22->header        = "Continue.";
+			$scenario22->locations     = "grounds";
+			$scenario22->story_id      = "a_22";
+			$scenario22->leads_to      = "e";
+			$scenario22->save();
+
+			$scenario23                = new Scenario();
+			$scenario23->body          = "You are able to land a few punches, but the bear bit your ear off! \n 
+										  Spend ƒ12.00 in medical fees.";
+			$scenario23->header        = "Continue.";
+			$scenario23->locations     = "grounds";
+			$scenario23->story_id      = "a_23";
+			$scenario23->leads_to      = "e";
+			$scenario23->save();
+
+
 
 
 

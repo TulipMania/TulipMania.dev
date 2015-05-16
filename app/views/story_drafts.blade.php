@@ -38,10 +38,9 @@ if(yes){
 			BBB. Oh no! You had a very interesting opium dream in which you vomited birds of all sorts...but you also lost your wallet with ƒ5.00 inside. 
 			BBC. Djavan was actually a con artist! While you're in the middle of an opium dream about flying giant beetles, he steals ƒ8.00 from your pocket. 
 			BBD. During an opium dream about Rinus you finally remember who Djavan is! You two hit it off and you even manage to sell him ƒ8.00 worth of tulips.  
-@section('story_setup')
 	C. You come across a cave that looks oh so much like one in which you used to play as a child. You decide to go in. A bear!\n Do you want to fight it or try to tame it? \n
 	Hennie says: "I will meet you back at the house, master."
-@stop
+
 		CA. (IF TAME) You fool! This bear cannot be tamed. You lose two fingers and ƒ11.00 in medical fees. 
 		CB. (IF FIGHT) Those morning push-ups have paid off! You kill the bear and sell its skin for ƒ14.00.
 		CC. (IF TAME) You sing the bear a lullaby and it goes to sleep. You walk out silently. 

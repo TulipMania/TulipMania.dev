@@ -29,10 +29,10 @@ class AddMarketForeigns extends Migration {
 	public function down()
 	{
 		Schema::table('market', function($table){
-			$table->dropForeign('fields_user_id_foreign');
+			$table->dropForeign('market_user_id_foreign');
 			$table->dropColumn('user_id');
 
-			$table->dropForeign('fields_item_id_foreign');
+			$table->dropForeign('market_item_id_foreign');
 			$table->dropColumn('item_id');
 		});
 	}

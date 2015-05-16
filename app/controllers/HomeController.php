@@ -31,6 +31,7 @@ public function __construct()
 	}
 
 
+
 	public function showAdventureTemplate($id)
 	{	
 		$scene = Scenario::getFromSID($id);
@@ -49,7 +50,6 @@ public function __construct()
 		// one to next headers 
 		// }else{
 		foreach ($leads_to as $newScene => $next) {
-
 			$scenario = Scenario::getFromSID($next);
 			$nextScenario = $scenario['story_id'];
 		}
@@ -84,6 +84,7 @@ public function __construct()
 		Redirect::to('index');
 	}
 
+
 	public function showStore()
 	{
 		return View::make('store');
@@ -97,9 +98,10 @@ public function __construct()
 			array_push($userItems, $item);
 		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
-		// dd($userItems);
-		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems]);
+		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
+
 
 	public function plant(){
 		// dd(Input::all());
@@ -111,6 +113,7 @@ public function __construct()
 
 		return Redirect::action("HomeController@showField");
 	}
+
 
 	public function insertItem()
 	{	if (Auth::user()->money < 0)
@@ -159,5 +162,4 @@ public function __construct()
 		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
 
 	}
-
 }
