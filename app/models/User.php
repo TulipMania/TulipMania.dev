@@ -19,8 +19,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	protected $fillable = array('username', 'email', 'password');
 
 	public static $rules = [
-	'user_input' => 'required',
-	'password' => 'required'
+		'user_input' => 'required',
+		'password' => 'required'
 	];
 
     public static $signUpRules = array(
