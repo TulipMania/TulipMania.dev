@@ -34,6 +34,7 @@
 							<td>{{{$item->description}}}</td>
 							<td>ƒ {{{$item->price}}}</td>
 							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
+							<input type ="text" id="id" name="id" value ="{{$item->id}}" readonly="true" hidden/>
 						{{Form::close()}}
 						</tr>
 
@@ -73,6 +74,7 @@
 				<a href="#close" title="Close" class="close">X</a>
 				<h1>MOUNDS OF MOUNDS!</h1>
 				<div id="seed_table">	
+
 						@if($userSeeds)
 							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
 							@foreach($userSeeds as $seed)
@@ -162,7 +164,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_grounds']) }}}" class="fieldButton">Adventure Time!</a>
+		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
