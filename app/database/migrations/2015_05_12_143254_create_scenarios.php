@@ -19,6 +19,7 @@ class CreateScenarios extends Migration {
 			$table->string('locations', 50);
 			$table->string('leads_to', 50);
 			$table->string('story_id', 50);
+			$table->decimal('money',6,2)->nullable();
 			$table->timestamps();
 		});
 	}
