@@ -97,10 +97,16 @@ public function __construct()
 			$item = Item::find($itemNum);
 			array_push($userItems, $item);
 		}
+		$userSeeds = [];
+		foreach($userItems as $item){
+			if (Seed::find($item->id)){
+				array_push($userSeeds, $item);
+			}
+		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
 		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
-		dd($userItems);
-		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
+		// dd($field);
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds]);
 	}
 
 
@@ -108,6 +114,7 @@ public function __construct()
 		$seedID = Input::get('seedID');
 		$mound = Input::get('mound');
 		$userID = Input::get('userID');
+		$mound = substr($mound, 5);
 
 		plant($seedID, $mound, $userID);
 
