@@ -96,17 +96,20 @@ public function __construct()
 
 // showField() displays the users game data on the page corresponds to Route::get('field', "HomeController@showField"); 
 	public function showField(){
-
 		$userItems = [];
-		foreach (explode(',', Auth::user()->items) as $itemName) {
-			$item = DB::table('items')->where('name', '=', $itemName)->first();
+		foreach (explode(',', Auth::user()->items) as $itemNum) {
+			$item = Item::find($itemNum);
 			array_push($userItems, $item);
 		}
-		
-		$storeItems = DB::table('items')->get();
+		$userSeeds = [];
+		foreach($userItems as $item){
+			if (Seed::find($item->id)){
+				array_push($userSeeds, $item);
+			}
+		}
+		$storeItems = DB::table('items')->where('id', '<', 11)->get();
 		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
-		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
-
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds]);
 	}
 
 
