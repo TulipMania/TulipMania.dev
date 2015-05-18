@@ -3,11 +3,6 @@
 	{
 	    protected $table = 'items';
 
-		public static function storeItems()
-		{
-			return Item::all()->get();
-		}
-
 	}
 
  ?>
