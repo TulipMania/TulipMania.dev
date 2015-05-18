@@ -59,7 +59,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario6->body          = "You win! \n
 										Hennie says: \"Congratulations, master. I'll make sure Mr. Arjen 
 										leaves the grounds and pays what he owes you.\"";
-			$scenario6->header        = "Swim.";
+			$scenario6->header        = "Continue.";
 			$scenario6->locations     = "grounds";
 			$scenario6->story_id      = "sa_6";
 			$scenario6->leads_to      = "e";
@@ -68,7 +68,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario7                = new Scenario();
 			$scenario7->body          = "Arjen drowned! You lose a day fishing his body out of the river. 
 										(But you get his ƒ3!)";
-			$scenario7->header        = "Swim.";
+			$scenario7->header        = "Continue.";
 			$scenario7->locations     = "grounds";	
 			$scenario7->story_id      = "a_7";						
 			$scenario7->leads_to      = "e";
@@ -88,7 +88,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario9                = new Scenario();
 			$scenario9->body          = "A man at the party by the name of Djavan says he's a childhood 
 										friend of yours from Den Burg. You don't recognize him, but he seems nice.";
-			$scenario9->header        = "Djavan Intro";
+			$scenario9->header        = "Continue.";
 			$scenario9->locations     = "grounds";							
 			$scenario9->story_id      = "a_9";
 			$scenario9->leads_to      = "a_12,a_13,a_14,a_15";
@@ -125,7 +125,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario13                = new Scenario();
 			$scenario13->body          = "Oh no! You had a very interesting opium dream in which you vomited birds of all sorts...
-										  but you also lost your wallet with ƒ5.00 inside.";							
+										  but you also lost your wallet with ƒ5 inside.";							
 			$scenario13->header         = "Continue.";
 			$scenario13->locations     = "grounds";
 			$scenario13->story_id      = "a_13";
