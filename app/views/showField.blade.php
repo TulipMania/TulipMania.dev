@@ -67,33 +67,29 @@
 		</div>	
 	</div>
 
-	{{-- @for($i = 1; $i < 10; $i++)        --}}
-		<div id="moundModal" class="modal">
-			<div id="seeds">
-				<a href="#close" title="Close" class="close">X</a>
-				<h1>MOUNDS OF MOUNDS!</h1>
-				<div id="seed_table">	
-						@if($userSeeds)
-							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
-							@foreach($userSeeds as $seed)
-								{{{$seed->name}}} 
-								{{ Form::radio('seedID', $seed->id) }}
-								<br>
-							@endforeach
-								{{ Form::hidden('mound', '', ['id' => "mound"]) }}
-								{{ Form::hidden('userID', Auth::user()->id) }}
+	<div id="moundModal" class="modal">
+		<div id="seeds">
+			<a href="#close" title="Close" class="close">X</a>
+			<h1>MOUNDS OF MOUNDS!</h1>
+			<div id="seed_table">	
+					{{-- @if($userSeeds) --}}
+						{{-- {{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}} --}}
+						{{-- @foreach($userSeeds as $seed) --}}
+							{{-- {{{$seed->name}}}  --}}
+							{{-- {{ Form::radio('seedID', $seed->id) }} --}}
+							{{-- <br> --}}
+						{{-- @endforeach --}}
+							{{-- {{ Form::hidden('mound', '', ['id' => "mound"]) }} --}}
+							{{-- {{ Form::hidden('userID', Auth::user()->id) }} --}}
 
-								{{ Form::submit('Plant') }}
-							{{ Form::close() }}	
-						@elseif(false)
-
-						@else
-							<p>You have no seeds to plant!</p>
-						@endif
-				</div>
-			</div>	
-		</div>
-	{{-- @endfor --}}
+							{{-- {{ Form::submit('Plant') }} --}}
+						{{-- {{ Form::close() }}	 --}}
+					{{-- @else --}}
+						{{-- <p>You have no seeds to plant!</p> --}}
+					{{-- @endif --}}
+			</div>
+		</div>	
+	</div>
 
 	<a href="#inventoryModal" id="inventory">
 		Inventory
@@ -119,39 +115,39 @@
 
 	<div id="fields">
 		<div id="fieldRow1" class="fieldRow">
-			<a href="#moundModal" id="mound1" class="mound">
+			<a href="#moundModal" id="mound1" class="mound" value="{{{isset($field[1])}}}">
 				{{{ null }}}
 			</a>
-			<a href="#moundModal" id="mound2" class="mound">
+			<a href="#moundModal" id="mound2" class="mound" value="{{{isset($field[2])}}}">
 				{{{ null }}}
 			</a>
-			<a href="#moundModal" id="mound3" class="mound">
+			<a href="#moundModal" id="mound3" class="mound" value="{{{isset($field[3])}}}">
 				{{{ null }}}
 			</a>
 		</div>
 		<br>
 
 		<div id="fieldRow2" class="fieldRow">
-			<a href="#moundModal" id="mound4" class="mound">
+			<a href="#moundModal" id="mound4" class="mound" value="{{{isset($field[4])}}}">
 				{{{ null }}}
 			</a>
-			<a href="#moundModal" id="mound5" class="mound">
+			<a href="#moundModal" id="mound5" class="mound" value="{{{isset($field[5])}}}">
 				{{{ null }}}
 			</a>
-			<a href="#moundModal" id="mound6" class="mound">
+			<a href="#moundModal" id="mound6" class="mound" value="{{{isset($field[6])}}}">
 				{{{ null }}}
 			</a>
 		</div>
 		<br>
 
 		<div id="fieldRow3" class="fieldRow">
-			<a href="#moundModal" id="mound7" class="mound">
+			<a href="#moundModal" id="mound7" class="mound" value="{{{isset($field[7])}}}">
 				{{{ null }}}
 			</a>
-			<a href="#moundModal" id="mound8" class="mound">
+			<a href="#moundModal" id="mound8" class="mound" value="{{{isset($field[8])}}}">
 				{{{ null }}}
 			</a>
-			<a href="#moundModal" id="mound9" class="mound">
+			<a href="#moundModal" id="mound9" class="mound" value="{{{isset($field[9])}}}">
 				{{{ null }}}
 			</a>
 		</div>
@@ -172,7 +168,36 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(".mound").click(function(){
-		$("#mound").attr('value', $(this).attr('id'));
+		mound = $(this).attr('id').substring(5);
+		if($(this).attr('value')){
+			mound = $(this).attr('id').substring(5);
+			$.get( "getMound/" + mound, function( data ) {
+			  $("#seed_table").html(data);
+			  console.log(data);
+			});
+		}
+		else{
+			$.get( "getSeeds", function( seeds ) {
+			  if(seeds.length > 0){
+			  		html ="<form method='POST' action='plant'>"; 
+			  		for(i = 0; i < seeds.length; i++){
+			  			html += '<label>' +
+			  			
+			  			'<input type="radio" name="seedID" value="' + seeds[i].id + '" >' +
+			  			"<span>" + seeds[i].name + "</span>" + 
+			  			'</label>' +
+						"<br>";
+			  		}
+					html += '<input type="hidden" id="mound" name="mound" value="' + mound + '">' +
+					        '<button type="submit">Plant</button>';
+					$("#seed_table").html(html);
+					console.log(mound);
+			  }
+			  else{
+			  	$("#seed_table").html("<p>You don't have any seeds!</p>");
+			  }
+			});
+		}
 	})
 </script>
 	

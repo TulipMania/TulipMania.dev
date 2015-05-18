@@ -104,8 +104,11 @@ public function __construct()
 			}
 		}
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
-		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
-		// dd($field);
+		$wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		$field = [];
+		foreach ($wholeField as $mound) {
+			$field[$mound->mound] = $mound;
+		}
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds]);
 	}
 
@@ -113,8 +116,7 @@ public function __construct()
 	public function plant(){
 		$seedID = Input::get('seedID');
 		$mound = Input::get('mound');
-		$userID = Input::get('userID');
-		$mound = substr($mound, 5);
+		$userID = Auth::user()->id;
 
 		plant($seedID, $mound, $userID);
 
@@ -169,4 +171,41 @@ public function __construct()
 		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
 
 	}
+
+	public function getMound($mound){
+		$wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		$field = [];
+		foreach ($wholeField as $mounds) {
+			$field[$mounds->mound] = $mounds;
+		}
+		// dd($mound);
+		return Item::find($field[$mound]->item_id)->name;
+	}
+
+	public function getComplDate($mound){
+		$wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
+		$field = [];
+		foreach ($wholeField as $mound) {
+			$field[$mound->mound] = $mound;
+		}
+		return Item::find($field[$mound]->item_id)->compl_date;
+	}
+
+	public function getSeeds(){
+		$userItems = [];
+		foreach (explode(',', Auth::user()->items) as $itemNum) {
+			$item = Item::find($itemNum);
+			array_push($userItems, $item);
+		}
+		$userSeeds = [];
+		foreach($userItems as $item){
+			if (Seed::find($item->id)){
+				array_push($userSeeds, $item);
+			}
+		}
+
+		return $userSeeds;
+	}
 }
+
+
