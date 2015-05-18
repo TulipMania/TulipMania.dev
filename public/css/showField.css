@@ -132,5 +132,7 @@ table {
 
 }
 
-#store{
-	}
+div#storeModal,div#inventoryModal{
+	overflow: scroll;
+}
+
