@@ -106,22 +106,19 @@ public function __construct()
 		$storeItems = DB::table('items')->get();
 		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
+
 	}
 
 
 	public function plant(){
 
-		$seedName = Input::get('seedName');
+		$seedID = Input::get('seedID');
 		$mound = Input::get('mound');
-		$userID = Auth::user()->id;
-		$userSeedString = DB::table('users')->pluck('items');
-		$userSeedArray = explode(",", $userSeedString);
+		$userID = Input::get('userID');
+		$mound = substr($mound, 5);
 
-		if(($key =array_search(Input::get('seedName'),$userSeedArray)) !== false) {
-    		unset($userSeedArray[$key]);
-    		$newArray = implode(",", $userSeedArray);
-    		DB::table('users')->where('username', '=', Auth::user()->username)->update((array('items' => $newArray)));
-		}
+		plant($seedID, $mound, $userID);
+
 		return Redirect::action("HomeController@showField");
 	}
 

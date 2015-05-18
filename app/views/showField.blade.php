@@ -68,31 +68,34 @@
 		</div>	
 	</div>
 
-	@for($i = 1; $i < 10; $i++)       
+	{{-- @for($i = 1; $i < 10; $i++)        --}}
 		<div id="moundModal" class="modal">
 			<div id="seeds">
 				<a href="#close" title="Close" class="close">X</a>
 				<h1>MOUNDS OF MOUNDS!</h1>
 				<div id="seed_table">	
-						@if(!empty($userItems))
+
+						@if($userSeeds)
 							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
-							@foreach($userItems as $item)
-								@if($item->is_seed)
-									{{{$item->name}}} 
-									{{ Form::radio('seedName', $item->name) }}
-									<br>
-								@endif
+							@foreach($userSeeds as $seed)
+								{{{$seed->name}}} 
+								{{ Form::radio('seedID', $seed->id) }}
+								<br>
 							@endforeach
-								{{ Form::hidden('mound', $i) }}
+								{{ Form::hidden('mound', '', ['id' => "mound"]) }}
+								{{ Form::hidden('userID', Auth::user()->id) }}
+
 								{{ Form::submit('Plant') }}
-							{{ Form::close() }}		
+							{{ Form::close() }}	
+						@elseif(false)
+
 						@else
-							You have no seeds to plant!
+							<p>You have no seeds to plant!</p>
 						@endif
 				</div>
 			</div>	
 		</div>
-	@endfor
+	{{-- @endfor --}}
 
 	<a href="#inventoryModal" id="inventory">
 		Inventory
@@ -168,6 +171,12 @@
 		<a href="/" class="fieldButton">Logout</a>
 	</div>	
 
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(".mound").click(function(){
+		$("#mound").attr('value', $(this).attr('id'));
+	})
+</script>
 	
 </body>
 </html>
