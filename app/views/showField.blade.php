@@ -34,6 +34,7 @@
 							<td>{{{$item->description}}}</td>
 							<td>ƒ {{{$item->price}}}</td>
 							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
+							<input type ="text" id="id" name="id" value ="{{$item->id}}" readonly="true" hidden/>
 						{{Form::close()}}
 						</tr>
 
@@ -73,18 +74,16 @@
 				<a href="#close" title="Close" class="close">X</a>
 				<h1>MOUNDS OF MOUNDS!</h1>
 				<div id="seed_table">	
-						@if(empty($userItems))
+						@if(!empty($userItems))
 							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
 							@foreach($userItems as $item)
 								@if($item->is_seed)
 									{{{$item->name}}} 
-									{{ Form::radio('seedID', $item->id) }}
+									{{ Form::radio('seedName', $item->name) }}
 									<br>
 								@endif
 							@endforeach
 								{{ Form::hidden('mound', $i) }}
-								{{ Form::hidden('userID', Auth::user()->id) }}
-
 								{{ Form::submit('Plant') }}
 							{{ Form::close() }}		
 						@else
@@ -162,7 +161,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_grounds']) }}}" class="fieldButton">Adventure Time!</a>
+		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
