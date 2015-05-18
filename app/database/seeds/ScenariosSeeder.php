@@ -38,7 +38,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario4->body          = "You run into your old friend Bert van Praag from your days at the University 
 										of Groningen. He and his wife are on their way to a party at Count 
 										Kiesel's. Would you like to join them?\n
-										Hennie says: \"Make sure to give the driver a ƒ1.50 gratuity. You don't want to 
+										Hennie says: \"Make sure to give the driver a ƒ1 gratuity. You don't want to 
 										get a reputation for being a miser.\"";
 			$scenario4->header        = "Continue.";
 			$scenario4->locations     = "grounds";
@@ -59,7 +59,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario6->body          = "You win! \n
 										Hennie says: \"Congratulations, master. I'll make sure Mr. Arjen 
 										leaves the grounds and pays what he owes you.\"";
-			$scenario6->header        = "Swim.";
+			$scenario6->header        = "Continue.";
 			$scenario6->locations     = "grounds";
 			$scenario6->story_id      = "sa_6";
 			$scenario6->leads_to      = "e";
@@ -67,8 +67,8 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario7                = new Scenario();
 			$scenario7->body          = "Arjen drowned! You lose a day fishing his body out of the river. 
-										(But you get his ƒ3.00!)";
-			$scenario7->header        = "Swim.";
+										(But you get his ƒ3!)";
+			$scenario7->header        = "Continue.";
 			$scenario7->locations     = "grounds";	
 			$scenario7->story_id      = "a_7";						
 			$scenario7->leads_to      = "e";
@@ -88,7 +88,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario9                = new Scenario();
 			$scenario9->body          = "A man at the party by the name of Djavan says he's a childhood 
 										friend of yours from Den Burg. You don't recognize him, but he seems nice.";
-			$scenario9->header        = "Djavan Intro";
+			$scenario9->header        = "Continue.";
 			$scenario9->locations     = "grounds";							
 			$scenario9->story_id      = "a_9";
 			$scenario9->leads_to      = "a_12,a_13,a_14,a_15";
@@ -97,7 +97,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario10                = new Scenario();
 			$scenario10->body          = "Oh no! Count Kiesel has challenged you to a duel! If you accept you can get 
 										  seriously hurt... or even DIE! But if you decline, your reputation will suffer 
-										  and you will lose upwards of ƒ9.00 in sales. (No one wants to buy tulips from a coward!)";
+										  and you will lose upwards of ƒ9 in sales. (No one wants to buy tulips from a coward!)";
 			$scenario10->header        =  "Continue.";
 			$scenario10->locations     = "grounds";							
 			$scenario10->story_id      = "a_10";
@@ -107,7 +107,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario11                = new Scenario();
 			$scenario11->body          = "The Count winks at you! He respects a man who will dance with the Countess. You gain a 
 										  reputation for being a courageous man. People want to do business with you. You have an 
-										  extra ƒ5.90.";
+										  extra ƒ5.";
 			$scenario11->header        =  "Continue.";
 			$scenario11->locations     = 'grounds';						
 			$scenario11->story_id      = "a_11";
@@ -115,7 +115,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario11->save();
 
 			$scenario12                = new Scenario();
-			$scenario12->body          = "In a great opium dream you stumble into the drawing room and win ƒ12.00 at the poker 
+			$scenario12->body          = "In a great opium dream you stumble into the drawing room and win ƒ12 at the poker 
 										  table while speaking in tongues.";
 			$scenario12->header        = "Continue.";
 			$scenario12->locations     = "grounds";							
@@ -125,7 +125,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario13                = new Scenario();
 			$scenario13->body          = "Oh no! You had a very interesting opium dream in which you vomited birds of all sorts...
-										  but you also lost your wallet with ƒ5.00 inside.";							
+										  but you also lost your wallet with ƒ5 inside.";							
 			$scenario13->header         = "Continue.";
 			$scenario13->locations     = "grounds";
 			$scenario13->story_id      = "a_13";
@@ -134,7 +134,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario14                = new Scenario();
 			$scenario14->body          = "Djavan was actually a con artist! While you're in the middle of an opium dream about 
-										  flying giant beetles, he steals ƒ8.00 from your pocket.";							
+										  flying giant beetles, he steals ƒ8 from your pocket.";							
 			$scenario14->header         = "Continue.";
 			$scenario14->locations     = "grounds";
 			$scenario14->story_id      = "a_14";
@@ -143,7 +143,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario15                = new Scenario();
 			$scenario15->body          = "During an opium dream about Rinus you finally remember who Djavan is! You two hit it off 
-										  and you even manage to sell him ƒ8.00 worth of tulips.";
+										  and you even manage to sell him ƒ8 worth of tulips.";
 			$scenario15->header         = "Continue.";
 			$scenario15->locations     = "grounds";
 			$scenario15->story_id      = "a_15";
@@ -152,7 +152,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario16                = new Scenario();
 			$scenario16->body          = "The Count has shot you in the knee! You lose 
-										  three days of rest and ƒ12.30 in medical fees.";
+										  three days of rest and ƒ12 in medical fees.";
 			$scenario16->header         = "Continue.";
 			$scenario16->locations     = "grounds";
 			$scenario16->story_id      = "a_16";
@@ -188,7 +188,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario20                = new Scenario();
 			$scenario20->body          = "You fool! This bear cannot be tamed. \n
-										  You lose two fingers and ƒ11.00 in medical fees.";
+										  You lose two fingers and ƒ11 in medical fees.";
 			$scenario20->header        = "Continue.";
 			$scenario20->locations     = "grounds";
 			$scenario20->story_id      = "a_20";
@@ -197,7 +197,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario21                = new Scenario();
 			$scenario21->body          = "Those morning push-ups have paid off! \n
-										  You kill the bear and sell its skin for ƒ14.00.";
+										  You kill the bear and sell its skin for ƒ14.";
 			$scenario21->header        = "Continue.";
 			$scenario21->locations     = "grounds";
 			$scenario21->story_id      = "a_21";
@@ -215,7 +215,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario23                = new Scenario();
 			$scenario23->body          = "You are able to land a few punches, but the bear bit your ear off! \n 
-										  Spend ƒ12.00 in medical fees.";
+										  Spend ƒ12 in medical fees.";
 			$scenario23->header        = "Continue.";
 			$scenario23->locations     = "grounds";
 			$scenario23->story_id      = "a_23";

@@ -50,6 +50,7 @@ return array(
     'Crypt_TripleDES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/TripleDES.php',
     'Crypt_Twofish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Twofish.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
+    'Field' => $baseDir . '/app/models/Field.php',
     'File_ANSI' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ANSI.php',
     'File_ASN1' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ASN1.php',
     'File_ASN1_Element' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ASN1.php',
@@ -979,6 +980,8 @@ return array(
     'Psr\\Log\\NullLogger' => $vendorDir . '/psr/log/Psr/Log/NullLogger.php',
     'Scenario' => $baseDir . '/app/models/Scenario.php',
     'ScenariosSeeder' => $baseDir . '/app/database/seeds/ScenariosSeeder.php',
+    'Seed' => $baseDir . '/app/models/Seed.php',
+    'SeedTableSeeder' => $baseDir . '/app/database/seeds/SeedTableSeeder.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Stack\\Builder' => $vendorDir . '/stack/builder/src/Stack/Builder.php',
     'Stack\\StackedHttpKernel' => $vendorDir . '/stack/builder/src/Stack/StackedHttpKernel.php',
@@ -1609,5 +1612,4 @@ return array(
     'Whoops\\Run' => $vendorDir . '/filp/whoops/src/Whoops/Run.php',
     'Whoops\\Util\\Misc' => $vendorDir . '/filp/whoops/src/Whoops/Util/Misc.php',
     'Whoops\\Util\\TemplateHelper' => $vendorDir . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
-    'field' => $baseDir . '/app/models/Field.php',
 );
