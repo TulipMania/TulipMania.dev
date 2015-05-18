@@ -20,45 +20,54 @@ public function __construct()
 	|
 	*/
 
+ 
 	public function showWelcome()
 	{
 		return View::make('hello');
 	}
 
+// 	creates the view for the landing page of application corresponds to Route::get('/', 'HomeController@showLanding')
 	public function showLanding()
 	{
 		return View::make('index');
 	}
 
 
-
+// this function contains the logic for the text adventure applicaiton and returning a random url corresponds to 
+// Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']); 
 	public function showAdventureTemplate($id)
 	{	
-		$scene = Scenario::getFromSID($id);
-		$leads_to = explode(",",$scene['leads_to']);
-		$body = $scene['body'];
-		if(substr($scene['story_id'], 0,1)=='s'){
+		if (Auth::user()->money <= 0)
+		{
+			Session::flash('errorMessage','Sorry,you do not have enought money to go on an adventure!');
+			return Redirect::back()->withInput();
+		}else{
+
+			$scene = Scenario::getFromSID($id);
+			$leads_to = explode(",",$scene['leads_to']);
+			$body = $scene['body'];
 			$total = count($leads_to) -1;
-			 $nextScenario = $leads_to[rand(0,$total)];
-			return Redirect::action('HomeController@showAdventureTemplate', $nextScenario);
-			//redirect action adventure make random leads_to
+			$nextScenario = $leads_to[rand(0,$total)];
+
+			if ($scene['leads_to'] == 'e') {
+				$nextScenario = 's_grounds';
+			}
+
+			if (substr($scene['story_id'], 1,1) == 'i') {
+				DB::table('users')->where('username', '=', Auth::user()->username)->increment('money', $scene['money']);
+			}elseif (substr($scene['story_id'], 1,1) == "d") {
+				DB::table('users')->where('username', '=', Auth::user()->username)->decrement('money', $scene['money']);
+			}
+
+			$data = ['leads_to' => $leads_to, 'next_headers' => $scene['header'],'body' => $body,'nextScenario' => $nextScenario,'story_id' => $scene['story_id']];
+			return View::make('adventure_template', $data);
+
 		}
-			// else if (substr($scene['story_id'], 0,2)=='sa') {
-		// 	 $nextScenario = $leads_to[rand(0,$total)];
-		// }
-		// check first leads_to if it's continue pick random leads_to and only write that
-		// one to next headers 
-		// }else{
-		foreach ($leads_to as $newScene => $next) {
-			$scenario = Scenario::getFromSID($next);
-			$nextScenario = $scenario['story_id'];
-		}
-		// }
-		$data = ['leads_to' => $leads_to, 'next_headers' => $scene['header'],'body' => $scene['body'],'nextScenario' => $nextScenario];
-		return View::make('adventure_template', $data);
 	}
 
-	
+
+// checkLogin() compares the information the user has placed in signin form and compares it with the DB data corresponds to
+// Route::post('login','HomeController@checkLogin');
 	public function checkLogin()
 	{
 
@@ -78,43 +87,46 @@ public function __construct()
 
 	}
 
+// logout() logs the user out of the current session and returns to login page
 	public function logout()
 	{
 		Auth::logout();
 		Redirect::to('index');
 	}
 
-
-	public function showStore()
-	{
-		return View::make('store');
-	}
-
+// showField() displays the users game data on the page corresponds to Route::get('field', "HomeController@showField"); 
 	public function showField(){
 
 		$userItems = [];
-		foreach (explode(',', Auth::user()->items) as $itemNum) {
-			$item = Item::find($itemNum);
+		foreach (explode(',', Auth::user()->items) as $itemName) {
+			$item = DB::table('items')->where('name', '=', $itemName)->first();
 			array_push($userItems, $item);
 		}
-		$storeItems = DB::table('items')->where('id', '<', 11)->get();
+		
+		$storeItems = DB::table('items')->get();
 		$field = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field]);
 	}
 
 
 	public function plant(){
-		// dd(Input::all());
-		$seedID = Input::get('seedID');
+
+		$seedName = Input::get('seedName');
 		$mound = Input::get('mound');
-		$userID = Input::get('userID');
+		$userID = Auth::user()->id;
+		$userSeedString = DB::table('users')->pluck('items');
+		$userSeedArray = explode(",", $userSeedString);
 
-		plant($seedID, $mound, $userID);
-
+		if(($key =array_search(Input::get('seedName'),$userSeedArray)) !== false) {
+    		unset($userSeedArray[$key]);
+    		$newArray = implode(",", $userSeedArray);
+    		DB::table('users')->where('username', '=', Auth::user()->username)->update((array('items' => $newArray)));
+		}
 		return Redirect::action("HomeController@showField");
 	}
 
-
+// insertItem() displays the items for sale in the store and contains the logic pertaining to a user attempting to but items 
+// corresponds to Route::post('insertItem','HomeController@insertItem');
 	public function insertItem()
 	{	if (Auth::user()->money < 0)
 	 	{
@@ -125,18 +137,14 @@ public function __construct()
 			return Redirect::back();
 		}
 		else{
-		DB::table('users')->where('id', Auth::user()->id)->update(['items' => Auth::user()->items."\n".Input::get('item')]);
+		DB::table('users')->where('id', Auth::user()->id)->update(['items' => Auth::user()->items.",".Input::get('item')]);
 		DB::table('users')->where('id', Auth::user()->id)->decrement('money', intval(Input::get('cost')));
 		return Redirect::back();
 		}
 
 	}
-	
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+
+// signUp() contains the logic for signing up a new user
 	public function signUp()
 	{
 
