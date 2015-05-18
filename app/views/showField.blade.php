@@ -34,6 +34,7 @@
 							<td>{{{$item->description}}}</td>
 							<td>ƒ {{{$item->price}}}</td>
 							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
+							<input type ="text" id="id" name="id" value ="{{$item->id}}" readonly="true" hidden/>
 						{{Form::close()}}
 						</tr>
 
@@ -67,6 +68,7 @@
 		</div>	
 	</div>
 
+<<<<<<< HEAD
 	<div id="moundModal" class="modal">
 		<div id="seeds">
 			<a href="#close" title="Close" class="close">X</a>
@@ -90,6 +92,36 @@
 			</div>
 		</div>	
 	</div>
+=======
+	{{-- @for($i = 1; $i < 10; $i++)        --}}
+		<div id="moundModal" class="modal">
+			<div id="seeds">
+				<a href="#close" title="Close" class="close">X</a>
+				<h1>MOUNDS OF MOUNDS!</h1>
+				<div id="seed_table">	
+
+						@if($userSeeds)
+							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
+							@foreach($userSeeds as $seed)
+								{{{$seed->name}}} 
+								{{ Form::radio('seedID', $seed->id) }}
+								<br>
+							@endforeach
+								{{ Form::hidden('mound', '', ['id' => "mound"]) }}
+								{{ Form::hidden('userID', Auth::user()->id) }}
+
+								{{ Form::submit('Plant') }}
+							{{ Form::close() }}	
+						@elseif(false)
+
+						@else
+							<p>You have no seeds to plant!</p>
+						@endif
+				</div>
+			</div>	
+		</div>
+	{{-- @endfor --}}
+>>>>>>> eb9cac2f0036b46169c268f2ccdc75dfd623b462
 
 	<a href="#inventoryModal" id="inventory">
 		Inventory
@@ -158,7 +190,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_grounds']) }}}" class="fieldButton">Adventure Time!</a>
+		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
