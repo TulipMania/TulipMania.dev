@@ -1,7 +1,7 @@
 <?php 
 	class ItemTableSeeder extends Seeder{
 	/**
-	*	Fill db with user(s)
+	*	Fill db with item(s)
 	*
 	*	@return void
 	*/
