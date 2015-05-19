@@ -14,6 +14,8 @@
 
 Route::get('/', 'HomeController@showLanding');
 
+Route::get('hello', 'HomeController@showWelcome');
+
 Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
 
 Route::get('field', "HomeController@showField");
