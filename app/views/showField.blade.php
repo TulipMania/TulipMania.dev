@@ -113,19 +113,19 @@
 			<a href="#moundModal" id="mound1" class="mound" value="{{isset($field[1])}}">
 				{{{ '' }}}
 				@if(isset($field[1]))
-					<img src="/images/seeds/{{Item::find($field[1]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[1]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound2" class="mound" value="{{isset($field[2])}}">
 				{{{ '' }}}
 				@if(isset($field[2]))
-					<img src="/images/seeds/{{Item::find($field[2]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[2]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound3" class="mound" value="{{isset($field[3])}}">
 				{{{ '' }}}
 				@if(isset($field[3]))
-					<img src="/images/seeds/{{Item::find($field[3]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[3]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 		</div>
@@ -135,19 +135,19 @@
 			<a href="#moundModal" id="mound4" class="mound" value="{{isset($field[4])}}">
 				{{{ '' }}}
 				@if(isset($field[4]))
-					<img src="/images/seeds/{{Item::find($field[4]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[4]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound5" class="mound" value="{{isset($field[5])}}">
 				{{{ '' }}}
 				@if(isset($field[5]))
-					<img src="/images/seeds/{{Item::find($field[5]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[5]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound6" class="mound" value="{{isset($field[6])}}">
 				{{{ '' }}}
 				@if(isset($field[6]))
-					<img src="/images/seeds/{{Item::find($field[6]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[6]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 		</div>
@@ -157,19 +157,19 @@
 			<a href="#moundModal" id="mound7" class="mound" value="{{isset($field[7])}}">
 				{{{ '' }}}
 				@if(isset($field[7]))
-					<img src="/images/seeds/{{Item::find($field[7]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[7]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound8" class="mound" value="{{isset($field[8])}}">
 				{{{ '' }}}
 				@if(isset($field[8]))
-					<img src="/images/seeds/{{Item::find($field[8]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[8]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound9" class="mound" value="{{isset($field[9])}}">
 				{{{ '' }}}
 				@if(isset($field[9]))
-					<img src="/images/seeds/{{Item::find($field[9]->item_id)->img}}" class="itemImage">
+					<img src="/images/tulips/{{Item::find($field[9]->item_id)->img}}" class="itemImage">
 				@endif
 			</a>
 		</div>
