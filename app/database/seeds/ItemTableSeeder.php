@@ -9,24 +9,24 @@
 			DB::table('items')->delete();
 
 			$seed1                    = new Item();
-			$seed1->img               = 'base_seed';
-			$seed1->name              = 'Yellow Tulip';
+			$seed1->img               = 'base_seed.png';
+			$seed1->name              = 'Yellow Seed';
 			$seed1->description       = "As yellow as the sun and old Hennie's teeth. This is a basic tulip.";
 			$seed1->price             = 0;
 			$seed1->is_seed           = true;
 			$seed1->save();
 
 			$seed2                    = new Item();
-			$seed2->img               = 'red_seed';
-			$seed2->name              = 'Red Tulip';
+			$seed2->img               = 'red_seed.png';
+			$seed2->name              = 'Red Seed';
 			$seed2->description       = 'This crimson-tinted tulip certainly stands out. It makes a rose look like an aromatic turd.';
 			$seed2->price             = 5;
 			$seed2->is_seed           = true;
 			$seed2->save();
 
 			$seed3                    = new Item();
-			$seed3->img               = 'royal_seed';
-			$seed3->name              = 'Royal Tulip';
+			$seed3->img               = 'royal_seed.png';
+			$seed3->name              = 'Royal Seed';
 			$seed3->description       = "This tulip seed came from the King's personal garden! Ol' Henni wonders how the shopkeepr got it...";
 			$seed3->price             = 50;
 			$seed3->is_seed          = true;
