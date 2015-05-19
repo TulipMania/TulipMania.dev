@@ -113,6 +113,12 @@ public function __construct()
 		foreach ($wholeField as $mound) {
 			$field[$mound->mound] = $mound;
 		}
+		for($i=1; $i<10; $i++){
+			if (!isset($field[$i])){
+				$field[$i] = null;
+			}
+		}
+		// dd($field);
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds]);
 	}
 
