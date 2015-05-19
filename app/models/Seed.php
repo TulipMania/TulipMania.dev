@@ -12,20 +12,20 @@
 	    public static function getMidDate($seedID){
 	    	$seed = DB::table('seeds')->find($seedID);
 
-	    	$midGrowRate = $seed->mid_grow_rate;
-
+	    	$midGrowRate = self::convertTime($seed->mid_grow_rate);
+	    	// dd($midGrowRate);
 	    	$midDate = Carbon::now();
 	    	$midDate->addHours($midGrowRate[0]);
 	    	$midDate->addMinutes($midGrowRate[1]);
 	    	$midDate->addSeconds($midGrowRate[2]);
-	    	// dd($midDate->toDateTimeString());
+	    	// dd([$midDate->toDateTimeString(), Carbon::now()]);
 	    	return $midDate->toDateTimeString();
 	    }
 
 		public static function getComplDate($seedID, $asDate = false){
 			$seed = DB::table('seeds')->find($seedID);
 
-	    	$midGrowRate = $seed->mid_grow_rate;
+	    	$midGrowRate = self::convertTime($seed->mid_grow_rate);
 
 	    	$complDate = Carbon::now();
 	    	$complDate->addHours($midGrowRate[0] * 2);
@@ -42,7 +42,7 @@
 		public static function getDeathDate($seedID){
 			$seed = DB::table('seeds')->find($seedID);
 
-	    	$deathTime = $seed->death_time;
+	    	$deathTime = self::convertTime($seed->death_time);
 
 	    	$deathDate = Seed::getComplDate($seedID, true);
 	    	$deathDate->addHours($deathTime[0]);
@@ -50,6 +50,11 @@
 	    	$deathDate->addSeconds($deathTime[2]);
 
 	    	return $deathDate->toDateTimeString();
+		}
+
+		public static function tulipPic($item_id){
+			$tulip = Seed::where('item_id', '=', $item_id)->first()->grown_item_id;
+			return Item::find($tulip)->img;
 		}
 
 	}
