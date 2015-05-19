@@ -28,4 +28,13 @@ Route::post('insertItem','HomeController@insertItem');
 
 Route::post('signup','HomeController@signUp');
 
+<<<<<<< HEAD
+Route::get('getMound/{mound}', "HomeController@getMound");
+
+Route::get('getComplDate/{mound}', "HomeController@getComplDate");
+
+Route::get('getSeeds', "HomeController@getSeeds");
+Route::post('plant', "HomeController@plant");
+=======
+>>>>>>> eb9cac2f0036b46169c268f2ccdc75dfd623b462
 
