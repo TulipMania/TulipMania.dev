@@ -18,11 +18,11 @@
 	    	$midDate->addHours($midGrowRate[0]);
 	    	$midDate->addMinutes($midGrowRate[1]);
 	    	$midDate->addSeconds($midGrowRate[2]);
-
-	    	return $midDate;
+	    	// dd($midDate->toDateTimeString());
+	    	return $midDate->toDateTimeString();
 	    }
 
-		public static function getComplDate($seedID){
+		public static function getComplDate($seedID, $asDate = false){
 			$seed = DB::table('seeds')->find($seedID);
 
 	    	$midGrowRate = $seed->mid_grow_rate;
@@ -31,8 +31,12 @@
 	    	$complDate->addHours($midGrowRate[0] * 2);
 	    	$complDate->addMinutes($midGrowRate[1] * 2);
 	    	$complDate->addSeconds($midGrowRate[2] * 2);
-
-	    	return $complDate;
+	    	if($asDate){
+	    		return $complDate;
+	    	}
+	    	else{
+	    		return $complDate->toDateTimeString();	
+	    	}
 		}
 
 		public static function getDeathDate($seedID){
@@ -40,12 +44,12 @@
 
 	    	$deathTime = $seed->death_time;
 
-	    	$deathDate = Seed::getComplDate($seedID);
+	    	$deathDate = Seed::getComplDate($seedID, true);
 	    	$deathDate->addHours($deathTime[0]);
 	    	$deathDate->addMinutes($deathTime[1]);
 	    	$deathDate->addSeconds($deathTime[2]);
 
-	    	return $deathDate;
+	    	return $deathDate->toDateTimeString();
 		}
 
 	}
