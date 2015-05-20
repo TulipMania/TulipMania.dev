@@ -2,6 +2,11 @@
 
 class GameController extends BaseController {
 
+public function __construct()
+{
+    $this->beforeFilter('auth', array('only' => array('index')));
+}
+
 // this function contains the logic for the text adventure applicaiton and returning a random url corresponds to 
 // Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']); 
     public function showAdventureTemplate($id)
