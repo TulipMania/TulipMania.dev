@@ -28,7 +28,7 @@
 						@foreach($storeItems as $item)
 
 						<tr>
-						{{ Form::open(array('action' => 'HomeController@insertItem', Auth::user()->id)) }}	
+						{{ Form::open(array('action' => 'GameController@insertItem', Auth::user()->id)) }}	
 							<td><input type ="submit" id="item" name="item" value ="{{$item->name}}"/></td>
 						
 							<td>{{$item->description}}</td>
@@ -92,10 +92,14 @@
 			</div>	
 		</div>
 
+	<a href="#inventoryModal" id="inventory">		
+		Inventory		
+	</a>
+
 	<div id="money"> 
 		Bank: ƒ{{ Auth::user()->money }}
 	</div>
-	<a href="#inventoryModal">Inventory</a>
+	
 	<div id="userModel">
 		<div id="userModelHead" class="modelPart">
 			hat
@@ -124,7 +128,7 @@
 						<th>Seller</th>
 						</tr>
 						@foreach($marketItems as $item)
-						{{ Form::open(array('action' => 'HomeController@buyItem')) }}
+						{{ Form::open(array('action' => 'GameController@buyItem')) }}
 						<tr>
 							
 							<td> <input type = "submit" id="item_for_sale" name="item_for_sale" value="{{$item->name}}"> </td>
@@ -147,7 +151,7 @@
 						</tr>
 						
 						@foreach($userItems as $items)
-						{{ Form::open(array('action' => 'HomeController@sellItem')) }}	
+						{{ Form::open(array('action' => 'GameController@sellItem')) }}	
 						<tr>
 							<td><input type ="submit" id="item_to_sell_name" name="item_to_sell_name" value ="{{$items->name}}"/></td>
 							<td>{{$items->description}}</td>
@@ -240,7 +244,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}" class="fieldButton">Adventure Time!</a>
+		<a href="{{ action('GameController@showAdventureTemplate', ['s_intro']) }}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
