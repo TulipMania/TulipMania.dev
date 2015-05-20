@@ -7,7 +7,7 @@
 <body>
 	@if (Session::has('errorMessage'))
         <script type="text/javascript">
-        alert("{{{ Session::get('errorMessage') }}}");
+        alert("{{ Session::get('errorMessage') }}");
         </script>
     @endif
 
@@ -29,10 +29,10 @@
 
 						<tr>
 						{{ Form::open(array('action' => 'HomeController@insertItem', Auth::user()->id)) }}	
-							<td><input type ="submit" id="item" name="item" value ="{{{$item->name}}}"/></td>
+							<td><input type ="submit" id="item" name="item" value ="{{$item->name}}"/></td>
 						
-							<td>{{{$item->description}}}</td>
-							<td>ƒ {{{$item->price}}}</td>
+							<td>{{$item->description}}</td>
+							<td>ƒ {{$item->price}}</td>
 							<input type ="number" id="cost" name="cost" value ="{{$item->price}}" readonly="true" hidden/>
 							<input type ="text" id="id" name="id" value ="{{$item->id}}" readonly="true" hidden/>
 						{{Form::close()}}
@@ -58,8 +58,8 @@
 						@foreach($userItems as $item)
 
 						<tr>
-							<td>{{{$item->name}}}</td>
-							<td>{{{$item->description}}}</td>
+							<td>{{$item->name}}</td>
+							<td>{{$item->description}}</td>
 						</tr>
 
 						@endforeach
@@ -68,41 +68,30 @@
 		</div>	
 	</div>
 
-	{{-- @for($i = 1; $i < 10; $i++)        --}}
+	<div id="moundModal" class="modal">
+		<div id="seeds">
+			<a href="#close" title="Close" class="close">X</a>
+			<h1>MOUNDS OF MOUNDS!</h1>
+			<div id="seed_table">	
+				TABLE
+			</div>
+		</div>	
+	</div>
 		<div id="moundModal" class="modal">
 			<div id="seeds">
 				<a href="#close" title="Close" class="close">X</a>
 				<h1>MOUNDS OF MOUNDS!</h1>
 				<div id="seed_table">	
-
-						@if($userSeeds)
-							{{ Form::open(array('action' => array('HomeController@plant', 'method' => 'PUT')))}}
-							@foreach($userSeeds as $seed)
-								{{{$seed->name}}} 
-								{{ Form::radio('seedID', $seed->id) }}
-								<br>
-							@endforeach
-								{{ Form::hidden('mound', '', ['id' => "mound"]) }}
-								{{ Form::hidden('userID', Auth::user()->id) }}
-
-								{{ Form::submit('Plant') }}
-							{{ Form::close() }}	
-						@elseif(false)
-
-						@else
-							<p>You have no seeds to plant!</p>
-						@endif
 				</div>
 			</div>	
 		</div>
-	{{-- @endfor --}}
 
 	<a href="#inventoryModal" id="inventory">
 		Inventory
 	</a>
 
 	<div id="money"> 
-		Bank: ƒ{{{ Auth::user()->money }}}
+		Bank: ƒ{{ Auth::user()->money }}
 	</div>
 
 	<div id="userModel">
@@ -121,40 +110,67 @@
 
 	<div id="fields">
 		<div id="fieldRow1" class="fieldRow">
-			<a href="#moundModal" id="mound1" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound1" class="mound" value="{{isset($field[1])}}">
+				{{{ '' }}}
+				@if(isset($field[1]))
+					<img src="/images/tulips/{{getImg($field[1])}}" class="itemImage">
+				@endif
 			</a>
-			<a href="#moundModal" id="mound2" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound2" class="mound" value="{{isset($field[2])}}">
+				{{{ '' }}}
+				@if(isset($field[2]))
+					<img src="/images/tulips/{{getImg($field[2])}}" class="itemImage">
+				@endif
 			</a>
-			<a href="#moundModal" id="mound3" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound3" class="mound" value="{{isset($field[3])}}">
+				{{{ '' }}}
+				@if(isset($field[3]))
+					<img src="/images/tulips/{{getImg($field[3])}}" class="itemImage">
+				@endif
 			</a>
 		</div>
 		<br>
 
 		<div id="fieldRow2" class="fieldRow">
-			<a href="#moundModal" id="mound4" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound4" class="mound" value="{{isset($field[4])}}">
+				{{{ '' }}}
+				@if(isset($field[4]))
+					<img src="/images/tulips/{{getImg($field[4])}}" class="itemImage">
+				@endif
 			</a>
-			<a href="#moundModal" id="mound5" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound5" class="mound" value="{{isset($field[5])}}">
+				{{{ '' }}}
+				@if(isset($field[5]))
+					<img src="/images/tulips/{{getImg($field[5])}}" class="itemImage">
+				@endif
 			</a>
-			<a href="#moundModal" id="mound6" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound6" class="mound" value="{{isset($field[6])}}">
+				{{{ '' }}}
+				@if(isset($field[6]))
+					<img src="/images/tulips/{{getImg($field[6])}}" class="itemImage">
+				@endif
 			</a>
 		</div>
 		<br>
 
 		<div id="fieldRow3" class="fieldRow">
-			<a href="#moundModal" id="mound7" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound7" class="mound" value="{{isset($field[7])}}">
+				{{{ '' }}}
+				@if(isset($field[7]))
+					<img src="/images/tulips/{{getImg($field[7])}}" class="itemImage">
+				@endif
 			</a>
-			<a href="#moundModal" id="mound8" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound8" class="mound" value="{{isset($field[8])}}">
+				{{{ '' }}}
+				@if(isset($field[8]))
+					<img src="/images/tulips/{{getImg($field[8])}}" class="itemImage">
+				@endif
 			</a>
-			<a href="#moundModal" id="mound9" class="mound">
-				{{{ null }}}
+			<a href="#moundModal" id="mound9" class="mound" value="{{isset($field[9])}}">
+				{{{ '' }}}
+				@if(isset($field[9]))
+					<img src="/images/tulips/{{getImg($field[9])}}" class="itemImage">
+				@endif
 			</a>
 		</div>
 	</div>
@@ -164,7 +180,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}}" class="fieldButton">Adventure Time!</a>
+		<a href="{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
@@ -174,7 +190,36 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(".mound").click(function(){
-		$("#mound").attr('value', $(this).attr('id'));
+		mound = $(this).attr('id').substring(5);
+		if($(this).attr('value')){
+			mound = $(this).attr('id').substring(5);
+			$.get( "getMound/" + mound, function( data ) {
+			  $("#seed_table").html(data);
+			  console.log(data);
+			});
+		}
+		else{
+			$.get( "getSeeds", function( seeds ) {
+			  if(seeds.length > 0){
+			  		html ="<form method='POST' action='plant'>"; 
+			  		for(i = 0; i < seeds.length; i++){
+			  			html += '<label>' +
+			  			
+			  			'<input type="radio" name="seedID" value="' + seeds[i].id + '" >' +
+			  			"<span>" + seeds[i].name + "</span>" + 
+			  			'</label>' +
+						"<br>";
+			  		}
+					html += '<input type="hidden" id="mound" name="mound" value="' + mound + '">' +
+					        '<button type="submit">Plant</button>';
+					$("#seed_table").html(html);
+					console.log(mound);
+			  }
+			  else{
+			  	$("#seed_table").html("<p>You don't have any seeds!</p>");
+			  }
+			});
+		}
 	})
 </script>
 	

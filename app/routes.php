@@ -30,4 +30,10 @@ Route::post('insertItem','HomeController@insertItem');
 
 Route::post('signup','HomeController@signUp');
 
+Route::get('getMound/{mound}', "HomeController@getMound");
+
+Route::get('getComplDate/{mound}', "HomeController@getComplDate");
+
+Route::get('getSeeds', "HomeController@getSeeds");
+Route::post('plant', "HomeController@plant");
 

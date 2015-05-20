@@ -1,4 +1,5 @@
 <?php 
+	use Carbon\Carbon;
 	function plant($seedID, $mound, $userID){
 		$toPlant = new Field();
 		$toPlant->mound = $mound;
@@ -16,5 +17,25 @@
 		$userInven = str_replace($seed, '', $userInven, $count);
 		$user->items = $userInven;
 		$user->save();
+	}
+
+	function getImg($mound){
+		$now = Carbon::now();
+		$mid = $mound->mid_date;
+		$compl = $mound->compl_date;
+		$death = $mound->death_date;
+
+		if($mid > $now){
+			return 'first_stage.png';
+		}
+		elseif($mid < $now && $now < $compl){
+			return 'mid_stage.png';
+		}
+		elseif($now > $compl && $now < $death){
+			return Seed::tulipPic($mound->item_id);
+		}
+		else{
+			return 'dead_tulip.png';
+		}
 	}
  ?>
