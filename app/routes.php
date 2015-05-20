@@ -12,9 +12,9 @@
 */
 
 
-Route::get('/', 'HomeController@showLanding');
 
-Route::get('hello', 'HomeController@showWelcome');
+
+Route::get('/', 'HomeController@showLanding');
 
 Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
 
@@ -26,14 +26,25 @@ Route::post('login','HomeController@checkLogin');
 
 Route::get('logout','HomeController@logout');
 
+Route::post('/signup','HomeController@signUp');
+
+Route::get('hello', 'HomeController@showWelcome');
+
+Route::post('insert','HomeController@insertItem');
+
+Route::post('insertSeed','HomeController@insertSeed');
+
 Route::post('insertItem','HomeController@insertItem');
 
-Route::post('signup','HomeController@signUp');
+Route::post('sellItem','HomeController@sellItem');
+
+Route::post('buyItem','HomeController@buyItem');
 
 Route::get('getMound/{mound}', "HomeController@getMound");
 
 Route::get('getComplDate/{mound}', "HomeController@getComplDate");
 
 Route::get('getSeeds', "HomeController@getSeeds");
+
 Route::post('plant', "HomeController@plant");
 
