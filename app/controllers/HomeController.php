@@ -66,8 +66,10 @@ public function __construct()
 	}
 
 
+
 // checkLogin() compares the information the user has placed in signin form and compares it with the DB data corresponds to
 // Route::post('login','HomeController@checkLogin');
+
 	public function checkLogin()
 	{
 
@@ -107,6 +109,7 @@ public function __construct()
 				array_push($userSeeds, $item);
 			}
 		}
+		$marketItems = DB::table('market')->get();
 		$storeItems = DB::table('items')->where('id', '<', 11)->get();
 		$wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
 		$field = [];
@@ -118,9 +121,8 @@ public function __construct()
 				$field[$i] = null;
 			}
 		}
-		// dd(Carbon::now());
-		// dd($field[1]->mid_date > Carbon::now());
-		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds]);
+
+		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds,'marketItems' => $marketItems]);
 	}
 
 
@@ -135,8 +137,10 @@ public function __construct()
 		return Redirect::action("HomeController@showField");
 	}
 
+
 // insertItem() displays the items for sale in the store and contains the logic pertaining to a user attempting to but items 
 // corresponds to Route::post('insertItem','HomeController@insertItem');
+
 	public function insertItem()
 	{	if (Auth::user()->money < 0)
 	 	{
@@ -180,7 +184,7 @@ public function __construct()
 		return View::make('showField', ['items' => $items, 'storeItems' => $storeItems]);
 
 	}
-
+	
 	public function getMound($mound){
 		$wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
 		$field = [];
@@ -214,6 +218,51 @@ public function __construct()
 		}
 
 		return $userSeeds;
+	}
+
+	public function sellItem()
+	{	
+		$price = Input::get("price_to_sell");
+		$name = Input::get("item_to_sell_name");
+		$description = Input::get('description_of_item');
+		$itemsTable = DB::table('items')->where('name' ,'=', $name)->first();		
+		$itemSold = $itemsTable->id;
+
+		$user = DB::table('users')->where('username','=',Auth::user()->username)->first();
+
+		$userItems = explode(",", trim($user->items));
+		$keyToDelete = array_search($itemSold, $userItems);
+		unset($userItems[$keyToDelete]);
+
+		DB::table('users')->where('username' , Auth::user()->username)->update(array('items' => implode(",", $userItems)));	
+		DB::table('market')->insertGetId(array('price' => $price, 'item_id' => $itemsTable->id, 'user_id' => Auth::user()->id,'description' => $description,'name' => $name,'username'=> Auth::user()->username));
+
+
+		return Redirect::back();
+	}
+
+	public function buyItem()
+	{	
+
+		$itemForSale = Input::get('item_for_sale');
+		$sellingPrice = Input::get('selling_price');
+		$userSelling = Input::get('selling_user');
+		$itemId = Input::get('item_id');
+			if (Auth::user()->money < $sellingPrice)
+			{
+				Session::flash('errorMessage', "You Can't afford it kid!");
+				return Redirect::back();
+			}else{
+				$buyer = DB::table('users')->where('username','=',Auth::user()->username)->first();
+
+				$items = explode(",",$buyer->items);
+				array_push($items,$itemId);
+				DB::table('users')->where('username','=',Auth::user()->username)->update(array('items' => implode(",",$items),'money' => $buyer->money - $sellingPrice));
+				DB::table('users')->where('username','=',$userSelling)->increment('money',$sellingPrice);
+				DB::table('market')->where('username','=',$userSelling)->where('item_id','=',$itemId)->delete();
+
+				return Redirect::back();
+		}
 	}
 }
 
