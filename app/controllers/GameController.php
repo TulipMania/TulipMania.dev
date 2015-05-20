@@ -74,7 +74,7 @@ class GameController extends BaseController {
 
         plant($seedID, $mound, $userID);
 
-        return Redirect::action("HomeController@showField");
+        return Redirect::action("GameController@showField");
     }
 
 
@@ -98,6 +98,7 @@ class GameController extends BaseController {
         }
 
     }
+
     public function getMound($mound)
     {
         $wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
