@@ -16,11 +16,11 @@
 
 Route::get('/', 'HomeController@showLanding');
 
-Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']);
+Route::get('adventure_template/{next}', ['uses' => 'GameController@showAdventureTemplate']);
 
-Route::get('field', "HomeController@showField");
+Route::get('field', "GameController@showField");
 
-Route::post('field', "HomeController@plant");
+Route::post('field', "GameController@plant");
 
 Route::post('login','HomeController@checkLogin');
 
@@ -30,21 +30,19 @@ Route::post('/signup','HomeController@signUp');
 
 Route::get('hello', 'HomeController@showWelcome');
 
-Route::post('insert','HomeController@insertItem');
+Route::post('insertSeed','GameController@insertSeed');
 
-Route::post('insertSeed','HomeController@insertSeed');
+Route::post('insertItem','GameController@insertItem');
 
-Route::post('insertItem','HomeController@insertItem');
+Route::post('sellItem','GameController@sellItem');
 
-Route::post('sellItem','HomeController@sellItem');
+Route::post('buyItem','GameController@buyItem');
 
-Route::post('buyItem','HomeController@buyItem');
+Route::get('getMound/{mound}', "GameController@getMound");
 
-Route::get('getMound/{mound}', "HomeController@getMound");
+Route::get('getComplDate/{mound}', "GameController@getComplDate");
 
-Route::get('getComplDate/{mound}', "HomeController@getComplDate");
+Route::get('getSeeds', "GameController@getSeeds");
 
-Route::get('getSeeds', "HomeController@getSeeds");
-
-Route::post('plant', "HomeController@plant");
+Route::post('plant', "GameController@plant");
 
