@@ -13,10 +13,14 @@
 	        	<a href="{{{ action('HomeController@showField')}}}"><i class="fa fa-home"></i></a>
 	        @endif
 
-	           	<p>{{$body}}</p>
-
+	        @if($story_id == "s_intro")
+	           	<p>{{{ substr($body, 0,138).Auth::user()->username.substr($body, 151,422)}}}</p>
+	        @else
+	        	<p>{{{$body}}}</p>
+	        @endif
 	              <a href="{{{ action('HomeController@showAdventureTemplate', [$nextScenario]) }}}">{{{ $next_headers }}}</a>
 	           	<br>
 	        </div>
     </body>
 </html>
+
