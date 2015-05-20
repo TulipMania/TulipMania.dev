@@ -16,6 +16,10 @@ class CreateMarket extends Migration {
 			$table->increments('id');
 			$table->integer('price');
 			$table->timestamps();
+			$table->string('description',255);
+			$table->string('name',255);
+			$table->string('username',255);
+
 		});
 	}
 

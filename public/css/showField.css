@@ -136,7 +136,7 @@ table {
 
 }
 
-div#storeModal,div#inventoryModal{
+div#storeModal,div#inventoryModal,div#marketModal{
 	overflow: scroll;
 }
 
