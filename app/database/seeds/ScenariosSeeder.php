@@ -37,7 +37,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario4                = new Scenario();
 			$scenario4->body          = "You run into your old friend Bert van Praag from your days at the University 
 										of Groningen. He and his wife are on their way to a party at Count 
-										Kiesel's. Would you like to join them?\n
+										Kiesel's. You join them.\n
 										Hennie says: \"Make sure to give the driver a ƒ1 gratuity. You don't want to 
 										get a reputation for being a miser.\"";
 			$scenario4->header        = "Continue.";
@@ -80,7 +80,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario8->body          = "The countess has taken a liking to you. She asks if you 		
 										would like to pair up with her for a short minuet. From across 		
 										the room the count gives you a look. He is not happy.\n  
-										Would you like to dance with her?";
+										You decide to dance with her.";
 			$scenario8->header        = "Continue.";
 			$scenario8->locations     = "grounds";							
 			$scenario8->story_id      = "a_8";
@@ -189,7 +189,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario19                = new Scenario();
 			$scenario19->body          = "You come across a cave that looks oh so much like one in which you used to play as a child. You decide to go in. A bear!\n 
-										  Do you want to fight it or try to tame it? \n
+										  You decide to engage it. \n
 									      Hennie says: \"I will meet you back at the house, master.\"";
 			$scenario19->header        = "Continue.";
 			$scenario19->locations     = "grounds";
