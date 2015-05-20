@@ -147,9 +147,16 @@ public function __construct()
 			return Redirect::back();
 		}
 		else{
-		DB::table('users')->where('id', Auth::user()->id)->update(['items' => Auth::user()->items.",".Input::get('item')]);
-		DB::table('users')->where('id', Auth::user()->id)->decrement('money', intval(Input::get('cost')));
-		return Redirect::back();
+			$itemName = Input::get('item');
+			$item = Item::select('id')->where('name', '=', $itemName)->first();
+			
+			$userItems = Auth::user()->items;
+			$userItems .= ', ' . $item->id;
+			
+
+			DB::table('users')->where('id', Auth::user()->id)->update(['items' => $userItems]);
+			DB::table('users')->where('id', Auth::user()->id)->decrement('money', intval(Input::get('cost')));
+			return Redirect::back();
 		}
 
 	}
