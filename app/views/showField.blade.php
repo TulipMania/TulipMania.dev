@@ -44,6 +44,12 @@
 		</div>	
 	</div>
 
+	        @if (Session::has('errorMessage'))
+                <script type="text/javascript">
+                alert("{{{ Session::get('errorMessage') }}}");
+                </script>
+            @endif
+
 	<div id="inventoryModal" class="modal">
 		<div id="inventory">
 			<a href="#close" title="Close" class="close">X</a>
@@ -86,14 +92,10 @@
 			</div>	
 		</div>
 
-	<a href="#inventoryModal" id="inventory">
-		Inventory
-	</a>
-
 	<div id="money"> 
 		Bank: ƒ{{ Auth::user()->money }}
 	</div>
-
+	<a href="#inventoryModal">Inventory</a>
 	<div id="userModel">
 		<div id="userModelHead" class="modelPart">
 			hat
@@ -106,6 +108,57 @@
 		<div id="userModelLegs" class="modelPart">
 			pants
 		</div>
+	</div>
+
+	<div id="marketModal" class="modal">
+		<div id="market">
+			<a href="#close" title="Close" class="close">X</a>
+			<h1>Welcome to The Market!</h1>
+			<div id="market_table">	
+			<input type="text" class="form-control">
+				<table>
+						<tr>
+						<th>Item</th>
+						<th>Price</th>
+						<th>description</th>
+						<th>Seller</th>
+						</tr>
+						@foreach($marketItems as $item)
+						{{ Form::open(array('action' => 'HomeController@buyItem')) }}
+						<tr>
+							
+							<td> <input type = "submit" id="item_for_sale" name="item_for_sale" value="{{$item->name}}"> </td>
+							<td>{{$item->price}}</td>
+							<input type ="text" id="sellling_price" name="selling_price" value="{{$item->price}}" readonly="true" hidden>
+							<input type ="text" id="item_id" name="item_id" value="{{$item->item_id}}" readonly="true" hidden>
+							<td>{{$item->description}}</td>
+							<td>{{$item->username}}</td>
+							<input type ="text" id="sellling_user" name="selling_user" value="{{$item->username}}" readonly="true" hidden>
+						</tr>
+						{{Form::close()}}
+						@endforeach
+				</table>
+						<h3>Sell your Items</h3>
+				<table>
+						<tr>
+						<th>Item</th>
+						<th>Description</th>
+						<th>Price To Sell</th>
+						</tr>
+						
+						@foreach($userItems as $items)
+						{{ Form::open(array('action' => 'HomeController@sellItem')) }}	
+						<tr>
+							<td><input type ="submit" id="item_to_sell_name" name="item_to_sell_name" value ="{{$items->name}}"/></td>
+							<td>{{$items->description}}</td>
+							<input type="text" name="description_of_item" id="description_of_item" value="{{$items->description}}" readonly="true" hidden>
+							<td><input type="number" name="price_to_sell" id="price_to_sell" value="{{$items->price}}"></td>
+						</tr>
+						{{Form::close()}}
+						@endforeach
+				</table>				
+			</div>
+		</div>	
 	</div>
 
 	<div id="fields">
@@ -175,12 +228,23 @@
 		</div>
 	</div>
 
+
+	        @if (Session::has('successMessage'))
+                <script type="text/javascript">
+                alert("{{{ Session::get('successMessage') }}}");
+                </script>
+            @endif
+
 	<div id="buttons">
 		<a href="#storeModal" class="fieldButton">Store</a>
 		<br>
 		<br>
 		<br>
 		<a href="{{ action('HomeController@showAdventureTemplate', ['s_intro']) }}" class="fieldButton">Adventure Time!</a>
+		<br>
+		<br>
+		<br>
+		<a href="#marketModal" class="fieldButton">Market</a>
 		<br>
 		<br>
 		<br>
