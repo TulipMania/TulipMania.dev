@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class HomeController extends BaseController {
 
 public function __construct()
@@ -118,7 +118,8 @@ public function __construct()
 				$field[$i] = null;
 			}
 		}
-		// dd($field);
+		// dd(Carbon::now());
+		// dd($field[1]->mid_date > Carbon::now());
 		return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds]);
 	}
 

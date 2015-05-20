@@ -29,7 +29,7 @@
 			$seed3->name              = 'Royal Seed';
 			$seed3->description       = "This tulip seed came from the King's personal garden! Ol' Henni wonders how the shopkeepr got it...";
 			$seed3->price             = 50;
-			$seed3->is_seed          = true;
+			$seed3->is_seed           = true;
 			$seed3->save();
 
 			$fertilizerA              = new Item();
@@ -87,6 +87,47 @@
 			$shoes->price             = 500;
 			$shoes->is_seed           = false;
 			$shoes->save();
+
+			$tulip1                   = new Item();
+			$tulip1->img              = 'red_tulip.png';
+			$tulip1->name             = 'Red Tulip';
+			$tulip1->description      = 'DESCRIPTION';
+			$tulip1->price            = 10;
+			$tulip1->is_seed          = false;
+			$tulip1->save();
+
+			$tulip2                   = new Item();
+			$tulip2->img              = 'yellow_tulip.png';
+			$tulip2->name             = 'Yellow Tulip';
+			$tulip2->description      = 'DESCRIPTION';
+			$tulip2->price            = 10;
+			$tulip2->is_seed          = false;
+			$tulip2->save();
+
+			$tulip3                   = new Item();
+			$tulip3->img              = 'royal_tulip.png';
+			$tulip3->name             = 'Royal Tulip';
+			$tulip3->description      = 'DESCRIPTION';
+			$tulip3->price            = 10;
+			$tulip3->is_seed          = false;
+			$tulip3->save();
+
+			$tulipFirst               = new Item();
+			$tulipFirst->img          = 'first_stage.png';
+			$tulipFirst->name         = 'First Stage';
+			$tulipFirst->description  = 'This is the first step of growing a beautiful tulip!';
+			$tulipFirst->price        = 0;
+			$tulipFirst->is_seed      = false;
+			$tulipFirst->save();	
+
+			$tulipMid                 = new Item();
+			$tulipMid->img            = 'mid_stage.png';
+			$tulipMid->name           = 'Mid Stage';
+			$tulipMid->description    = "It's almost finished growing!";
+			$tulipMid->price          = 0;
+			$tulipMid->is_seed        = false;
+			$tulipMid->save();			
+
 		}
 	}
 	
