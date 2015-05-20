@@ -110,7 +110,7 @@ public function __construct()
         }
 
     }
-
+    
     public function getMound($mound)
     {
         $wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
