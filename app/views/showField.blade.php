@@ -282,30 +282,36 @@
 			}
 		}
 		var checkGrowth = setInterval(function(){
-			data = '{{getImg($field[1])}}'.split(',');
-			console.log(data + "\n");
-			if(data){
-				console.log("data exists\n");
-				switch(getStatus(data)){
-					case('first'):
-						console.log("first stage\n");
-						$("#image1").attr('src', '/images/tulips/first_stage.png');
-						break;
-					case('mid'):
-						console.log("mid stage\n");
-						$("#image1").attr('src', '/images/tulips/mid_stage.png');
-						break;
-					case('compl'):
-						console.log("compl\n");
-						$("#image1").attr('src', '/images/tulips/' + data[0]);
-						break;
-					default:
-						console.log("dead\n");
-						$("#image1").attr('src', '/images/tulips/dead_tulip.png');
-						break;
-				}
+			[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(i){
+				$.get('getImg/' + i, function(data){
+					
+					console.log(data + "\n");
+					if(data){
+						dataArray = data.split(',');
+						console.log("data exists\n");
+						console.log(i + "\n");
+						switch(getStatus(dataArray)){
+							case('first'):
+								console.log("first stage\n");
+								$("#image" + i).attr('src', '/images/tulips/first_stage.png');
+								break;
+							case('mid'):
+								console.log("mid stage\n");
+								$("#image" + i).attr('src', '/images/tulips/mid_stage.png');
+								break;
+							case('compl'):
+								console.log("compl\n");
+								$("#image" + i).attr('src', '/images/tulips/' + dataArray[0]);
+								break;
+							default:
+								console.log("dead\n");
+								$("#image" + i).attr('src', '/images/tulips/dead_tulip.png');
+								break;
+						}
 
-			}
+					}
+				});
+			});
 		}, 1000);
 
 		$(".mound").click(function(){
