@@ -11,7 +11,7 @@
 			$seed1                    = new Item();
 			$seed1->img               = 'base_seed.png';
 			$seed1->name              = 'Yellow Seed';
-			$seed1->description       = "As yellow as the sun and old Hennie's teeth. This is a basic tulip.";
+			$seed1->description       = "As yellow as ol' Hennie's teeth. This is a basic tulip.";
 			$seed1->price             = 0;
 			$seed1->is_seed           = true;
 			$seed1->save();
@@ -19,7 +19,7 @@
 			$seed2                    = new Item();
 			$seed2->img               = 'red_seed.png';
 			$seed2->name              = 'Red Seed';
-			$seed2->description       = 'This crimson-tinted tulip certainly stands out. It makes a rose look like an aromatic turd.';
+			$seed2->description       = 'This crimson-tinted tulip certainly stands out. People in Amsterdam seem to love it.';
 			$seed2->price             = 5;
 			$seed2->is_seed           = true;
 			$seed2->save();
@@ -34,40 +34,40 @@
 
 			$fertilizerA              = new Item();
 			$fertilizerA->img         = 'fertilizerA';
-			$fertilizerA->name        = 'fertilizerA';
-			$fertilizerA->description = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$fertilizerA->name        = 'Robben Fertilizer';
+			$fertilizerA->description = 'Maybe not the best of fertilizers, but seems to do the trick.';
 			$fertilizerA->price       = 10;
 			$fertilizerA->is_seed     = false;
 			$fertilizerA->save();
 
 			$fertilizerB              = new Item();
 			$fertilizerB->img         = 'fertilizerB';
-			$fertilizerB->name        = 'fertilizerB';
-			$fertilizerB->description = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$fertilizerB->name        = 'Luzern Fertilizer';
+			$fertilizerB->description = 'That Robben Fertilizer is for the common man. Luzern Fertilizer is what you need!';
 			$fertilizerB->price       = 30;
 			$fertilizerB->is_seed     = false;
 			$fertilizerB->save();
 
 			$insecticide              = new Item();
 			$insecticide->img         = 'insecticide';
-			$insecticide->name        = 'insecticide';
-			$insecticide->description = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$insecticide->name        = 'Depay Insecticide';
+			$insecticide->description = 'Bugs want your tulips. Depay obliterates bugs. Shall I say more?';
 			$insecticide->price       = 20;
 			$insecticide->is_seed     = false;
 			$insecticide->save();
 
 			$hat1                     = new Item();
 			$hat1->img                = 'hat1';
-			$hat1->name               = 'hat1';
-			$hat1->description        = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$hat1->name               = 'Wide Brim Hat';
+			$hat1->description        = 'Look like a nobleman (sort of) with this wide brim hat.';
 			$hat1->price              = 100;
 			$hat1->is_seed            = false;
 			$hat1->save();
 
 			$hat2                     = new Item();
 			$hat2->img                = 'hat2';
-			$hat2->name               = 'hat2';
-			$hat2->description        = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$hat2->name               = 'Beaver Pelt Hat';
+			$hat2->description        = 'Look like a true Batavian with this fancy Beaver Pelt hat.';
 			$hat2->price              = 500;
 			$hat2->is_seed            = false;
 			$hat2->save();
@@ -75,7 +75,7 @@
 			$shirt                    = new Item();
 			$shirt->img               = 'shirt';
 			$shirt->name              = 'shirt';
-			$shirt->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$shirt->description       = 'You need a shirt, OK?';
 			$shirt->price             = 500;
 			$shirt->is_seed           = false;
 			$shirt->save();
@@ -83,7 +83,7 @@
 			$shoes                    = new Item();
 			$shoes->img               = 'shoes';
 			$shoes->name              = 'shoes';
-			$shoes->description       = 'BLEEP BLOOP, I AM A DESCRIPTION';
+			$shoes->description       = 'Walk the grounds in style with these comfortable leather shoes.';
 			$shoes->price             = 500;
 			$shoes->is_seed           = false;
 			$shoes->save();
