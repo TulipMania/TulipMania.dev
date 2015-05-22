@@ -28,8 +28,6 @@ Route::get('logout','HomeController@logout');
 
 Route::post('/signup','HomeController@signUp');
 
-Route::get('hello', 'HomeController@showWelcome');
-
 Route::post('insertSeed','GameController@insertSeed');
 
 Route::post('insertItem','GameController@insertItem');
