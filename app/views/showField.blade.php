@@ -266,8 +266,6 @@
 			var compl = Date.parse(data[2]);
 			var death = Date.parse(data[3]);
 
-			console.log("now " + now + "\nmid " + mid + "\ncompl " + compl + "\ndeath " + death + "\n");
-
 			if(now < mid){
 				return 'first';
 			}
@@ -285,14 +283,10 @@
 			[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(i){
 				$.get('getImg/' + i, function(data){
 					
-					console.log(data + "\n");
 					if(data){
 						dataArray = data.split(',');
-						console.log("data exists\n");
-						console.log(i + "\n");
 						switch(getStatus(dataArray)){
 							case('first'):
-								console.log("first stage\n");
 								$("#image" + i).attr('src', '/images/tulips/first_stage.png');
 								break;
 							case('mid'):
