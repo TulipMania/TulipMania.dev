@@ -165,19 +165,19 @@
 			<a href="#moundModal" id="mound1" class="mound" value="{{isset($field[1])}}">
 				{{{ '' }}}
 				@if(isset($field[1]))
-					<img src="/images/tulips/{{getImg($field[1])}}" class="itemImage">
+					<img src="" id='image1' class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound2" class="mound" value="{{isset($field[2])}}">
 				{{{ '' }}}
 				@if(isset($field[2]))
-					<img src="/images/tulips/{{getImg($field[2])}}" class="itemImage">
+					<img src="" id='image2' class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound3" class="mound" value="{{isset($field[3])}}">
 				{{{ '' }}}
 				@if(isset($field[3]))
-					<img src="/images/tulips/{{getImg($field[3])}}" class="itemImage">
+					<img src="" id='image3' class="itemImage">
 				@endif
 			</a>
 		</div>
@@ -187,19 +187,19 @@
 			<a href="#moundModal" id="mound4" class="mound" value="{{isset($field[4])}}">
 				{{{ '' }}}
 				@if(isset($field[4]))
-					<img src="/images/tulips/{{getImg($field[4])}}" class="itemImage">
+					<img src="" id='image4' class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound5" class="mound" value="{{isset($field[5])}}">
 				{{{ '' }}}
 				@if(isset($field[5]))
-					<img src="/images/tulips/{{getImg($field[5])}}" class="itemImage">
+					<img src="" id='image5' class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound6" class="mound" value="{{isset($field[6])}}">
 				{{{ '' }}}
 				@if(isset($field[6]))
-					<img src="/images/tulips/{{getImg($field[6])}}" class="itemImage">
+					<img src="" id='image6' class="itemImage">
 				@endif
 			</a>
 		</div>
@@ -209,19 +209,19 @@
 			<a href="#moundModal" id="mound7" class="mound" value="{{isset($field[7])}}">
 				{{{ '' }}}
 				@if(isset($field[7]))
-					<img src="/images/tulips/{{getImg($field[7])}}" class="itemImage">
+					<img src="" id='image7' class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound8" class="mound" value="{{isset($field[8])}}">
 				{{{ '' }}}
 				@if(isset($field[8]))
-					<img src="/images/tulips/{{getImg($field[8])}}" class="itemImage">
+					<img src="" id='image8' class="itemImage">
 				@endif
 			</a>
 			<a href="#moundModal" id="mound9" class="mound" value="{{isset($field[9])}}">
 				{{{ '' }}}
 				@if(isset($field[9]))
-					<img src="/images/tulips/{{getImg($field[9])}}" class="itemImage">
+					<img src="" id='image9' class="itemImage">
 				@endif
 			</a>
 		</div>
@@ -252,41 +252,99 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	$(".mound").click(function(){
-		mound = $(this).attr('id').substring(5);
-		if($(this).attr('value')){
-			mound = $(this).attr('id').substring(5);
-			$.get( "getMound/" + mound, function( data ) {
-			  $("#seed_table").html(data);
-			  console.log(data);
-			});
+	// $(document).ready(
+		function getStatus(data){
+			var hour = 3600000;
+			var now = parseInt(Date.now() + 17892965);
+
+			var mid = Date.parse(data[1]); 
+			var compl = Date.parse(data[2]);
+			var death = Date.parse(data[3]);
+
+			console.log("now " + now + "\nmid " + mid + "\ncompl " + compl + "\ndeath " + death + "\n");
+
+			if(now < mid){
+				return 'first';
+			}
+			else if(now >= mid && now < compl){
+				return 'mid';
+			}
+			else if(now >= compl && now < death){
+				return 'compl';
+			}
+			else{
+				return 'dead';
+			}
 		}
-		else{
-			$.get( "getSeeds", function( seeds ) {
-			  if(seeds.length > 0){
-			  		html ="<form method='POST' action='plant'>"; 
-			  		for(i = 0; i < seeds.length; i++){
-			  			html += '<label>' +
-			  			
-			  			'<input type="radio" name="seedID" value="' + seeds[i].id + '" >' +
-			  			"<span>" + seeds[i].name + "</span>" + 
-			  			'</label>' +
-						"<br>";
-			  		}
-					html += '<input type="hidden" id="mound" name="mound" value="' + mound + '">' +
-					        '<button type="submit">Plant</button>';
-					$("#seed_table").html(html);
-					console.log(mound);
-			  }
-			  else{
-			  	$("#seed_table").html("<p>You don't have any seeds!</p>");
-			  }
+		var checkGrowth = setInterval(function(){
+			[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(i){
+				$.get('getImg/' + i, function(data){
+					
+					console.log(data + "\n");
+					if(data){
+						dataArray = data.split(',');
+						console.log("data exists\n");
+						console.log(i + "\n");
+						switch(getStatus(dataArray)){
+							case('first'):
+								console.log("first stage\n");
+								$("#image" + i).attr('src', '/images/tulips/first_stage.png');
+								break;
+							case('mid'):
+								console.log("mid stage\n");
+								$("#image" + i).attr('src', '/images/tulips/mid_stage.png');
+								break;
+							case('compl'):
+								console.log("compl\n");
+								$("#image" + i).attr('src', '/images/tulips/' + dataArray[0]);
+								break;
+							default:
+								console.log("dead\n");
+								$("#image" + i).attr('src', '/images/tulips/dead_tulip.png');
+								break;
+						}
+
+					}
+				});
 			});
-		}
-	})
-	$.getJSON("$result", function(json) {
-    console.log(json); // this will show the info it in firebug console 
-});
+
+		}, 1000);
+
+		$(".mound").click(function(){
+				mound = $(this).attr('id').substring(5);
+				if($(this).attr('value')){
+					mound = $(this).attr('id').substring(5);
+					$.get( "getMound/" + mound, function( data ) {
+					  $("#seed_table").html(data);
+					  console.log(data);
+					});
+				}
+				else{
+					$.get( "getSeeds", function( seeds ) {
+					  if(seeds.length > 0){
+					  		html ="<form method='POST' action='plant'>"; 
+					  		for(i = 0; i < seeds.length; i++){
+					  			html += '<label>' +
+					  			
+					  			'<input type="radio" name="seedID" value="' + seeds[i].id + '" >' +
+					  			"<span>" + seeds[i].name + "</span>" + 
+					  			'</label>' +
+								"<br>";
+					  		}
+							html += '<input type="hidden" id="mound" name="mound" value="' + mound + '">' +
+							        '<button type="submit">Plant</button>';
+							$("#seed_table").html(html);
+							console.log(mound);
+					  }
+					  else{
+					  	$("#seed_table").html("<p>You don't have any seeds!</p>");
+					  }
+					});
+				}
+			});
+	// )
+	
+
 </script>
 	
 </body>

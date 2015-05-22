@@ -193,11 +193,23 @@ public function __construct()
         }
     }
 
+
     public function searchMarket()
     {
         $searchQuery = Input::get('searched_item');
         $returnedResult = DB::table('market')->where('name', 'LIKE', '%'.$searchQuery.'%')->get();
         return $returnedResult;
+    }
+    public function getImg($moundNum){
+        $mound = Field::where('mound', '=', $moundNum)->where('user_id', '=', Auth::user()->id)->first();
+        if($mound){
+            // dd(getImg($mound));
+            return getImg($mound);
+        }
+        else{
+            return null;
+        }
+        
     }
 
 }

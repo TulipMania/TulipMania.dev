@@ -46,3 +46,5 @@ Route::get('getSeeds', "GameController@getSeeds");
 
 Route::post('plant', "GameController@plant");
 
+Route::get('getImg/{moundNum}', "GameController@getImg");
+
