@@ -28,8 +28,6 @@ Route::get('logout','HomeController@logout');
 
 Route::post('/signup','HomeController@signUp');
 
-Route::get('hello', 'HomeController@showWelcome');
-
 Route::post('insertSeed','GameController@insertSeed');
 
 Route::post('insertItem','GameController@insertItem');
@@ -37,6 +35,8 @@ Route::post('insertItem','GameController@insertItem');
 Route::post('sellItem','GameController@sellItem');
 
 Route::post('buyItem','GameController@buyItem');
+
+Route::post('searchMarket','GameController@searchMarket');
 
 Route::get('getMound/{mound}', "GameController@getMound");
 
