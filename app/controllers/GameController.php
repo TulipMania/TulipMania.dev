@@ -1,6 +1,7 @@
 <?php 
-
+use Carbon\Carbon;
 class GameController extends BaseController {
+
 
 public function __construct()
 {
@@ -118,8 +119,13 @@ public function __construct()
         foreach ($wholeField as $mounds) {
             $field[$mounds->mound] = $mounds;
         }
-        // dd($mound);
-        return Item::find($field[$mound]->item_id)->name;
+
+        $tulipID = Seed::find($field[$mound]->item_id)->grown_item_id;
+        $tulip = Item::find($tulipID);
+        $tulipName = $tulip->name;
+        $completionDate = $field[$mound]->compl_date;
+
+        return Carbon::now()->diffForHumans($completionDate);
     }
 
     public function getComplDate($mound){

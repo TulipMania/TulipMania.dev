@@ -260,13 +260,13 @@
 	// $(document).ready(
 		function getStatus(data){
 			var hour = 3600000;
-			var now = parseInt(Date.now() + 17892965);
+			var once = 17892965;
+			var now = data[4];
 
-			var mid = Date.parse(data[1]); 
-			var compl = Date.parse(data[2]);
-			var death = Date.parse(data[3]);
-
-			console.log("now " + now + "\nmid " + mid + "\ncompl " + compl + "\ndeath " + death + "\n");
+			var mid = data[1]; 
+			var compl = data[2];
+			var death = data[3];
+			console.log("now: " + now + "\nmid: " + mid);
 
 			if(now < mid){
 				return 'first';
@@ -284,27 +284,19 @@
 		var checkGrowth = setInterval(function(){
 			[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(i){
 				$.get('getImg/' + i, function(data){
-					
-					console.log(data + "\n");
 					if(data){
 						dataArray = data.split(',');
-						console.log("data exists\n");
-						console.log(i + "\n");
 						switch(getStatus(dataArray)){
 							case('first'):
-								console.log("first stage\n");
 								$("#image" + i).attr('src', '/images/tulips/first_stage.png');
 								break;
 							case('mid'):
-								console.log("mid stage\n");
 								$("#image" + i).attr('src', '/images/tulips/mid_stage.png');
 								break;
 							case('compl'):
-								console.log("compl\n");
 								$("#image" + i).attr('src', '/images/tulips/' + dataArray[0]);
 								break;
 							default:
-								console.log("dead\n");
 								$("#image" + i).attr('src', '/images/tulips/dead_tulip.png');
 								break;
 						}
