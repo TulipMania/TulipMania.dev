@@ -38,6 +38,8 @@ Route::post('sellItem','GameController@sellItem');
 
 Route::post('buyItem','GameController@buyItem');
 
+Route::post('searchMarket','GameController@searchMarket');
+
 Route::get('getMound/{mound}', "GameController@getMound");
 
 Route::get('getComplDate/{mound}', "GameController@getComplDate");

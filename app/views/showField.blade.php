@@ -44,12 +44,6 @@
 		</div>	
 	</div>
 
-	        @if (Session::has('errorMessage'))
-                <script type="text/javascript">
-                alert("{{{ Session::get('errorMessage') }}}");
-                </script>
-            @endif
-
 	<div id="inventoryModal" class="modal">
 		<div id="inventory">
 			<a href="#close" title="Close" class="close">X</a>
@@ -99,7 +93,7 @@
 	<div id="money"> 
 		Bank: ƒ{{ Auth::user()->money }}
 	</div>
-	
+
 	<div id="userModel">
 		<div id="userModelHead" class="modelPart">
 			hat
@@ -119,7 +113,8 @@
 			<a href="#close" title="Close" class="close">X</a>
 			<h1>Welcome to The Market!</h1>
 			<div id="market_table">	
-			<input type="text" class="form-control">
+				<input type="text" class="form-control" name="searched_item" id="searched_item">
+				<input type="submit" value="search">
 				<table>
 						<tr>
 						<th>Item</th>
@@ -244,7 +239,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{ action('GameController@showAdventureTemplate', ['s_intro']) }}" class="fieldButton">Adventure Time!</a>
+		<a href="{{ action('GameController@showAdventureTemplate', ['s_grounds']) }}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
@@ -289,6 +284,9 @@
 			});
 		}
 	})
+	$.getJSON("$result", function(json) {
+    console.log(json); // this will show the info it in firebug console 
+});
 </script>
 	
 </body>

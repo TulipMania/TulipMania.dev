@@ -10,15 +10,20 @@
 		</div>
 	        <div class="container" id="story">
 
-	        @if($story_id == "s_grounds" || $story_id == "s_intro" )
+	        @if($story_id == "s_grounds")
 	        	<a href="{{{ action('GameController@showField')}}}"><i class="fa fa-home"></i></a>
-	        @endif
-	        @if($story_id == "s_intro")
+	        	<p>{{$body}}</p>
+	        	<a href="{{{ action('GameController@showAdventureTemplate', [$nextScenario]) }}}">{{{ $next_headers }}}</a>
+	        
+	        @elseif($story_id == "s_intro")
+	        	<a href="{{{ action('GameController@showField')}}}"><i class="fa fa-home"></i></a>
 	           	<p>{{{ substr($body, 0,138).Auth::user()->username.substr($body, 151,422)}}}</p>
+	           	<a href="{{{ action('GameController@showField')}}}">{{{ $next_headers }}}</a>
 	        @else
 	           	<p>{{$body}}</p>
+	           		<a href="{{{ action('GameController@showAdventureTemplate', [$nextScenario]) }}}">{{{ $next_headers }}}</a>
 	        @endif
-	              <a href="{{{ action('GameController@showAdventureTemplate', [$nextScenario]) }}}">{{{ $next_headers }}}</a>
+
 	           	<br>
 	        </div> 
     </body>
