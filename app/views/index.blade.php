@@ -69,9 +69,9 @@
                             <span class="copy"></span>
                           </p>
                           <p class="line">
-                            <span class="copy">Hi, my username or e-mail is </span>
+                            <span class="copy">Hi, my username (or e-mail) is </span>
                             <span class="inputcontainer">{{ Form::text('user_input',Input::old('user_input'), array('class' => 'textinput', 'id' =>"user_input", 'name' => "user_input")) }}</span> 
-                            <span class="copy">and my password is: </span>
+                            <span class="copy">and my password is </span>
                             <span class="inputcontainer">{{ Form::password('password', array('class' => 'textinput', 'id' =>"password", 'name' => "password")) }}</span>
                             <span class="copy">.</span>
                           </p>
@@ -91,13 +91,13 @@
                             <span class="copy"></span>
                           </p>
                           <p class="line">
-                            <span class="copy">or actually wait...I don't have an account but i want one, my e-mail is</span>
+                            <span class="copy">I don't have an account, but I sure do want one. My e-mail is</span>
                             <span class="inputcontainer"> {{ Form::text('newEmail',Input::old('newEmail'), array('class' => 'textinput', 'id' =>"newEmail", 'name' => "newEmail")) }}</span> 
                             <span class="copy">and I want my username to be </span>
                             <span class="inputcontainer"> {{ Form::text('newUser',Input::old('newUser'), array('class' => 'textinput', 'id' =>"newUser", 'name' => "newUser")) }}</span>
-                            <span class="copy">and I want my password to be</span>
+                            <span class="copy">a good password is</span>
                             <span class="inputcontainer">{{ Form::password('newPass', array('class' => 'textinput', 'id' =>"newPass", 'name' => "newPass")) }}</span>
-                            <span class="copy">hmm...i should confirm my password</span>
+                            <span class="copy">. Let's confirm that password</span>
                             <span class="inputcontainer">{{ Form::password('confirmPass',array('class' => 'textinput', 'id' =>"confirmPass", 'name' => "confirmPass")) }}</span>
                             <span class="copy">.</span>
                           </p>
@@ -152,10 +152,11 @@
                         <div class="col-md-6 margin-top-device">
                             <h3 class="section-mini-title color-purple">THE HISTORY BEHIND THE GAME</h3>
                             <hr class="general left">
-                            <p>Cras tempus dolor nec magna accumsan tempus. Lorem ipsum dolor slit amet consectetuer adipiscing elit. Nam dui rhoncus. Proin risus tellus, bibendum sed volutpat sit amet ultrices vitae ante.</p>
+                            <p>Tulip mania was a period in the Dutch Golden Age during which contract prices for bulbs of the recently introduced tulip reached extraordinarily high levels.
+                            At the peak of tulip mania, in March 1637, some single tulip bulbs sold for more than 10 times the annual income of a skilled craftsman. It is generally considered the first recorded speculative bubble (or economic bubble).</p>
                         </div><!-- end col -->
                         <div class="col-md-6 margin-top-device">
-                            <img src="images/tulipmania.jpg" alt="" class="img-responsive wow bounceInRight">
+                            <img src="images/sweet_painting.jpg" alt="" class="img-responsive wow bounceInRight">
                         </div><!-- end col -->
                     </div>
                     <div class="clearfix service-box-2">
@@ -165,14 +166,14 @@
                         <div class="col-md-6 margin-top-device">
                             <h3 class="section-mini-title color-green">TULIP FIELDS</h3>
                             <hr class="general left">
-                            <p>Cras tempus dolor nec magna accumsan tempus. Lorem ipsum dolor slit amet consectetuer adipiscing elit. Nam dui rhoncus. Proin risus tellus, bibendum sed volutpat sit amet ultrices vitae ante.</p>
+                            <p>Grow your own tulips and sell them on the open market!</p>
                         </div><!-- end col -->
                     </div>
                     <div class="clearfix service-box-2">
                         <div class="col-md-6 margin-top-device">
                             <h3 class="section-mini-title color-red">ADVENTURES</h3>
                             <hr class="general left">
-                            <p>Cras tempus dolor nec magna accumsan tempus. Lorem ipsum dolor slit amet consectetuer adipiscing elit. Nam dui rhoncus. Proin risus tellus, bibendum sed volutpat sit amet ultrices vitae ante.</p>
+                            <p>Take amazing adventures! Fight bears! Win money to buy more seeds!</p>
                         </div><!-- end col -->
                         <div class="col-md-6 margin-top-device">
                             <img src="images/adventure.png" alt="" class="img-responsive wow bounceInRight">
@@ -198,11 +199,9 @@
                                 <img src="images/jd.jpg" alt="" class="img-responsive wow bounceInLeft">
                             </div><!-- end col -->
                             <div class="col-md-9 margin-top-device">
-                                <h3 class="section-mini-title">JOSE GARZA</h3>
+                                <h3 class="section-mini-title">JOSE D. GARZA</h3>
                                 <h4 class="mini-title color-red">Developer</h4>
                                 <hr class="general left">
-                                <p>Cras tempus dolor nec magna accumsan tempus. Lorem ipsum dolor slit amet consectetuer adipiscing<br>
-                                 elit. Nam dui rhoncus. Proin risus tellus, bibendum sed volutpat sit amet ultrices vitae ante.</p>
                                 <ul class="header-social text-left">
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
@@ -212,11 +211,9 @@
                         </div><!-- end service-box -->
                         <div class="clearfix service-box-2 text-right">
                             <div class="col-md-9 margin-top-device">
-                                <h3 class="section-mini-title">PABLO PINHEIRO</h3>
-                                <h4 class="mini-title color-red">Developer & Author</h4>
+                                <h3 class="section-mini-title">PABLO PIÑERO</h3>
+                                <h4 class="mini-title color-red">Developer</h4>
                                 <hr class="general left">
-                                <p>Cras tempus dolor nec magna accumsan tempus. Lorem ipsum dolor slit amet consectetuer adipiscing<br>
-                                 elit. Nam dui rhoncus. Proin risus tellus, bibendum sed volutpat sit amet ultrices vitae ante.</p>
                                 <ul class="header-social text-left">
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
@@ -235,8 +232,6 @@
                                 <h3 class="section-mini-title">RYAN DINESMAN</h3>
                                 <h4 class="mini-title color-red">Developer</h4>
                                 <hr class="general left">
-                                <p>Cras tempus dolor nec magna accumsan tempus. Lorem ipsum dolor slit amet consectetuer adipiscing<br>
-                                 elit. Nam dui rhoncus. Proin risus tellus, bibendum sed volutpat sit amet ultrices vitae ante.</p>
                                 <ul class="header-social text-left">
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
