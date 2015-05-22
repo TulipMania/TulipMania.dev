@@ -27,6 +27,6 @@
 		$mid = $mound->mid_date;
 		$compl = $mound->compl_date;
 		$death = $mound->death_date;
-		return Seed::tulipPic($mound->item_id) . ',' . $mid . ',' . $compl . ',' . $death;
+		return Seed::tulipPic($mound->item_id) . ',' . $mid . ',' . $compl . ',' . $death . ',' . $now;
 	}
  ?>
