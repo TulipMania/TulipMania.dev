@@ -56,7 +56,7 @@ body{
 	width:150px;
 	height: 50px;
 	border: solid black 1px;
-	background: gray;
+	background: url('../images/backgrounds/wood.png');
 	text-decoration: none;
 	font-size: 20px;
 	font-weight: bold;
@@ -101,10 +101,12 @@ table {
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
-	background: #fff;
-	background: -moz-linear-gradient(#fff, #999);
+	/*background: #fff;*/
+	background: url('../images/backgrounds/wood.png');
+	/*background: -moz-linear-gradient(#fff, #999);
 	background: -webkit-linear-gradient(#fff, #999);
-	background: -o-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);*/
+	color:white;
 }
 
 .close {

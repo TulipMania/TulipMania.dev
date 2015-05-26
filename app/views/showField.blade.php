@@ -257,16 +257,12 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	// $(document).ready(
 		function getStatus(data){
-			var hour = 3600000;
-			var once = 17892965;
 			var now = data[4];
 
 			var mid = data[1]; 
 			var compl = data[2];
 			var death = data[3];
-			console.log("now: " + now + "\nmid: " + mid);
 
 			if(now < mid){
 				return 'first';
@@ -312,7 +308,6 @@
 					mound = $(this).attr('id').substring(5);
 					$.get( "getMound/" + mound, function( data ) {
 					  $("#seed_table").html(data);
-					  console.log(data);
 					});
 				}
 				else{
@@ -330,7 +325,6 @@
 							html += '<input type="hidden" id="mound" name="mound" value="' + mound + '">' +
 							        '<button type="submit">Plant</button>';
 							$("#seed_table").html(html);
-							console.log(mound);
 					  }
 					  else{
 					  	$("#seed_table").html("<p>You don't have any seeds!</p>");
@@ -338,8 +332,6 @@
 					});
 				}
 			});
-	// )
-	
 </script>
 	
 </body>
