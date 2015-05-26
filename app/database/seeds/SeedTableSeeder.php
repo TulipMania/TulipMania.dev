@@ -9,8 +9,8 @@
 			DB::table('seeds')->delete();
 
 			$seed1                    = new Seed();
-			$seed1->mid_grow_rate = "0_0_30";
-			$seed1->death_time = "0_5_0";
+			$seed1->mid_grow_rate = "0_0_15";
+			$seed1->death_time = "0_1_0";
 			$seed1->item_id = 1;
 			$seed1->grown_item_id =  12;
 			$seed1->save();

@@ -91,20 +91,20 @@
 	</a>
 
 	<div id="money"> 
-		Bank: ƒ{{ Auth::user()->money }}
+		Bank Account: ƒ{{ Auth::user()->money }}
 	</div>
 
 	<div id="userModel">
 		<div id="userModelHead" class="modelPart">
-			hat
+			<img class="modelPart" src="/images/facehat.png">
 		</div>
 		<br>
 		<div id="userModelTorso" class="modelPart">
-			shirt
+			<img class="modelPart" src="/images/shirt.png">
 		</div>
 		<br>
 		<div id="userModelLegs" class="modelPart">
-			pants
+			<img class="modelPart" src="/images/pantswshoes.png">
 		</div>
 	</div>
 
@@ -252,13 +252,11 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	// $(document).ready(
 		function getStatus(data){
 			var now = data[4];
 			var mid = data[1]; 
 			var compl = data[2];
 			var death = data[3];
-			console.log("now: " + now + "\nmid: " + mid);
 
 			if(now < mid){
 				return 'first';
@@ -306,7 +304,6 @@
 					mound = $(this).attr('id').substring(5);
 					$.get( "getMound/" + mound, function( data ) {
 					  $("#seed_table").html(data);
-					  console.log(data);
 					});
 				}
 				else{
@@ -324,7 +321,6 @@
 							html += '<input type="hidden" id="mound" name="mound" value="' + mound + '">' +
 							        '<button type="submit">Plant</button>';
 							$("#seed_table").html(html);
-							console.log(mound);
 					  }
 					  else{
 					  	$("#seed_table").html("<p>You don't have any seeds!</p>");
@@ -332,9 +328,6 @@
 					});
 				}
 			});
-	// )
-	
-
 </script>
 	
 </body>

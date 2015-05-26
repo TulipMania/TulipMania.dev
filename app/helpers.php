@@ -29,4 +29,28 @@
 		$death = $mound->death_date;
 		return Seed::tulipPic($mound->item_id) . ',' . $mid . ',' . $compl . ',' . $death . ',' . $now;
 	}
+
+	function getGrowthStatus($data){
+			if(!is_array($data)){
+				$data = explode(',',getImg($data));
+			}
+			$now = $data[4];
+
+			$mid = $data[1]; 
+			$compl = $data[2];
+			$death = $data[3];
+
+			if($now < $mid){
+				return 'first';
+			}
+			else if($now >= $mid && $now < $compl){
+				return 'mid';
+			}
+			else if($now >= $compl && $now < $death){
+				return 'compl';
+			}
+			else{
+				return 'dead';
+			}
+		}
  ?>

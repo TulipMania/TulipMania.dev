@@ -66,7 +66,6 @@ public function __construct()
                 $field[$i] = null;
             }
         }
-
         return View::make('showField', ['storeItems' => $storeItems, 'userItems' => $userItems, 'field' => $field, 'userSeeds' => $userSeeds,'marketItems' => $marketItems]);
     }
 
@@ -123,8 +122,24 @@ public function __construct()
         $tulipID = Seed::find($field[$mound]->item_id)->grown_item_id;
         $tulip = Item::find($tulipID);
         $tulipName = $tulip->name;
-        $completionDate = $field[$mound]->compl_date;
-
+        $status = getGrowthStatus($field[$mound]);
+        switch($status){
+            case('first'):
+            case('mid'):
+                $completionDate = new Carbon($field[$mound]->compl_date);
+                return "This tulip will be done growing " . $completionDate->diffForHumans() . ".";
+                break;
+            case('compl'):
+                $deathDate = new Carbon($field[$mound]->death_date);
+                return "This tulip will die " . $deathDate->diffForHumans() . ".";
+                break;
+            default:
+                return 'This tulip is dead!';
+                break;
+        }
+        $completionDate = new Carbon($field[$mound]->compl_date);
+        $now = Carbon::now()->toDateTimeString();
+        dd($field);
         return Carbon::now()->diffForHumans($completionDate);
     }
 
