@@ -76,15 +76,6 @@
 				TABLE
 			</div>
 		</div>	
-	</div>
-		<div id="moundModal" class="modal">
-			<div id="seeds">
-				<a href="#close" title="Close" class="close">X</a>
-				<h1>MOUNDS OF MOUNDS!</h1>
-				<div id="seed_table">	
-				</div>
-			</div>	
-		</div>
 
 	<a href="#inventoryModal" id="inventory">		
 		Inventory		
@@ -303,7 +294,12 @@
 				if($(this).attr('value')){
 					mound = $(this).attr('id').substring(5);
 					$.get( "getMound/" + mound, function( data ) {
-					  $("#seed_table").html(data);
+						if(data[1]){
+							$("#seed_table").html(data[0] + '<form method="POST" action="pluck"><input type="hidden" value=' + data[2] + ' name="mound" id="mound"><button type="submit">Pluck</button></form>');
+						}
+					  	else{
+					  		$("#seed_table").html(data[0]);
+					  	}
 					});
 				}
 				else{
