@@ -91,20 +91,20 @@
 	</a>
 
 	<div id="money"> 
-		Bank: ƒ{{ Auth::user()->money }}
+		Bank Account: ƒ{{ Auth::user()->money }}
 	</div>
 
 	<div id="userModel">
 		<div id="userModelHead" class="modelPart">
-			hat
+			<img class="modelPart" src="/images/facehat.png">
 		</div>
 		<br>
 		<div id="userModelTorso" class="modelPart">
-			shirt
+			<img class="modelPart" src="/images/shirt.png">
 		</div>
 		<br>
 		<div id="userModelLegs" class="modelPart">
-			pants
+			<img class="modelPart" src="/images/pantswshoes.png">
 		</div>
 	</div>
 

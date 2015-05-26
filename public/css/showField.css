@@ -10,17 +10,26 @@ body{
 	float: left;
 	margin-right: 12%;
 	margin-left: 2%;
-	margin-top: 25%;
+	margin-top: 30%;
 }
 
 .modelPart{
 	height: 100px;
 	width: 75px;
-	border: solid black 1px;
+	/*border: solid black 1px;*/
 	margin-bottom: -19px;
+	position: relative;
 	/*float: none;*/
 }
 
+#userModelHead{
+	top:42px;
+}
+
+#userModelTorso{
+	top: 35px;
+	z-index: 1;
+}
 #fields{
 	height: 500px;
 	width: 800px;
@@ -135,11 +144,12 @@ table {
 	/*float:center;*/
 	position: relative;
 	z-index: 1;
+	height: 500px;
 
 }
 
 div#storeModal,div#inventoryModal,div#market_table{
-	overflow: scroll;
+	/*overflow: scroll;*/
 }
 
 .itemImage{
