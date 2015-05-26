@@ -12,7 +12,7 @@ public function __construct()
 // Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']); 
     public function showAdventureTemplate($id)
     {   
-        if (Auth::user()->money < 14)
+        if (Auth::user()->money < 0)
         {
             Session::flash('errorMessage','Sorry,you must have at least ƒ14 to go on an adventure!');
             return Redirect::back()->withInput();
