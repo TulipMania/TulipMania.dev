@@ -76,6 +76,7 @@
 				TABLE
 			</div>
 		</div>	
+	</div>
 
 	<a href="#inventoryModal" id="inventory">		
 		Inventory		
