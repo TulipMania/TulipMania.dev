@@ -83,7 +83,7 @@ public function __construct()
 			$user->username = Input::get('newUser');
 			$user->password = Input::get('newPass');
 			$user->save();
-			return Redirect::action('HomeController@showLanding');
+			return Redirect::action('GameController@showAdventureTemplate', ['s_intro']);
 	    }
 
 		$items = explode(',', User::find(Auth::id())->items);

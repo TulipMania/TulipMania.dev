@@ -12,9 +12,9 @@ public function __construct()
 // Route::get('adventure_template/{next}', ['uses' => 'HomeController@showAdventureTemplate']); 
     public function showAdventureTemplate($id)
     {   
-        if (Auth::user()->money <= 0)
+        if (Auth::user()->money < 14)
         {
-            Session::flash('errorMessage','Sorry,you do not have enought money to go on an adventure!');
+            Session::flash('errorMessage','Sorry,you must have at least ƒ14 to go on an adventure!');
             return Redirect::back()->withInput();
         }else{
 
@@ -110,7 +110,7 @@ public function __construct()
         }
 
     }
-
+    
     public function getMound($mound)
     {
         $wholeField = DB::table('fields')->where('user_id', '=', Auth::user()->id)->get();
@@ -214,6 +214,13 @@ public function __construct()
         }
     }
 
+
+    public function searchMarket()
+    {
+        $searchQuery = Input::get('searched_item');
+        $returnedResult = DB::table('market')->where('name', 'LIKE', '%'.$searchQuery.'%')->get();
+        return $returnedResult;
+    }
     public function getImg($moundNum){
         $mound = Field::where('mound', '=', $moundNum)->where('user_id', '=', Auth::user()->id)->first();
         if($mound){

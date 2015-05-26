@@ -44,12 +44,6 @@
 		</div>	
 	</div>
 
-	        @if (Session::has('errorMessage'))
-                <script type="text/javascript">
-                alert("{{{ Session::get('errorMessage') }}}");
-                </script>
-            @endif
-
 	<div id="inventoryModal" class="modal">
 		<div id="inventory">
 			<a href="#close" title="Close" class="close">X</a>
@@ -99,7 +93,7 @@
 	<div id="money"> 
 		Bank: ƒ{{ Auth::user()->money }}
 	</div>
-	
+
 	<div id="userModel">
 		<div id="userModelHead" class="modelPart">
 			hat
@@ -119,7 +113,8 @@
 			<a href="#close" title="Close" class="close">X</a>
 			<h1>Welcome to The Market!</h1>
 			<div id="market_table">	
-			<input type="text" class="form-control">
+				<input type="text" class="form-control" name="searched_item" id="searched_item">
+				<input type="submit" value="search">
 				<table>
 						<tr>
 						<th>Item</th>
@@ -244,7 +239,7 @@
 		<br>
 		<br>
 		<br>
-		<a href="{{ action('GameController@showAdventureTemplate', ['s_intro']) }}" class="fieldButton">Adventure Time!</a>
+		<a href="{{ action('GameController@showAdventureTemplate', ['s_grounds']) }}" class="fieldButton">Adventure Time!</a>
 		<br>
 		<br>
 		<br>
@@ -259,7 +254,6 @@
 <script type="text/javascript">
 		function getStatus(data){
 			var now = data[4];
-
 			var mid = data[1]; 
 			var compl = data[2];
 			var death = data[3];
@@ -280,6 +274,7 @@
 		var checkGrowth = setInterval(function(){
 			[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(i){
 				$.get('getImg/' + i, function(data){
+
 					if(data){
 						dataArray = data.split(',');
 						switch(getStatus(dataArray)){
@@ -300,6 +295,7 @@
 					}
 				});
 			});
+
 		}, 1000);
 
 		$(".mound").click(function(){

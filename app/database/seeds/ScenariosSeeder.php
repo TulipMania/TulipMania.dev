@@ -18,7 +18,7 @@ class ScenariosSeeder extends Seeder {
 
 			$scenario2                = new Scenario();
 			$scenario2->body          = "What would would you like to do today?";
-			$scenario2->header     	  = "Continue.";
+			$scenario2->header     	  = "Walk the grounds!";
 			$scenario2->locations     = "grounds";
 			$scenario2->leads_to      = "a_3,ad_4,a_19";
 			$scenario2->story_id      = "s_grounds";
@@ -27,7 +27,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario3                = new Scenario();
 			$scenario3->body          = "Arjen, the town drunk, bets you ƒ3.00 that he can beat you swimming across the river. 
 										Hennie says: \"Be careful, master. Arjen, though a lush, is a magnificent swimmer. 
-										Also, the water is very cold. On the other hand, those three guilders could buy some much needed seed.\"";
+										Also, the water is very cold. \"";
 			$scenario3->header        = "Continue.";
 			$scenario3->locations     = "grounds";
 			$scenario3->leads_to      = "sa_5,sa_6,ai_7";
@@ -44,7 +44,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario4->locations     = "grounds";
 			$scenario4->story_id      = "ad_4";
 			$scenario4->leads_to      = "a_8,a_9";
-			$scenario4->money 		  = 1.50;
+			$scenario4->money 		  = 1;
 			$scenario4->save();
 
 			$scenario5                = new Scenario();
@@ -72,7 +72,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario7->header        = "Continue.";
 			$scenario7->locations     = "grounds";	
 			$scenario7->story_id      = "ai_7";		
-			$scenario7->money 		  = 3.00;				
+			$scenario7->money 		  = 3;				
 			$scenario7->leads_to      = "e";
 			$scenario7->save();
 
@@ -114,7 +114,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario11->locations     = 'grounds';						
 			$scenario11->story_id      = "ai_11";
 			$scenario11->leads_to      = "e";
-			$scenario11->money 		   = 5.90;
+			$scenario11->money 		   = 5;
 			$scenario11->save();
 
 			$scenario12                = new Scenario();
@@ -124,7 +124,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario12->locations     = "grounds";							
 			$scenario12->story_id      = "ai_12";
 			$scenario12->leads_to      = "e";
-			$scenario12->money 		   = 12.00;
+			$scenario12->money 		   = 12;
 			$scenario12->save();
 
 			$scenario13                = new Scenario();
@@ -134,7 +134,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario13->locations     = "grounds";
 			$scenario13->story_id      = "ad_13";
 			$scenario13->leads_to      = "e";
-			$scenario13->money 		   = 5.00; 
+			$scenario13->money 		   = 5; 
 			$scenario13->save();
 
 			$scenario14                = new Scenario();
@@ -144,7 +144,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario14->locations     = "grounds";
 			$scenario14->story_id      = "ad_14";
 			$scenario14->leads_to      = "e";
-			$scenario14->money 		   = 8.00;
+			$scenario14->money 		   = 8;
 			$scenario14->save();
 
 			$scenario15                = new Scenario();
@@ -154,7 +154,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario15->locations     = "grounds";
 			$scenario15->story_id      = "ai_15";
 			$scenario15->leads_to      = "e";
-			$scenario15->money 		   = 8.00;
+			$scenario15->money 		   = 8;
 			$scenario15->save();
 
 			$scenario16                = new Scenario();
@@ -164,7 +164,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario16->locations     = "grounds";
 			$scenario16->story_id      = "ad_16";
 			$scenario16->leads_to      = "e";
-			$scenario16->money 		   = 12.30;
+			$scenario16->money 		   = 12;
 			$scenario16->save();
 
 
