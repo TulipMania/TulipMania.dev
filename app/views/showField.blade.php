@@ -254,10 +254,7 @@
 <script type="text/javascript">
 	// $(document).ready(
 		function getStatus(data){
-			var hour = 3600000;
-			var once = 17892965;
 			var now = data[4];
-
 			var mid = data[1]; 
 			var compl = data[2];
 			var death = data[3];
@@ -279,6 +276,7 @@
 		var checkGrowth = setInterval(function(){
 			[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(i){
 				$.get('getImg/' + i, function(data){
+
 					if(data){
 						dataArray = data.split(',');
 						switch(getStatus(dataArray)){
