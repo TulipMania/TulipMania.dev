@@ -48,3 +48,5 @@ Route::post('plant', "GameController@plant");
 
 Route::get('getImg/{moundNum}', "GameController@getImg");
 
+Route::post('pluck', "GameController@pluck");
+

@@ -127,14 +127,14 @@ public function __construct()
             case('first'):
             case('mid'):
                 $completionDate = new Carbon($field[$mound]->compl_date);
-                return "This tulip will be done growing " . $completionDate->diffForHumans() . ".";
+                return ["This tulip will be done growing " . $completionDate->diffForHumans() . ".", false, $mound];
                 break;
             case('compl'):
                 $deathDate = new Carbon($field[$mound]->death_date);
-                return "This tulip will die " . $deathDate->diffForHumans() . ".";
+                return ["This tulip will die " . $deathDate->diffForHumans() . ".", true, $mound];
                 break;
             default:
-                return 'This tulip is dead!';
+                return ['This tulip is dead!', true, $mound];
                 break;
         }
         $completionDate = new Carbon($field[$mound]->compl_date);
@@ -230,6 +230,30 @@ public function __construct()
             return null;
         }
         
+    }
+
+    public function pluck(){
+        $mound = Input::get('mound');
+        $mound = Field::where('mound', '=', $mound)
+                ->where('user_id', '=', Auth::user()->id)
+                ->first();
+
+        User::where('username','=',Auth::user()->username)
+                ->update(array(
+                    'items' => 
+                        Auth::user()->items . ', '
+                         . Seed::where('item_id', '=', $mound->item_id)
+                                ->first()
+                                ->grown_item_id
+                ));
+
+        dd(Auth::user()->items);
+
+        Field::where('user_id', '=', Auth::user()->id)
+                ->where('mound', '=', $mound)
+                ->delete();
+
+        return Redirect::action("GameController@showField");
     }
 
 }
