@@ -20,7 +20,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario2->body          = "What would would you like to do today?";
 			$scenario2->header     	  = "Walk the grounds!";
 			$scenario2->locations     = "grounds";
-			$scenario2->leads_to      = "ad_4";
+			$scenario2->leads_to      = "ad_3";
 			$scenario2->story_id      = "s_grounds";
 			$scenario2->save();
 
@@ -30,7 +30,7 @@ class ScenariosSeeder extends Seeder {
 										Also, the water is very cold. \"";
 			$scenario3->header        = "Continue.";
 			$scenario3->locations     = "grounds";
-			$scenario3->leads_to      = "sa_5,sa_6,ai_7";
+			$scenario3->leads_to      = "sa_6";
 			$scenario3->story_id      = "a_3";
 			$scenario3->save();
 
