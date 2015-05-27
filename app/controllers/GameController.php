@@ -247,11 +247,8 @@ public function __construct()
                                 ->grown_item_id
                 ));
 
-        dd(Auth::user()->items);
-
         Field::where('user_id', '=', Auth::user()->id)
-                ->where('mound', '=', $mound)
-                ->delete();
+                ->where('mound', '=', $mound->mound)->delete();
 
         return Redirect::action("GameController@showField");
     }
