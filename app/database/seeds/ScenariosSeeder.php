@@ -20,7 +20,7 @@ class ScenariosSeeder extends Seeder {
 			$scenario2->body          = "What would would you like to do today?";
 			$scenario2->header     	  = "Walk the grounds!";
 			$scenario2->locations     = "grounds";
-			$scenario2->leads_to      = "ad_3";
+			$scenario2->leads_to      = "a_3";
 			$scenario2->story_id      = "s_grounds";
 			$scenario2->save();
 
