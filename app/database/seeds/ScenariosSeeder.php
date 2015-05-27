@@ -30,7 +30,7 @@ class ScenariosSeeder extends Seeder {
 										Also, the water is very cold. \"";
 			$scenario3->header        = "Continue.";
 			$scenario3->locations     = "grounds";
-			$scenario3->leads_to      = "sa_6";
+			$scenario3->leads_to      = "sia_6";
 			$scenario3->story_id      = "a_3";
 			$scenario3->save();
 
@@ -62,7 +62,8 @@ class ScenariosSeeder extends Seeder {
 										leaves the grounds and pays what he owes you.\"";
 			$scenario6->header        = "Continue.";
 			$scenario6->locations     = "grounds";
-			$scenario6->story_id      = "sa_6";
+			$scenario6->money      	  = 3;
+			$scenario6->story_id      = "sia_6";
 			$scenario6->leads_to      = "e";
 			$scenario6->save();
 
